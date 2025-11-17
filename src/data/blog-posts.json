@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "title": "The Future of NFT Marketplaces",
+        "excerpt": "Explore how NFT marketplaces are evolving with new technologies and user experiences. From decentralized platforms to cross-chain compatibility, discover what's next for digital collectibles.",
+        "author": "Sarah Johnson",
+        "date": "2024-11-10",
+        "category": "NFT Trends",
+        "image": "/images/blog/1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Understanding Smart Contracts in Web3",
+        "excerpt": "A comprehensive guide to smart contracts, their role in blockchain technology, and how they power decentralized applications. Learn the basics and advanced concepts.",
+        "author": "Michael Chen",
+        "date": "2024-11-08",
+        "category": "Blockchain",
+        "image": "/images/blog/2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Best Practices for Digital Artists",
+        "excerpt": "Tips and strategies for digital artists entering the NFT space. Learn how to mint, price, and promote your artwork effectively in the digital marketplace.",
+        "author": "Emma Rodriguez",
+        "date": "2024-11-05",
+        "category": "Art & Design",
+        "image": "/images/blog/3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Cryptocurrency Wallets: A Complete Guide",
+        "excerpt": "Everything you need to know about cryptocurrency wallets, from hot wallets to cold storage. Understand security best practices and choose the right wallet for your needs.",
+        "author": "David Kim",
+        "date": "2024-11-02",
+        "category": "Security",
+        "image": "/images/blog/4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "The Rise of Metaverse Platforms",
+        "excerpt": "Discover how metaverse platforms are creating new opportunities for creators, businesses, and users. Explore virtual worlds and their impact on digital economies.",
+        "author": "Lisa Anderson",
+        "date": "2024-10-28",
+        "category": "Metaverse",
+        "image": "/images/blog/5.jpg"
+    },
+    {
+        "id": 6,
+        "title": "DeFi Explained: Decentralized Finance Basics",
+        "excerpt": "An introduction to decentralized finance (DeFi) and how it's revolutionizing traditional financial systems. Learn about lending, staking, and yield farming.",
+        "author": "James Wilson",
+        "date": "2024-10-25",
+        "category": "DeFi",
+        "image": "/images/blog/6.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Building Your NFT Collection Strategy",
+        "excerpt": "Expert advice on building a valuable NFT collection. Learn about market analysis, rarity factors, and long-term investment strategies in the digital art world.",
+        "author": "Sophia Martinez",
+        "date": "2024-10-22",
+        "category": "Collecting",
+        "image": "/images/blog/7.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Gas Fees and Transaction Optimization",
+        "excerpt": "Master the art of managing gas fees on Ethereum and other blockchains. Learn when to transact and how to optimize your transactions for lower costs.",
+        "author": "Robert Taylor",
+        "date": "2024-10-18",
+        "category": "Blockchain",
+        "image": "/images/blog/8.jpg"
+    }
+]

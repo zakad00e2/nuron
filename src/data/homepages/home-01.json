@@ -1,0 +1,240 @@
+{
+    "title": "home-01",
+    "content": [
+        {
+            "section": "hero-section",
+            "headings": [
+                {
+                    "id": 1,
+                    "content": "Discover Digital Art, Collect and Sell Your Specific NFTs."
+                }
+            ],
+            "texts": [
+                {
+                    "id": 1,
+                    "content": "Partner with one of the world's largest retailers to showcase your brand and products."
+                }
+            ],
+            "buttons": [
+                {
+                    "id": 1,
+                    "content": "Get Started",
+                    "path": "/"
+                },
+                {
+                    "id": 2,
+                    "color": "primary-alta",
+                    "content": "Create",
+                    "path": "/create"
+                }
+            ],
+            "images": [
+                {
+                    "src": "/images/slider/unnamed ئئئ.png"
+                }
+            ]
+        },
+        {
+            "section": "service-section",
+            "section_title": {
+                "title": "Create and sell your NFTs"
+            },
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Set up your wallet",
+                    "path": "/connect",
+                    "subtitle": "Step-01",
+                    "description": "Powerful features and inclusions, which makes Nuron standout, easily customizable and scalable.",
+                    "images": [
+                        {
+                            "src": "/images/icons/shape-7.png"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Create your collection",
+                    "path": "/collection",
+                    "subtitle": "Step-02",
+                    "description": "A great collection of beautiful website templates for your need. Choose the best suitable template.",
+                    "images": [
+                        {
+                            "src": "/images/icons/shape-1.png"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Add your NFT's",
+                    "path": "/connect",
+                    "subtitle": "Step-03",
+                    "description": "We've made the template fully responsive, so it looks great on all devices: desktop, tablets and.",
+                    "images": [
+                        {
+                            "src": "/images/icons/shape-5.png"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Sell Your NFT's",
+                    "path": "/creator",
+                    "subtitle": "Step-04",
+                    "description": "I throw myself down among the tall grass by the stream as I lie close to the earth NFT's.",
+                    "images": [
+                        {
+                            "src": "/images/icons/shape-6.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section": "live-explore-section",
+            "section_title": {
+                "title": "Live Bidding"
+            }
+        },
+        {
+            "section": "newest-section",
+            "section_title": {
+                "title": "Newest Items"
+            }
+        },
+        {
+            "section": "top-sller-section",
+            "section_title": {
+                "title": "Top Seller in"
+            }
+        },
+        {
+            "section": "explore-product-section",
+            "section_title": {
+                "title": "Explore Product"
+            }
+        },
+        {
+            "section": "collection-section",
+            "section_title": {
+                "title": "Top Collection"
+            }
+        },
+        {
+            "section": "brand-strip-section",
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Ethereum",
+                    "image": {
+                        "src": "/images/brand/brand-01.png",
+                        "alt": "Ethereum"
+                    }
+                },
+                {
+                    "id": 2,
+                    "title": "Polygon",
+                    "image": {
+                        "src": "/images/brand/brand-02.png",
+                        "alt": "Polygon"
+                    }
+                },
+                {
+                    "id": 3,
+                    "title": "Binance",
+                    "image": {
+                        "src": "/images/brand/brand-03.png",
+                        "alt": "Binance"
+                    }
+                },
+                {
+                    "id": 4,
+                    "title": "Arbitrum",
+                    "image": {
+                        "src": "/images/brand/brand-04.png",
+                        "alt": "Arbitrum"
+                    }
+                },
+                {
+                    "id": 5,
+                    "title": "Optimism",
+                    "image": {
+                        "src": "/images/brand/brand-05.png",
+                        "alt": "Optimism"
+                    }
+                },
+                {
+                    "id": 6,
+                    "title": "Avalanche",
+                    "image": {
+                        "src": "/images/brand/brand-06.png",
+                        "alt": "Avalanche"
+                    }
+                },
+                {
+                    "id": 7,
+                    "title": "Solana",
+                    "image": {
+                        "src": "/images/brand/brand-07.png",
+                        "alt": "Solana"
+                    }
+                },
+                {
+                    "id": 8,
+                    "title": "Chainlink",
+                    "image": {
+                        "src": "/images/brand/brand-08.png",
+                        "alt": "Chainlink"
+                    }
+                },
+                {
+                    "id": 9,
+                    "title": "Base",
+                    "image": {
+                        "src": "/images/brand/brand-09.png",
+                        "alt": "Base"
+                    }
+                }
+            ]
+        },
+        {
+            "section": "faq-section",
+            "section_title": {
+                "title": "Frequently Asked Questions",
+                "subtitle": "Have questions? We've got answers"
+            },
+            "items": [
+                {
+                    "id": 0,
+                    "title": "What is an NFT?",
+                    "description": "An NFT (Non-Fungible Token) is a unique digital asset verified using blockchain technology. Unlike cryptocurrencies, each NFT is one-of-a-kind and cannot be exchanged on a like-for-like basis. NFTs can represent digital art, collectibles, music, videos, and more, providing proof of ownership and authenticity."
+                },
+                {
+                    "id": 1,
+                    "title": "How do I create and sell my NFT?",
+                    "description": "To create and sell an NFT, first connect your crypto wallet to our platform. Click 'Create' to upload your digital file (image, video, audio, etc.), add details like name and description, then choose your blockchain and mint your NFT. Once minted, you can list it for sale with a fixed price or auction format."
+                },
+                {
+                    "id": 2,
+                    "title": "Which wallets are supported?",
+                    "description": "We support major cryptocurrency wallets including MetaMask, WalletConnect, Coinbase Wallet, and Trust Wallet. These wallets allow you to securely store your NFTs and cryptocurrencies, and interact with our marketplace to buy, sell, and trade digital assets."
+                },
+                {
+                    "id": 3,
+                    "title": "What are gas fees?",
+                    "description": "Gas fees are transaction costs required to process operations on the blockchain network. These fees go to network validators and vary based on network congestion and transaction complexity. Gas fees are required for minting, buying, and selling NFTs. We recommend checking current gas prices before transactions."
+                },
+                {
+                    "id": 4,
+                    "title": "How do royalties work?",
+                    "description": "Creators can set royalty percentages (typically 5-10%) when minting NFTs. This means you'll automatically receive a percentage of sales each time your NFT is resold on secondary markets. Royalties are built into the smart contract and are automatically distributed to your wallet."
+                },
+                {
+                    "id": 5,
+                    "title": "Is my NFT secure?",
+                    "description": "Yes, NFTs are secured by blockchain technology, making them highly secure and tamper-proof. Each NFT has a unique identifier and transaction history stored permanently on the blockchain. However, it's crucial to keep your wallet's private keys and seed phrases secure, as losing them means losing access to your NFTs."
+                }
+            ]
+        }
+    ]
+}

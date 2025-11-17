@@ -1,0 +1,138 @@
+/*--------------------------
+    Language Switcher Styles  
+----------------------------*/
+
+@use "../default/variables" as *;
+
+.language-switcher {
+    position: relative;
+    display: inline-block;
+
+    .icon-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        background: var(--color-primary-alta);
+        border: 0 none;
+        border-radius: 5px;
+        color: var(--color-heading);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        white-space: nowrap;
+        height: 40px;
+        line-height: 1;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background: var(--background-color-1);
+            color: var(--color-primary);
+        }
+
+        .language-flag {
+            font-size: 16px;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .language-name {
+            @media #{$small-mobile} {
+                display: none;
+            }
+        }
+
+        i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: 4px;
+            color: var(--color-heading);
+        }
+
+        &:hover i {
+            color: var(--color-primary);
+        }
+    }
+
+    &.open &-button i {
+        transform: rotate(180deg);
+    }
+
+    &-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 160px;
+        background: var(--color-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        overflow: hidden;
+        animation: fadeInDown 0.3s ease;
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 10px 14px;
+        background: transparent;
+        border: none;
+        color: var(--color-body);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+
+        &:hover {
+            background: var(--background-color-1);
+        }
+
+        &.active {
+            background: var(--background-color-1);
+            color: var(--color-primary);
+
+            i {
+                margin-left: auto;
+                color: var(--color-primary);
+            }
+        }
+
+        .language-flag {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .language-name {
+            flex: 1;
+        }
+
+        i {
+            font-size: 14px;
+        }
+    }
+}
+
+

@@ -1,0 +1,411 @@
+{
+    "common": {
+        "home": "Startseite",
+        "books": "Bücher",
+        "authors": "Autoren",
+        "publishers": "Verlage",
+        "whitepaper": "Whitepaper",
+        "blog": "Blog",
+        "store": "Shop",
+        "getStarted": "Loslegen",
+        "create": "Erstellen",
+        "contents": "Inhalt",
+        "discoverBookCollection": "Entdecken Sie unsere Büchersammlung",
+        "exploreBooks": "Entdecken Sie unsere kuratierte Auswahl an Büchern über Blockchain, NFTs und Web3"
+    },
+    "homepage": {
+        "hero": {
+            "heading": "Entdecken Sie digitale Kunst, sammeln und verkaufen Sie Ihre spezifischen NFTs.",
+            "text": "Arbeiten Sie mit einem der weltweit größten Einzelhändler zusammen, um Ihre Marke und Produkte zu präsentieren."
+        },
+        "faq": {
+            "title": "Häufig gestellte Fragen",
+            "subtitle": "Haben Sie Fragen? Wir haben die Antworten",
+            "items": [
+                {
+                    "title": "Was ist ein NFT?",
+                    "description": "Ein NFT (Non-Fungible Token) ist ein einzigartiges digitales Asset, das mit Blockchain-Technologie verifiziert wird. Im Gegensatz zu Kryptowährungen ist jedes NFT einzigartig und kann nicht auf einer Eins-zu-Eins-Basis ausgetauscht werden. NFTs können digitale Kunst, Sammlerstücke, Musik, Videos und mehr darstellen und bieten Nachweis von Eigentum und Authentizität."
+                },
+                {
+                    "title": "Wie erstelle und verkaufe ich mein NFT?",
+                    "description": "Um ein NFT zu erstellen und zu verkaufen, verbinden Sie zunächst Ihre Krypto-Wallet mit unserer Plattform. Klicken Sie auf 'Erstellen', um Ihre digitale Datei (Bild, Video, Audio usw.) hochzuladen, fügen Sie Details wie Name und Beschreibung hinzu, wählen Sie dann Ihre Blockchain aus und prägen Sie Ihr NFT. Nach dem Prägen können Sie es mit einem Festpreis oder im Auktionsformat zum Verkauf anbieten."
+                },
+                {
+                    "title": "Welche Wallets werden unterstützt?",
+                    "description": "Wir unterstützen die wichtigsten Kryptowährungs-Wallets, einschließlich MetaMask, WalletConnect, Coinbase Wallet und Trust Wallet. Diese Wallets ermöglichen es Ihnen, Ihre NFTs und Kryptowährungen sicher zu speichern und mit unserem Marktplatz zu interagieren, um digitale Assets zu kaufen, zu verkaufen und zu handeln."
+                },
+                {
+                    "title": "Was sind Gasgebühren?",
+                    "description": "Gasgebühren sind Transaktionskosten, die zur Verarbeitung von Operationen im Blockchain-Netzwerk erforderlich sind. Diese Gebühren gehen an Netzwerk-Validatoren und variieren je nach Netzwerküberlastung und Transaktionskomplexität. Gasgebühren sind für das Prägen, Kaufen und Verkaufen von NFTs erforderlich. Wir empfehlen, die aktuellen Gaspreise vor Transaktionen zu überprüfen."
+                },
+                {
+                    "title": "Wie funktionieren Lizenzgebühren?",
+                    "description": "Ersteller können beim Prägen von NFTs Lizenzgebühren-Prozentsätze (typischerweise 5-10%) festlegen. Das bedeutet, dass Sie automatisch einen Prozentsatz der Verkäufe erhalten, jedes Mal, wenn Ihr NFT auf Sekundärmärkten weiterverkauft wird. Lizenzgebühren sind in den Smart Contract eingebaut und werden automatisch an Ihre Wallet verteilt."
+                },
+                {
+                    "title": "Ist mein NFT sicher?",
+                    "description": "Ja, NFTs sind durch Blockchain-Technologie gesichert, was sie sehr sicher und manipulationssicher macht. Jedes NFT hat eine eindeutige Kennung und Transaktionshistorie, die dauerhaft auf der Blockchain gespeichert wird. Es ist jedoch entscheidend, die privaten Schlüssel und Seed-Phrasen Ihrer Wallet sicher aufzubewahren, da der Verlust dieser den Zugriff auf Ihre NFTs bedeutet."
+                }
+            ]
+        }
+    },
+    "authors": {
+        "title": "Unsere Autoren kennenlernen",
+        "subtitle": "Entdecken Sie die brillanten Köpfe hinter unserer Buchsammlung"
+    },
+    "blog": {
+        "sidebarTitle": "Artikel",
+        "posts": [
+            {
+                "id": 1,
+                "title": "Die Zukunft der NFT-Marktplätze",
+                "excerpt": "Entdecken Sie, wie sich NFT-Marktplätze mit neuen Technologien und Benutzererfahrungen entwickeln. Von dezentralisierten Plattformen bis zur Cross-Chain-Kompatibilität - entdecken Sie, was als Nächstes für digitale Sammlerstücke ansteht.",
+                "author": "Sarah Johnson"
+            },
+            {
+                "id": 2,
+                "title": "Smart Contracts in Web3 verstehen",
+                "excerpt": "Ein umfassender Leitfaden zu Smart Contracts, ihrer Rolle in der Blockchain-Technologie und wie sie dezentralisierte Anwendungen unterstützen. Lernen Sie die Grundlagen und fortgeschrittene Konzepte.",
+                "author": "Michael Chen"
+            },
+            {
+                "id": 3,
+                "title": "Best Practices für digitale Künstler",
+                "excerpt": "Tipps und Strategien für digitale Künstler, die in den NFT-Bereich einsteigen. Erfahren Sie, wie Sie Ihre Kunstwerke effektiv auf dem digitalen Markt prägen, bewerten und bewerben.",
+                "author": "Emma Rodriguez"
+            },
+            {
+                "id": 4,
+                "title": "Kryptowährungs-Wallets: Ein vollständiger Leitfaden",
+                "excerpt": "Alles, was Sie über Kryptowährungs-Wallets wissen müssen, von Hot Wallets bis zur Cold Storage. Verstehen Sie Best Practices für Sicherheit und wählen Sie die richtige Wallet für Ihre Bedürfnisse.",
+                "author": "David Kim"
+            },
+            {
+                "id": 5,
+                "title": "Der Aufstieg der Metaverse-Plattformen",
+                "excerpt": "Entdecken Sie, wie Metaverse-Plattformen neue Möglichkeiten für Ersteller, Unternehmen und Benutzer schaffen. Erkunden Sie virtuelle Welten und ihre Auswirkungen auf digitale Wirtschaften.",
+                "author": "Lisa Anderson"
+            },
+            {
+                "id": 6,
+                "title": "DeFi erklärt: Grundlagen der dezentralisierten Finanzen",
+                "excerpt": "Eine Einführung in dezentralisierte Finanzen (DeFi) und wie sie traditionelle Finanzsysteme revolutionieren. Erfahren Sie mehr über Kreditvergabe, Staking und Yield Farming.",
+                "author": "James Wilson"
+            },
+            {
+                "id": 7,
+                "title": "Aufbau Ihrer NFT-Sammlungsstrategie",
+                "excerpt": "Fachratschläge zum Aufbau einer wertvollen NFT-Sammlung. Erfahren Sie mehr über Marktanalysen, Seltenheitsfaktoren und langfristige Investitionsstrategien in der Welt der digitalen Kunst.",
+                "author": "Sophia Martinez"
+            },
+            {
+                "id": 8,
+                "title": "Gasgebühren und Transaktionsoptimierung",
+                "excerpt": "Beherrschen Sie die Kunst der Verwaltung von Gasgebühren auf Ethereum und anderen Blockchains. Erfahren Sie, wann Sie Transaktionen durchführen und wie Sie Ihre Transaktionen für niedrigere Kosten optimieren.",
+                "author": "Robert Taylor"
+            }
+        ]
+    },
+    "store": {
+        "pageTitle": "Shop",
+        "breadcrumbTitle": "Shop",
+        "sectionTitle": "Unsere Produkte",
+        "sectionSubtitle": "Entdecken Sie hochwertige Produkte für Buchliebhaber und Leser",
+        "buyNow": "Jetzt kaufen",
+        "products": [
+            {
+                "id": 1,
+                "name": "Premium-E-Reader",
+                "description": "7-Zoll-Display mit hochauflösender Anzeige und verstellbarer Beleuchtung. Perfekt zum Lesen digitaler Bücher mit außergewöhnlicher Klarheit und Komfort.",
+                "price": "€129,99",
+                "category": "Elektronik"
+            },
+            {
+                "id": 2,
+                "name": "Klassisches Lesezeichen-Set",
+                "description": "Handgefertigte Ledermlesezeichen mit eleganten Designs. Set aus 5 Premium-Lesezeichen für Buchliebhaber.",
+                "price": "€24,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 3,
+                "name": "Buch-LED-Leuchte",
+                "description": "Aufladbare LED-Leselampe mit verstellbarer Helligkeit. Klemmdesign für freihändiges Lesen überall.",
+                "price": "€19,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 4,
+                "name": "Lesekissen",
+                "description": "Ergonomisches Rückenstützkissen mit Armlehnen. Perfekte Unterstützung für längere Lesestunden im Bett oder auf der Couch.",
+                "price": "€49,99",
+                "category": "Komfort"
+            },
+            {
+                "id": 5,
+                "name": "Buchständer-Halter",
+                "description": "Verstellbarer Bambusständer mit Seitenhalter. Hält Bücher im perfekten Winkel zum Lesen oder Kochen offen.",
+                "price": "€34,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 6,
+                "name": "Lesebrillen-Set",
+                "description": "Blaulicht-blockierende Lesebrillen. Packung mit 3 eleganten Rahmen, um Augenbelastung bei langen Lesestunden zu reduzieren.",
+                "price": "€39,99",
+                "category": "Brillen"
+            },
+            {
+                "id": 7,
+                "name": "Vintage Buchstützen",
+                "description": "Robuste Metallbuchstützen mit klassischem Design. Hält Ihre Buchsammlung organisiert und fügt dekorativen Charme hinzu.",
+                "price": "€44,99",
+                "category": "Organisation"
+            },
+            {
+                "id": 8,
+                "name": "Buch-Abonnement-Box",
+                "description": "Monatlich zusammengestellte Buchbox mit Bestsellern und exklusiven Artikeln. Treten Sie Tausenden von Lesern bei, die neue Favoriten entdecken.",
+                "price": "€29,99/Monat",
+                "category": "Abonnement"
+            },
+            {
+                "id": 9,
+                "name": "Bibliotheksleiter",
+                "description": "Fahrbare Holzbibliotheksleiter mit Messingbeschlägen. Erreichen Sie Ihre höchsten Regale mit Stil und Sicherheit.",
+                "price": "€299,99",
+                "category": "Möbel"
+            }
+        ]
+    },
+    "whitepaper": {
+        "title": "Whitepaper",
+        "sections": [
+            {
+                "title": "Einführung",
+                "content": "Im heutigen digitalen Zeitalter hat sich die Frontend-Entwicklung weit über einfaches HTML und CSS hinaus entwickelt. Moderne Web-Oberflächen sollen nahtlose Leistung, Barrierefreiheit und Designkonsistenz auf allen Plattformen bieten. Dieses Wiki soll praktische Einblicke, Tools und Techniken bieten, die Entwicklern helfen, skalierbare, wartbare und visuell ansprechende Webanwendungen zu erstellen."
+            },
+            {
+                "title": "Web-Performance verstehen",
+                "content": "Web-Performance bezieht sich darauf, wie schnell eine Website lädt und auf Benutzerinteraktionen reagiert. Die Optimierung der Performance verbessert die Benutzerzufriedenheit und SEO-Rankings. Zu den gängigen Strategien gehören Code-Splitting, verzögertes Laden von Bildern, Minimierung von JavaScript-Bundles und die Nutzung von Content Delivery Networks (CDNs)."
+            },
+            {
+                "title": "Was ist ein Frontend-Cloud?",
+                "content": "Eine Frontend-Cloud ist eine verwaltete Infrastruktur, die es Entwicklern ermöglicht, Webanwendungen zu erstellen, bereitzustellen und zu skalieren, ohne Backend-Server zu verwalten. Sie bietet automatische Builds, kontinuierliche Bereitstellung, Caching und globale Edge-Auslieferung. Beliebte Beispiele sind Vercel, Netlify und Cloudflare Pages."
+            },
+            {
+                "title": "Best Practices für Versionskontrolle",
+                "content": "Versionskontrollsysteme wie Git ermöglichen es Teams, effizient zusammenzuarbeiten. Best Practices umfassen das Schreiben klarer Commit-Nachrichten, die Verwendung von Feature-Branches, Code-Reviews vor dem Mergen und das Markieren stabiler Releases. Die Aufrechterhaltung einer sauberen Git-Historie hilft bei der Projektskalierbarkeit und Fehlerbehebung."
+            },
+            {
+                "title": "Prinzipien des responsiven Designs",
+                "content": "Responsives Design stellt sicher, dass Websites sich an verschiedene Bildschirmgrößen und Geräte anpassen. Entwickler erreichen dies durch flüssige Raster, flexible Bilder und CSS-Media-Queries. Tools wie Chrome DevTools und Online-Testplattformen helfen bei der Validierung der Reaktionsfähigkeit über verschiedene Viewports hinweg."
+            },
+            {
+                "title": "Barrierefreiheit im Webdesign",
+                "content": "Barrierefreiheit stellt sicher, dass Menschen mit Behinderungen Webanwendungen effektiv nutzen können. Entwickler sollten semantisches HTML, ARIA-Labels verwenden und ausreichenden Farbkontrast beibehalten. Tests mit Screenreadern und die Einhaltung der WCAG-Richtlinien verbessern die Benutzerfreundlichkeit für alle Benutzer."
+            },
+            {
+                "title": "Einführung in Progressive Web Apps (PWAs)",
+                "content": "Progressive Web Apps kombinieren das Beste aus Web- und Mobile-Erfahrungen. Sie funktionieren offline, senden Push-Benachrichtigungen und können auf Benutzergeräten installiert werden. PWAs verwenden Service Worker und Manifest-Dateien, um Zuverlässigkeit und Engagement zu verbessern."
+            },
+            {
+                "title": "State Management in React",
+                "content": "State Management steuert, wie Daten durch React-Komponenten fließen und aktualisiert werden. Entwickler verwenden Tools wie Context API, Redux oder Zustand für vorhersehbare State-Updates. Ein ordnungsgemäßes Management verbessert die Leistung und verhindert inkonsistentes UI-Verhalten."
+            },
+            {
+                "title": "Einführung in APIs",
+                "content": "APIs ermöglichen es verschiedenen Softwaresystemen, zu kommunizieren. In der Frontend-Entwicklung liefern APIs Daten, um dynamische Inhalte zu rendern. REST und GraphQL sind die häufigsten API-Stile, die jeweils einzigartige Vorteile für das Abrufen von Daten und Flexibilität bieten."
+            },
+            {
+                "title": "Sicherheit in Frontend-Anwendungen",
+                "content": "Frontend-Sicherheit umfasst die Verhinderung von Angriffen wie XSS, CSRF und Clickjacking. Entwickler sollten Benutzereingaben bereinigen, HTTPS verwenden und Authentifizierungstoken sicher verwalten. Frameworks wie Next.js bieten eingebaute Schutzmaßnahmen für viele häufige Schwachstellen."
+            },
+            {
+                "title": "Grundlagen des automatisierten Testens",
+                "content": "Tests stellen die Zuverlässigkeit der Anwendung sicher und verhindern Regressionen. Unit-, Integrations- und End-to-End-Tests validieren verschiedene Funktionsschichten. Tools wie Jest, Mocha und Cypress sind beliebt für die Frontend-Testautomatisierung."
+            },
+            {
+                "title": "Verwendung von GitHub für Zusammenarbeit",
+                "content": "GitHub bietet eine kollaborative Umgebung für Entwickler durch Pull Requests, Issues und Projektboards. Teams können Workflows mit GitHub Actions automatisieren, Code-Reviews durchführen und den Projektfortschritt in Echtzeit verfolgen."
+            },
+            {
+                "title": "Continuous Integration und Deployment (CI/CD)",
+                "content": "CI/CD automatisiert den Prozess des Testens, Buildens und Bereitstellens von Anwendungen. Beliebte Tools sind GitHub Actions, Jenkins und GitLab CI. Automatisierung reduziert menschliche Fehler und stellt eine konsistente Bereitstellung von hochwertigem Code sicher."
+            },
+            {
+                "title": "Caching-Strategien für Web-Apps",
+                "content": "Caching verbessert die Leistung, indem häufig aufgerufene Ressourcen lokal gespeichert werden. Techniken umfassen Browser-Caching, CDN-Caching und Service-Worker-Caching für Offline-Nutzung. Eine ordnungsgemäße Cache-Invalidierung stellt sicher, dass Benutzer immer die neueste Version erhalten."
+            },
+            {
+                "title": "Optimierung von Bildern für das Web",
+                "content": "Bilder können die Seitenladezeit erheblich beeinflussen. Entwickler sollten Bilder komprimieren, moderne Formate wie WebP oder AVIF verwenden und angemessene Auflösungen mit dem `<picture>`-Element oder responsiven Attributen wie `srcset` bereitstellen."
+            },
+            {
+                "title": "Fazit",
+                "content": "Moderne Frontend-Entwicklung erfordert ein Gleichgewicht zwischen Leistung, Design und Barrierefreiheit. Durch die Nutzung von Cloud-Plattformen, Automatisierungstools und aufstrebenden Web-Standards können Entwickler außergewöhnliche Benutzererfahrungen in großem Maßstab liefern."
+            }
+        ]
+    },
+    "books": {
+        "title": "Büchersammlung",
+        "items": [
+            {
+                "title": "Die Blockchain-Revolution",
+                "author": "Don Tapscott",
+                "description": "Ein umfassender Leitfaden zum Verständnis der Blockchain-Technologie und ihres transformativen Potenzials in verschiedenen Branchen."
+            },
+            {
+                "title": "Ethereum meistern",
+                "author": "Andreas M. Antonopoulos",
+                "description": "Smart Contracts und DApps erstellen. Ein tiefer Einblick in die Architektur und Entwicklung von Ethereum."
+            },
+            {
+                "title": "Das NFT-Handbuch",
+                "author": "Matt Fortnow",
+                "description": "Wie man Non-Fungible Tokens erstellt, verkauft und kauft. Ihr kompletter Leitfaden für den NFT-Markt."
+            },
+            {
+                "title": "Der Bitcoin-Standard",
+                "author": "Saifedean Ammous",
+                "description": "Die dezentrale Alternative zum Zentralbankwesen. Verständnis der Rolle von Bitcoin in der Zukunft des Geldes."
+            },
+            {
+                "title": "Kryptowährungshandel",
+                "author": "Alan T. Norman",
+                "description": "Lernen Sie die Grundlagen und fortgeschrittenen Strategien des Kryptowährungshandels für Anfänger und Profis."
+            },
+            {
+                "title": "Die Web3-Zukunft",
+                "author": "Sarah Chen",
+                "description": "Erkundung des dezentralen Internets und seiner Auswirkungen auf Wirtschaft, Gesellschaft und Innovation."
+            }
+        ]
+    },
+    "publishers": {
+        "pageTitle": "Verlage",
+        "breadcrumbTitle": "Unsere Verlage",
+        "sectionTitle": "Unsere Verlagspartner",
+        "sectionSubtitle": "Zusammenarbeit mit führenden Verlagen, um Ihnen die besten Inhalte zu bringen",
+        "publishers": [
+            {
+                "id": 1,
+                "name": "O'Reilly Media",
+                "description": "Führender Verlag von Technologiebüchern, Online-Lernplattformen und Live-Schulungskursen für Fachleute."
+            },
+            {
+                "id": 2,
+                "name": "Manning Publications",
+                "description": "Unabhängiger Verlag von Computerbüchern für Softwareentwickler, Ingenieure, Architekten und Manager."
+            },
+            {
+                "id": 3,
+                "name": "Wiley",
+                "description": "Globaler Anführer in Forschungs- und Bildungsverlage, der Wissen und Dienstleistungen für Fachleute weltweit bereitstellt."
+            },
+            {
+                "id": 4,
+                "name": "Packt Publishing",
+                "description": "Verlag von Tech-Büchern, der Softwareentwicklern und IT-Profis hilft, der Entwicklung voraus zu bleiben."
+            },
+            {
+                "id": 5,
+                "name": "Apress",
+                "description": "Technischer Verlag, der sich den Bedürfnissen von IT-Fachleuten, Softwareentwicklern und Programmierern widmet."
+            },
+            {
+                "id": 6,
+                "name": "No Starch Press",
+                "description": "Unabhängiger Verlag, der akribisch erstellte Bücher zu Technologiethemen für Geeks und Tech-Enthusiasten erstellt."
+            }
+        ]
+    },
+    "store": {
+        "pageTitle": "Shop",
+        "breadcrumbTitle": "Shop",
+        "sectionTitle": "Unsere Produkte",
+        "sectionSubtitle": "Entdecken Sie hochwertige Produkte für Buchliebhaber und Leser",
+        "buyNow": "Jetzt kaufen",
+        "products": [
+            {
+                "id": 1,
+                "name": "Premium-E-Reader",
+                "description": "7-Zoll-Display mit hochauflösender Anzeige und verstellbarer Beleuchtung. Perfekt zum Lesen digitaler Bücher mit außergewöhnlicher Klarheit und Komfort.",
+                "price": "€129,99",
+                "category": "Elektronik"
+            },
+            {
+                "id": 2,
+                "name": "Klassisches Lesezeichen-Set",
+                "description": "Handgefertigte Ledermlesezeichen mit eleganten Designs. Set aus 5 Premium-Lesezeichen für Buchliebhaber.",
+                "price": "€24,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 3,
+                "name": "Buch-LED-Leuchte",
+                "description": "Aufladbare LED-Leselampe mit verstellbarer Helligkeit. Klemmdesign für freihändiges Lesen überall.",
+                "price": "€19,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 4,
+                "name": "Lesekissen",
+                "description": "Ergonomisches Rückenstützkissen mit Armlehnen. Perfekte Unterstützung für längere Lesestunden im Bett oder auf der Couch.",
+                "price": "€49,99",
+                "category": "Komfort"
+            },
+            {
+                "id": 5,
+                "name": "Buchständer-Halter",
+                "description": "Verstellbarer Bambusständer mit Seitenhalter. Hält Bücher im perfekten Winkel zum Lesen oder Kochen offen.",
+                "price": "€34,99",
+                "category": "Zubehör"
+            },
+            {
+                "id": 6,
+                "name": "Lesebrillen-Set",
+                "description": "Blaulicht-blockierende Lesebrillen. Packung mit 3 eleganten Rahmen, um Augenbelastung bei langen Lesestunden zu reduzieren.",
+                "price": "€39,99",
+                "category": "Brillen"
+            },
+            {
+                "id": 7,
+                "name": "Vintage Buchstützen",
+                "description": "Robuste Metallbuchstützen mit klassischem Design. Hält Ihre Buchsammlung organisiert und fügt dekorativen Charme hinzu.",
+                "price": "€44,99",
+                "category": "Organisation"
+            },
+            {
+                "id": 8,
+                "name": "Buch-Abonnement-Box",
+                "description": "Monatlich zusammengestellte Buchbox mit Bestsellern und exklusiven Artikeln. Treten Sie Tausenden von Lesern bei, die neue Favoriten entdecken.",
+                "price": "€29,99/Monat",
+                "category": "Abonnement"
+            },
+            {
+                "id": 9,
+                "name": "Bibliotheksleiter",
+                "description": "Fahrbare Holzbibliotheksleiter mit Messingbeschlägen. Erreichen Sie Ihre höchsten Regale mit Stil und Sicherheit.",
+                "price": "€299,99",
+                "category": "Möbel"
+            }
+        ]
+    },
+    "footer": {
+        "pagesTitle": "Seiten",
+        "followUsTitle": "Folgen Sie uns",
+        "copyright": "Alle Rechte vorbehalten.",
+        "pages": {
+            "home": "Startseite",
+            "books": "Bücher",
+            "authors": "Autoren",
+            "publishers": "Verlage",
+            "white paper": "Whitepaper",
+            "whitepaper": "Whitepaper",
+            "blog": "Blog",
+            "store": "Shop"
+        }
+    }
+}
+

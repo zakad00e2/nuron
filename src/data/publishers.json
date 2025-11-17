@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "O'Reilly Media",
+        "slug": "oreilly-media",
+        "description": "Leading publisher of technology books, online learning platforms, and live training courses for professionals.",
+        "booksCount": 28,
+        "logo": {
+            "src": "/images/brand/brand-01.png",
+            "alt": "O'Reilly Media",
+            "width": 200,
+            "height": 100
+        }
+    },
+    {
+        "id": 2,
+        "name": "Manning Publications",
+        "slug": "manning-publications",
+        "description": "Independent publisher of computer books for software developers, engineers, architects, and managers.",
+        "booksCount": 22,
+        "logo": {
+            "src": "/images/brand/brand-02.png",
+            "alt": "Manning Publications",
+            "width": 200,
+            "height": 100
+        }
+    },
+    {
+        "id": 3,
+        "name": "Wiley",
+        "slug": "wiley",
+        "description": "Global leader in research and education publishing, providing knowledge and services to professionals worldwide.",
+        "booksCount": 35,
+        "logo": {
+            "src": "/images/brand/brand-03.png",
+            "alt": "Wiley",
+            "width": 200,
+            "height": 100
+        }
+    },
+    {
+        "id": 4,
+        "name": "Packt Publishing",
+        "slug": "packt-publishing",
+        "description": "Publisher of tech books focused on helping software developers and IT professionals stay ahead of the curve.",
+        "booksCount": 41,
+        "logo": {
+            "src": "/images/brand/brand-04.png",
+            "alt": "Packt Publishing",
+            "width": 200,
+            "height": 100
+        }
+    },
+    {
+        "id": 5,
+        "name": "Apress",
+        "slug": "apress",
+        "description": "Technical publisher devoted to meeting the needs of IT professionals, software developers, and programmers.",
+        "booksCount": 19,
+        "logo": {
+            "src": "/images/brand/brand-05.png",
+            "alt": "Apress",
+            "width": 200,
+            "height": 100
+        }
+    },
+    {
+        "id": 6,
+        "name": "No Starch Press",
+        "slug": "no-starch-press",
+        "description": "Independent publisher creating meticulously crafted books on technology topics for geeks and tech enthusiasts.",
+        "booksCount": 15,
+        "logo": {
+            "src": "/images/brand/brand-06.png",
+            "alt": "No Starch Press",
+            "width": 200,
+            "height": 100
+        }
+    }
+]

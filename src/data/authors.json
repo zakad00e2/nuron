@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "name": "Don Tapscott",
+        "slug": "don-tapscott",
+        "bio": "CEO of the Tapscott Group, bestselling author, and one of the world's leading authorities on blockchain technology.",
+        "booksCount": 15,
+        "isVerified": true,
+        "image": {
+            "src": "/images/client/client-1.png",
+            "alt": "Don Tapscott",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 2,
+        "name": "Andreas M. Antonopoulos",
+        "slug": "andreas-antonopoulos",
+        "bio": "Technology entrepreneur and Bitcoin expert. Author of several bestselling books on blockchain and cryptocurrencies.",
+        "booksCount": 8,
+        "isVerified": true,
+        "image": {
+            "src": "/images/client/client-2.png",
+            "alt": "Andreas M. Antonopoulos",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 3,
+        "name": "Matt Fortnow",
+        "slug": "matt-fortnow",
+        "bio": "NFT expert and digital artist. Specializes in helping creators understand and navigate the NFT marketplace.",
+        "booksCount": 3,
+        "isVerified": true,
+        "image": {
+            "src": "/images/client/client-3.png",
+            "alt": "Matt Fortnow",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 4,
+        "name": "Saifedean Ammous",
+        "slug": "saifedean-ammous",
+        "bio": "Economist and author. Known for his work on Bitcoin and Austrian economics.",
+        "booksCount": 2,
+        "isVerified": true,
+        "image": {
+            "src": "/images/client/client-4.png",
+            "alt": "Saifedean Ammous",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 5,
+        "name": "Alan T. Norman",
+        "slug": "alan-norman",
+        "bio": "Financial analyst and cryptocurrency trader with over 10 years of experience in the digital asset space.",
+        "booksCount": 5,
+        "isVerified": false,
+        "image": {
+            "src": "/images/client/client-5.png",
+            "alt": "Alan T. Norman",
+            "width": 200,
+            "height": 200
+        }
+    },
+    {
+        "id": 6,
+        "name": "Sarah Chen",
+        "slug": "sarah-chen",
+        "bio": "Tech futurist and Web3 strategist. Helping organizations transition to decentralized technologies.",
+        "booksCount": 4,
+        "isVerified": true,
+        "image": {
+            "src": "/images/client/client-6.png",
+            "alt": "Sarah Chen",
+            "width": 200,
+            "height": 200
+        }
+    }
+]

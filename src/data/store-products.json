@@ -1,0 +1,83 @@
+[
+    {
+        "id": 1,
+        "name": "Premium eBook Reader",
+        "description": "High-resolution 7-inch display with adjustable lighting. Perfect for reading digital books with exceptional clarity and comfort.",
+        "price": "$129.99",
+        "image": "/images/portfolio/portfolio-01.jpg",
+        "purchaseUrl": "https://www.amazon.com/ebook-readers",
+        "category": "Electronics"
+    },
+    {
+        "id": 2,
+        "name": "Classic Bookmark Set",
+        "description": "Handcrafted leather bookmarks with elegant designs. Set of 5 premium bookmarks for book lovers.",
+        "price": "$24.99",
+        "image": "/images/portfolio/portfolio-02.jpg",
+        "purchaseUrl": "https://www.etsy.com/bookmarks",
+        "category": "Accessories"
+    },
+    {
+        "id": 3,
+        "name": "Book Light LED",
+        "description": "Rechargeable LED reading light with adjustable brightness. Clip-on design for hands-free reading anywhere.",
+        "price": "$19.99",
+        "image": "/images/portfolio/portfolio-03.jpg",
+        "purchaseUrl": "https://www.amazon.com/reading-lights",
+        "category": "Accessories"
+    },
+    {
+        "id": 4,
+        "name": "Reading Pillow",
+        "description": "Ergonomic backrest pillow with armrests. Perfect support for extended reading sessions in bed or on the couch.",
+        "price": "$49.99",
+        "image": "/images/portfolio/portfolio-04.jpg",
+        "purchaseUrl": "https://www.amazon.com/reading-pillows",
+        "category": "Comfort"
+    },
+    {
+        "id": 5,
+        "name": "Book Stand Holder",
+        "description": "Adjustable bamboo book stand with page holder clips. Keeps books open at the perfect angle for reading or cooking.",
+        "price": "$34.99",
+        "image": "/images/portfolio/portfolio-05.jpg",
+        "purchaseUrl": "https://www.amazon.com/book-stands",
+        "category": "Accessories"
+    },
+    {
+        "id": 6,
+        "name": "Reading Glasses Set",
+        "description": "Blue light blocking reading glasses. Pack of 3 stylish frames to reduce eye strain during long reading sessions.",
+        "price": "$39.99",
+        "image": "/images/portfolio/portfolio-06.jpg",
+        "purchaseUrl": "https://www.amazon.com/reading-glasses",
+        "category": "Eyewear"
+    },
+    {
+        "id": 7,
+        "name": "Vintage Book Ends",
+        "description": "Heavy-duty metal bookends with classic design. Keeps your book collection organized and adds decorative charm.",
+        "price": "$44.99",
+        "image": "/images/portfolio/portfolio-07.jpg",
+        "purchaseUrl": "https://www.wayfair.com/bookends",
+        "category": "Organization"
+    },
+    {
+        "id": 8,
+        "name": "Book Subscription Box",
+        "description": "Monthly curated book box with bestsellers and exclusive items. Join thousands of readers discovering new favorites.",
+        "price": "$29.99/month",
+        "image": "/images/portfolio/portfolio-08.jpg",
+        "purchaseUrl": "https://www.bookofthemonth.com",
+        "category": "Subscription"
+    },
+    {
+        "id": 9,
+        "name": "Library Ladder",
+        "description": "Rolling wooden library ladder with brass hardware. Reach your highest shelves with style and safety.",
+        "price": "$299.99",
+        "image": "/images/portfolio/portfolio-09.jpg",
+        "purchaseUrl": "https://www.wayfair.com/library-ladders",
+        "category": "Furniture"
+    }
+]

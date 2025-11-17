@@ -1,0 +1,411 @@
+{
+    "common": {
+        "home": "Home",
+        "books": "Books",
+        "authors": "Authors",
+        "publishers": "Publishers",
+        "whitepaper": "White paper",
+        "blog": "Blog",
+        "store": "Store",
+        "getStarted": "Get Started",
+        "create": "Create",
+        "contents": "Contents",
+        "discoverBookCollection": "Discover Our Book Collection",
+        "exploreBooks": "Explore our curated selection of books on blockchain, NFTs, and Web3"
+    },
+    "homepage": {
+        "hero": {
+            "heading": "Discover Digital Art, Collect and Sell Your Specific NFTs.",
+            "text": "Partner with one of the world's largest retailers to showcase your brand and products."
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "Have questions? We've got answers",
+            "items": [
+                {
+                    "title": "What is an NFT?",
+                    "description": "An NFT (Non-Fungible Token) is a unique digital asset verified using blockchain technology. Unlike cryptocurrencies, each NFT is one-of-a-kind and cannot be exchanged on a like-for-like basis. NFTs can represent digital art, collectibles, music, videos, and more, providing proof of ownership and authenticity."
+                },
+                {
+                    "title": "How do I create and sell my NFT?",
+                    "description": "To create and sell an NFT, first connect your crypto wallet to our platform. Click 'Create' to upload your digital file (image, video, audio, etc.), add details like name and description, then choose your blockchain and mint your NFT. Once minted, you can list it for sale with a fixed price or auction format."
+                },
+                {
+                    "title": "Which wallets are supported?",
+                    "description": "We support major cryptocurrency wallets including MetaMask, WalletConnect, Coinbase Wallet, and Trust Wallet. These wallets allow you to securely store your NFTs and cryptocurrencies, and interact with our marketplace to buy, sell, and trade digital assets."
+                },
+                {
+                    "title": "What are gas fees?",
+                    "description": "Gas fees are transaction costs required to process operations on the blockchain network. These fees go to network validators and vary based on network congestion and transaction complexity. Gas fees are required for minting, buying, and selling NFTs. We recommend checking current gas prices before transactions."
+                },
+                {
+                    "title": "How do royalties work?",
+                    "description": "Creators can set royalty percentages (typically 5-10%) when minting NFTs. This means you'll automatically receive a percentage of sales each time your NFT is resold on secondary markets. Royalties are built into the smart contract and are automatically distributed to your wallet."
+                },
+                {
+                    "title": "Is my NFT secure?",
+                    "description": "Yes, NFTs are secured by blockchain technology, making them highly secure and tamper-proof. Each NFT has a unique identifier and transaction history stored permanently on the blockchain. However, it's crucial to keep your wallet's private keys and seed phrases secure, as losing them means losing access to your NFTs."
+                }
+            ]
+        }
+    },
+    "authors": {
+        "title": "Meet Our Authors",
+        "subtitle": "Discover the brilliant minds behind our book collection"
+    },
+    "blog": {
+        "sidebarTitle": "Articles",
+        "posts": [
+            {
+                "id": 1,
+                "title": "The Future of NFT Marketplaces",
+                "excerpt": "Explore how NFT marketplaces are evolving with new technologies and user experiences. From decentralized platforms to cross-chain compatibility, discover what's next for digital collectibles.",
+                "author": "Sarah Johnson"
+            },
+            {
+                "id": 2,
+                "title": "Understanding Smart Contracts in Web3",
+                "excerpt": "A comprehensive guide to smart contracts, their role in blockchain technology, and how they power decentralized applications. Learn the basics and advanced concepts.",
+                "author": "Michael Chen"
+            },
+            {
+                "id": 3,
+                "title": "Best Practices for Digital Artists",
+                "excerpt": "Tips and strategies for digital artists entering the NFT space. Learn how to mint, price, and promote your artwork effectively in the digital marketplace.",
+                "author": "Emma Rodriguez"
+            },
+            {
+                "id": 4,
+                "title": "Cryptocurrency Wallets: A Complete Guide",
+                "excerpt": "Everything you need to know about cryptocurrency wallets, from hot wallets to cold storage. Understand security best practices and choose the right wallet for your needs.",
+                "author": "David Kim"
+            },
+            {
+                "id": 5,
+                "title": "The Rise of Metaverse Platforms",
+                "excerpt": "Discover how metaverse platforms are creating new opportunities for creators, businesses, and users. Explore virtual worlds and their impact on digital economies.",
+                "author": "Lisa Anderson"
+            },
+            {
+                "id": 6,
+                "title": "DeFi Explained: Decentralized Finance Basics",
+                "excerpt": "An introduction to decentralized finance (DeFi) and how it's revolutionizing traditional financial systems. Learn about lending, staking, and yield farming.",
+                "author": "James Wilson"
+            },
+            {
+                "id": 7,
+                "title": "Building Your NFT Collection Strategy",
+                "excerpt": "Expert advice on building a valuable NFT collection. Learn about market analysis, rarity factors, and long-term investment strategies in the digital art world.",
+                "author": "Sophia Martinez"
+            },
+            {
+                "id": 8,
+                "title": "Gas Fees and Transaction Optimization",
+                "excerpt": "Master the art of managing gas fees on Ethereum and other blockchains. Learn when to transact and how to optimize your transactions for lower costs.",
+                "author": "Robert Taylor"
+            }
+        ]
+    },
+    "store": {
+        "pageTitle": "Store",
+        "breadcrumbTitle": "Store",
+        "sectionTitle": "Our Products",
+        "sectionSubtitle": "Discover quality products for book lovers and readers",
+        "buyNow": "Buy Now",
+        "products": [
+            {
+                "id": 1,
+                "name": "Premium eBook Reader",
+                "description": "High-resolution 7-inch display with adjustable lighting. Perfect for reading digital books with exceptional clarity and comfort.",
+                "price": "$129.99",
+                "category": "Electronics"
+            },
+            {
+                "id": 2,
+                "name": "Classic Bookmark Set",
+                "description": "Handcrafted leather bookmarks with elegant designs. Set of 5 premium bookmarks for book lovers.",
+                "price": "$24.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 3,
+                "name": "Book Light LED",
+                "description": "Rechargeable LED reading light with adjustable brightness. Clip-on design for hands-free reading anywhere.",
+                "price": "$19.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 4,
+                "name": "Reading Pillow",
+                "description": "Ergonomic backrest pillow with armrests. Perfect support for extended reading sessions in bed or on the couch.",
+                "price": "$49.99",
+                "category": "Comfort"
+            },
+            {
+                "id": 5,
+                "name": "Book Stand Holder",
+                "description": "Adjustable bamboo book stand with page holder clips. Keeps books open at the perfect angle for reading or cooking.",
+                "price": "$34.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 6,
+                "name": "Reading Glasses Set",
+                "description": "Blue light blocking reading glasses. Pack of 3 stylish frames to reduce eye strain during long reading sessions.",
+                "price": "$39.99",
+                "category": "Eyewear"
+            },
+            {
+                "id": 7,
+                "name": "Vintage Book Ends",
+                "description": "Heavy-duty metal bookends with classic design. Keeps your book collection organized and adds decorative charm.",
+                "price": "$44.99",
+                "category": "Organization"
+            },
+            {
+                "id": 8,
+                "name": "Book Subscription Box",
+                "description": "Monthly curated book box with bestsellers and exclusive items. Join thousands of readers discovering new favorites.",
+                "price": "$29.99/month",
+                "category": "Subscription"
+            },
+            {
+                "id": 9,
+                "name": "Library Ladder",
+                "description": "Rolling wooden library ladder with brass hardware. Reach your highest shelves with style and safety.",
+                "price": "$299.99",
+                "category": "Furniture"
+            }
+        ]
+    },
+    "whitepaper": {
+        "title": "Whitepaper",
+        "sections": [
+            {
+                "title": "Introduction",
+                "content": "In today's digital era, frontend development has evolved far beyond simple HTML and CSS. Modern web interfaces are expected to deliver seamless performance, accessibility, and design consistency across all platforms. This wiki aims to provide practical insights, tools, and techniques that help developers create scalable, maintainable, and visually appealing web applications."
+            },
+            {
+                "title": "Understanding Web Performance",
+                "content": "Web performance refers to how quickly a website loads and responds to user interactions. Optimizing performance improves user satisfaction and SEO rankings. Common strategies include code-splitting, lazy loading of images, minimizing JavaScript bundles, and leveraging Content Delivery Networks (CDNs)."
+            },
+            {
+                "title": "What is a Frontend Cloud?",
+                "content": "A frontend cloud is a managed infrastructure that allows developers to build, deploy, and scale web applications without managing backend servers. It provides automatic builds, continuous deployment, caching, and global edge delivery. Popular examples include Vercel, Netlify, and Cloudflare Pages."
+            },
+            {
+                "title": "Version Control Best Practices",
+                "content": "Version control systems like Git enable teams to collaborate efficiently. Best practices include writing clear commit messages, using feature branches, performing code reviews before merging, and tagging stable releases. Maintaining a clean Git history helps in project scalability and debugging."
+            },
+            {
+                "title": "Responsive Design Principles",
+                "content": "Responsive design ensures that websites adapt to various screen sizes and devices. Developers achieve this using fluid grids, flexible images, and CSS media queries. Tools like Chrome DevTools and online testing platforms assist in validating responsiveness across different viewports."
+            },
+            {
+                "title": "Accessibility in Web Design",
+                "content": "Accessibility ensures that people with disabilities can use web applications effectively. Developers should use semantic HTML, ARIA labels, and maintain sufficient color contrast. Testing with screen readers and following WCAG guidelines improves usability for all users."
+            },
+            {
+                "title": "Introduction to Progressive Web Apps (PWAs)",
+                "content": "Progressive Web Apps combine the best of web and mobile experiences. They work offline, send push notifications, and can be installed on user devices. PWAs use service workers and manifest files to enhance reliability and engagement."
+            },
+            {
+                "title": "State Management in React",
+                "content": "State management controls how data flows and updates across React components. Developers use tools like Context API, Redux, or Zustand for predictable state updates. Proper management improves performance and prevents inconsistent UI behavior."
+            },
+            {
+                "title": "Introduction to APIs",
+                "content": "APIs allow different software systems to communicate. In frontend development, APIs provide data to render dynamic content. REST and GraphQL are the most common API styles, each offering unique advantages for data fetching and flexibility."
+            },
+            {
+                "title": "Security in Frontend Applications",
+                "content": "Frontend security involves preventing attacks like XSS, CSRF, and clickjacking. Developers should sanitize user input, use HTTPS, and manage authentication tokens securely. Frameworks like Next.js offer built-in protections for many common vulnerabilities."
+            },
+            {
+                "title": "Automated Testing Basics",
+                "content": "Testing ensures application reliability and prevents regressions. Unit, integration, and end-to-end tests validate different layers of functionality. Tools such as Jest, Mocha, and Cypress are popular for frontend testing automation."
+            },
+            {
+                "title": "Using GitHub for Collaboration",
+                "content": "GitHub provides a collaborative environment for developers through pull requests, issues, and project boards. Teams can automate workflows using GitHub Actions, perform code reviews, and track project progress in real time."
+            },
+            {
+                "title": "Continuous Integration and Deployment (CI/CD)",
+                "content": "CI/CD automates the process of testing, building, and deploying applications. Popular tools include GitHub Actions, Jenkins, and GitLab CI. Automation reduces human error and ensures consistent delivery of high-quality code."
+            },
+            {
+                "title": "Caching Strategies for Web Apps",
+                "content": "Caching improves performance by storing frequently accessed resources locally. Techniques include browser caching, CDN caching, and service worker caching for offline use. Proper cache invalidation ensures users always receive the latest version."
+            },
+            {
+                "title": "Optimizing Images for the Web",
+                "content": "Images can significantly impact page load time. Developers should compress images, use modern formats like WebP or AVIF, and serve appropriate resolutions using the `<picture>` element or responsive attributes like `srcset`."
+            },
+            {
+                "title": "Conclusion",
+                "content": "Modern frontend development requires balancing performance, design, and accessibility. By leveraging cloud platforms, automation tools, and emerging web standards, developers can deliver exceptional user experiences at scale."
+            }
+        ]
+    },
+    "books": {
+        "title": "Books Collection",
+        "items": [
+            {
+                "title": "The Blockchain Revolution",
+                "author": "Don Tapscott",
+                "description": "A comprehensive guide to understanding blockchain technology and its transformative potential across industries."
+            },
+            {
+                "title": "Mastering Ethereum",
+                "author": "Andreas M. Antonopoulos",
+                "description": "Building smart contracts and DApps. A deep dive into Ethereum's architecture and development."
+            },
+            {
+                "title": "The NFT Handbook",
+                "author": "Matt Fortnow",
+                "description": "How to create, sell and buy non-fungible tokens. Your complete guide to the NFT market."
+            },
+            {
+                "title": "The Bitcoin Standard",
+                "author": "Saifedean Ammous",
+                "description": "The decentralized alternative to central banking. Understanding Bitcoin's role in the future of money."
+            },
+            {
+                "title": "Cryptocurrency Trading",
+                "author": "Alan T. Norman",
+                "description": "Learn the basics and advanced strategies of cryptocurrency trading for beginners and professionals."
+            },
+            {
+                "title": "The Web3 Future",
+                "author": "Sarah Chen",
+                "description": "Exploring the decentralized internet and its implications for business, society, and innovation."
+            }
+        ]
+    },
+    "publishers": {
+        "pageTitle": "Publishers",
+        "breadcrumbTitle": "Our Publishers",
+        "sectionTitle": "Our Publishing Partners",
+        "sectionSubtitle": "Collaborating with leading publishers to bring you the best content",
+        "publishers": [
+            {
+                "id": 1,
+                "name": "O'Reilly Media",
+                "description": "Leading publisher of technology books, online learning platforms, and live training courses for professionals."
+            },
+            {
+                "id": 2,
+                "name": "Manning Publications",
+                "description": "Independent publisher of computer books for software developers, engineers, architects, and managers."
+            },
+            {
+                "id": 3,
+                "name": "Wiley",
+                "description": "Global leader in research and education publishing, providing knowledge and services to professionals worldwide."
+            },
+            {
+                "id": 4,
+                "name": "Packt Publishing",
+                "description": "Publisher of tech books focused on helping software developers and IT professionals stay ahead of the curve."
+            },
+            {
+                "id": 5,
+                "name": "Apress",
+                "description": "Technical publisher devoted to meeting the needs of IT professionals, software developers, and programmers."
+            },
+            {
+                "id": 6,
+                "name": "No Starch Press",
+                "description": "Independent publisher creating meticulously crafted books on technology topics for geeks and tech enthusiasts."
+            }
+        ]
+    },
+    "store": {
+        "pageTitle": "Store",
+        "breadcrumbTitle": "Store",
+        "sectionTitle": "Our Products",
+        "sectionSubtitle": "Discover quality products for book lovers and readers",
+        "buyNow": "Buy Now",
+        "products": [
+            {
+                "id": 1,
+                "name": "Premium eBook Reader",
+                "description": "High-resolution 7-inch display with adjustable lighting. Perfect for reading digital books with exceptional clarity and comfort.",
+                "price": "$129.99",
+                "category": "Electronics"
+            },
+            {
+                "id": 2,
+                "name": "Classic Bookmark Set",
+                "description": "Handcrafted leather bookmarks with elegant designs. Set of 5 premium bookmarks for book lovers.",
+                "price": "$24.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 3,
+                "name": "Book Light LED",
+                "description": "Rechargeable LED reading light with adjustable brightness. Clip-on design for hands-free reading anywhere.",
+                "price": "$19.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 4,
+                "name": "Reading Pillow",
+                "description": "Ergonomic backrest pillow with armrests. Perfect support for extended reading sessions in bed or on the couch.",
+                "price": "$49.99",
+                "category": "Comfort"
+            },
+            {
+                "id": 5,
+                "name": "Book Stand Holder",
+                "description": "Adjustable bamboo book stand with page holder clips. Keeps books open at the perfect angle for reading or cooking.",
+                "price": "$34.99",
+                "category": "Accessories"
+            },
+            {
+                "id": 6,
+                "name": "Reading Glasses Set",
+                "description": "Blue light blocking reading glasses. Pack of 3 stylish frames to reduce eye strain during long reading sessions.",
+                "price": "$39.99",
+                "category": "Eyewear"
+            },
+            {
+                "id": 7,
+                "name": "Vintage Book Ends",
+                "description": "Heavy-duty metal bookends with classic design. Keeps your book collection organized and adds decorative charm.",
+                "price": "$44.99",
+                "category": "Organization"
+            },
+            {
+                "id": 8,
+                "name": "Book Subscription Box",
+                "description": "Monthly curated book box with bestsellers and exclusive items. Join thousands of readers discovering new favorites.",
+                "price": "$29.99/month",
+                "category": "Subscription"
+            },
+            {
+                "id": 9,
+                "name": "Library Ladder",
+                "description": "Rolling wooden library ladder with brass hardware. Reach your highest shelves with style and safety.",
+                "price": "$299.99",
+                "category": "Furniture"
+            }
+        ]
+    },
+    "footer": {
+        "pagesTitle": "Pages",
+        "followUsTitle": "Follow Us",
+        "copyright": "All rights reserved.",
+        "pages": {
+            "home": "Home",
+            "books": "Books",
+            "authors": "Authors",
+            "publishers": "Publishers",
+            "white paper": "Whitepaper",
+            "whitepaper": "Whitepaper",
+            "blog": "Blog",
+            "store": "Store"
+        }
+    }
+}
+

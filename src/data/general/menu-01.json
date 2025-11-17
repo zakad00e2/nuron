@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "text": "Home",
+        "path": "/"
+    },
+      
+    {
+        "id": 2,
+        "text": "Books",
+        "path": "/books"
+    },
+    {
+        "id": 3,
+        "text": "Authors",
+        "path": "/authors"
+       
+        
+    },
+    {
+        "id": 4,
+        "text": "Publishers",
+        "path": "/publishers"
+       
+            },
+            {
+        "id": 5,
+        "text": "White paper",
+        "path": "/whitepaper"
+       
+            },
+           
+    {
+        "id": 6,
+        "text": "Blog",
+        "path": "/blogs"
+       
+    },
+    {
+        "id": 7,
+        "text": "Store",
+        "path": "/store"
+    }
+]

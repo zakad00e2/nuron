@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "slug": "the-blockchain-revolution",
+        "title": "The Blockchain Revolution",
+        "author": "Don Tapscott",
+        "description": "A comprehensive guide to understanding blockchain technology and its transformative potential across industries.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-01.jpg",
+            "alt": "The Blockchain Revolution",
+            "width": 300,
+            "height": 450
+        }
+    },
+    {
+        "id": 2,
+        "slug": "mastering-ethereum",
+        "title": "Mastering Ethereum",
+        "author": "Andreas M. Antonopoulos",
+        "description": "Building smart contracts and DApps. A deep dive into Ethereum's architecture and development.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-02.jpg",
+            "alt": "Mastering Ethereum",
+            "width": 300,
+            "height": 450
+        }
+    },
+    {
+        "id": 3,
+        "slug": "nft-handbook",
+        "title": "The NFT Handbook",
+        "author": "Matt Fortnow",
+        "description": "How to create, sell and buy non-fungible tokens. Your complete guide to the NFT market.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-03.jpg",
+            "alt": "The NFT Handbook",
+            "width": 300,
+            "height": 450
+        }
+    },
+    {
+        "id": 4,
+        "slug": "bitcoin-standard",
+        "title": "The Bitcoin Standard",
+        "author": "Saifedean Ammous",
+        "description": "The decentralized alternative to central banking. Understanding Bitcoin's role in the future of money.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-04.jpg",
+            "alt": "The Bitcoin Standard",
+            "width": 300,
+            "height": 450
+        }
+    },
+    {
+        "id": 5,
+        "slug": "crypto-trading",
+        "title": "Cryptocurrency Trading",
+        "author": "Alan T. Norman",
+        "description": "Learn the basics and advanced strategies of cryptocurrency trading for beginners and professionals.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-05.jpg",
+            "alt": "Cryptocurrency Trading",
+            "width": 300,
+            "height": 450
+        }
+    },
+    {
+        "id": 6,
+        "slug": "web3-future",
+        "title": "The Web3 Future",
+        "author": "Sarah Chen",
+        "description": "Exploring the decentralized internet and its implications for business, society, and innovation.",
+        "coverImage": {
+            "src": "/images/portfolio/portfolio-06.jpg",
+            "alt": "The Web3 Future",
+            "width": 300,
+            "height": 450
+        }
+    }
+]
