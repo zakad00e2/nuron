@@ -22,6 +22,17 @@ const MyApp = ({ Component, pageProps }) => {
     useEffect(() => {
         document.body.className = `${pageProps.className}`;
     });
+    
+    // Initialize direction on mount
+    useEffect(() => {
+        const savedLanguage = localStorage.getItem("language");
+        const isRTL = savedLanguage === "ar";
+        if (typeof document !== "undefined") {
+            document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+            document.documentElement.setAttribute("lang", savedLanguage || "en");
+        }
+    }, []);
+    
     return (
         <ThemeProvider defaultTheme="dark">
             <LanguageProvider>

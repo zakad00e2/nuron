@@ -10,5 +10,23 @@
     "files": [
       "static/chunks/_pages-dir-browser_node_modules_next_dist_pages__error_js.js"
     ]
+  },
+  "components\\product\\layout-01\\index.jsx -> @components/share-dropdown": {
+    "id": "components\\product\\layout-01\\index.jsx -> @components/share-dropdown",
+    "files": [
+      "static/chunks/_pages-dir-browser_src_components_share-dropdown_index_jsx.js"
+    ]
+  },
+  "components\\product\\layout-01\\index.jsx -> @ui/countdown/layout-01": {
+    "id": "components\\product\\layout-01\\index.jsx -> @ui/countdown/layout-01",
+    "files": [
+      "static/chunks/_pages-dir-browser_src_components_ui_countdown_layout-01_index_jsx.js"
+    ]
+  },
+  "components\\ui\\slider\\index.jsx -> react-slick": {
+    "id": "components\\ui\\slider\\index.jsx -> react-slick",
+    "files": [
+      "static/chunks/_pages-dir-browser_node_modules_react-slick_lib_index_js.js"
+    ]
   }
 }

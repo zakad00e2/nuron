@@ -4,7 +4,7 @@ import Image from "next/image";
 import Anchor from "@ui/anchor";
 import { ImageType } from "@utils/types";
 
-const AuthorCard = ({ className, name, slug, bio, image, booksCount, isVerified, ...rest }) => (
+const AuthorCard = ({ className, name, slug, bio, image, isVerified, ...rest }) => (
     <div className={clsx("rn-author-card", className)} {...rest}>
         <div className="author-card-inner">
             <div className="author-thumbnail-wrapper">
@@ -28,13 +28,6 @@ const AuthorCard = ({ className, name, slug, bio, image, booksCount, isVerified,
                 <h4 className="author-name">
                     <Anchor path={slug}>{name}</Anchor>
                 </h4>
-                {booksCount !== undefined && (
-                    <div className="author-stats">
-                        <span className="books-count">
-                            <i className="feather-book"></i> {booksCount} {booksCount === 1 ? 'Book' : 'Books'}
-                        </span>
-                    </div>
-                )}
                 {bio && (
                     <p className="author-bio">{bio}</p>
                 )}
@@ -49,7 +42,6 @@ AuthorCard.propTypes = {
     slug: PropTypes.string.isRequired,
     bio: PropTypes.string,
     image: ImageType,
-    booksCount: PropTypes.number,
     isVerified: PropTypes.bool,
 };
 

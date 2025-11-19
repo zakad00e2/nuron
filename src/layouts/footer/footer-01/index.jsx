@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
+import Anchor from "@ui/anchor";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 import { ItemType } from "@utils/types";
@@ -15,6 +16,8 @@ const Footer = ({ space = 1, className, data }) => {
     
     const pagesTitle = getTranslation(language, "footer.pagesTitle");
     const followUsTitle = getTranslation(language, "footer.followUsTitle");
+    const facebookTitle = getTranslation(language, "footer.facebook") || "Facebook";
+    const copyrightText = getTranslation(language, "footer.copyrightText") || footerData.copyright_text;
     
     const footerLinks = footerData["quicklink-widget"]?.menu || [];
     const facebookLink = contactData.socials.find(social => social.title === "Facebook");
@@ -67,13 +70,13 @@ const Footer = ({ space = 1, className, data }) => {
                                 <h3 className="footer-section-title">{pagesTitle}</h3>
                                 <div className="footer-links-grid">
                                     {footerLinks.map((link) => (
-                                        <a
+                                        <Anchor
                                             key={link.id}
-                                            href={link.path}
+                                            path={link.path}
                                             className="footer-link-item"
                                         >
                                             {getTranslation(language, `footer.pages.${link.text.toLowerCase()}`)}
-                                        </a>
+                                        </Anchor>
                                     ))}
                                 </div>
                             </div>
@@ -91,7 +94,7 @@ const Footer = ({ space = 1, className, data }) => {
                                         className="footer-social-link"
                                     >
                                         <i className={facebookLink.icon}></i>
-                                        <span>{facebookLink.title}</span>
+                                        <span>{facebookTitle}</span>
                                     </a>
                                 )}
                             </div>
@@ -102,7 +105,7 @@ const Footer = ({ space = 1, className, data }) => {
                     <div className="row mt--40">
                         <div className="col-12">
                             <div className="footer-copyright">
-                                <p>&copy; {currentYear} {footerData.copyright_text}</p>
+                                <p>&copy; {currentYear} {copyrightText}</p>
                             </div>
                         </div>
                     </div>

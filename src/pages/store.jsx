@@ -4,11 +4,13 @@ import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer-01";
 import Breadcrumb from "@components/breadcrumb";
 import ProductCard from "@components/store/product-card";
+import ProductArea from "@containers/product/layout-04";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 
 // Demo Data
 import storeProductsData from "../data/store-products.json";
+import productData from "../data/products.json";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
@@ -20,6 +22,19 @@ const StorePage = () => {
     const pageTitle = getTranslation(language, "store.pageTitle");
     const breadcrumbTitle = getTranslation(language, "store.breadcrumbTitle");
     const buyNowText = getTranslation(language, "store.buyNow");
+
+    // Map store products to include purchaseUrl from storeProductsData
+    // If a product doesn't have a purchaseUrl, provide a default one
+    const productsWithPurchaseUrl = productData.map((product) => {
+        const storeProduct = storeProductsData.find(sp => sp.id === product.id);
+        // Use purchaseUrl from storeProductsData, or provide a default URL
+        // Default URL can be the product detail page or a generic store URL
+        const defaultPurchaseUrl = `https://www.amazon.com/s?k=${encodeURIComponent(product.title)}`;
+        return {
+            ...product,
+            purchaseUrl: storeProduct?.purchaseUrl || defaultPurchaseUrl,
+        };
+    });
 
     return (
         <Wrapper>
@@ -39,30 +54,11 @@ const StorePage = () => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="row g-5">
-                            {storeProducts.map((product) => (
-                                <div
-                                    key={product.id}
-                                    className="col-lg-4 col-md-6 col-12"
-                                    data-sal="slide-up"
-                                    data-sal-delay="150"
-                                    data-sal-duration="800"
-                                >
-                                    <ProductCard
-                                        name={product.name}
-                                        description={product.description}
-                                        price={product.price}
-                                        image={{
-                                            src: storeProductsData.find(p => p.id === product.id)?.image || "/images/portfolio/placeholder.jpg",
-                                            alt: product.name,
-                                        }}
-                                        purchaseUrl={storeProductsData.find(p => p.id === product.id)?.purchaseUrl || "#"}
-                                        category={product.category}
-                                        buyNow={buyNowText}
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        <ProductArea 
+                            data={{ products: productsWithPurchaseUrl }} 
+                            className="pt--0"
+                        />
+
                     </div>
                 </div>
             </main>

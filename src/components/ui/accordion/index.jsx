@@ -6,7 +6,7 @@ const Accordion = ({ items, defaultActiveKey }) => (
         {items?.map((item) => (
             <Acc.Item key={item.id} eventKey={item.id}>
                 <Acc.Header>
-                    {item.title} <i className="feather-chevron-up" />
+                    <span dangerouslySetInnerHTML={{ __html: item.title }} /> <i className="feather-chevron-up" />
                 </Acc.Header>
                 <Acc.Body
                     dangerouslySetInnerHTML={{ __html: item.description }}

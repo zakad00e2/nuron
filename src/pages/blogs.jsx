@@ -18,6 +18,8 @@ const BlogPage = () => {
     const { language } = useLanguage();
     const sidebarTitle = getTranslation(language, "blog.sidebarTitle");
     const blogPosts = getTranslation(language, "blog.posts");
+    const blogPageTitle = getTranslation(language, "blog.pageTitle") || "Blog";
+    const blogCurrentPage = getTranslation(language, "blog.currentPage") || "Blog";
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -33,7 +35,7 @@ const BlogPage = () => {
             <SEO pageTitle="Blog" />
             <Header />
             <main id="main-content">
-                <Breadcrumb pageTitle="Blog" currentPage="Blog" />
+                <Breadcrumb pageTitle={blogPageTitle} currentPage={blogCurrentPage} />
                 <div className="rn-blog-area">
                     <div className="container">
                         <div className="row mb--50">
@@ -49,16 +51,16 @@ const BlogPage = () => {
                         </div>
                         <div className="row">
                             {/* Sidebar */}
-                            <div className="col-lg-3 d-none d-lg-block">
+                            <div className="col-lg-4 d-none d-lg-block">
                                 <div className="blog-sidebar">
                                     <h4 className="sidebar-title">{sidebarTitle}</h4>
                                     <div className="sidebar-content">
-                                        {blogPosts.map((post) => (
-                                            <div
-                                                key={post.id}
-                                                className="sidebar-item"
-                                            >
-                                                <a
+                                        {blogPosts.map((post) => {
+                                            const postData = blogPostsData.find(p => p.id === post.id);
+                                            return (
+                                                <div
+                                                    key={post.id}
+                                                    className="sidebar-item"
                                                     onClick={() => {
                                                         const element = document.getElementById(`post-${post.id}`);
                                                         if (element) {
@@ -71,18 +73,60 @@ const BlogPage = () => {
                                                             });
                                                         }
                                                     }}
-                                                    className="sidebar-link"
                                                 >
-                                                    {post.title}
-                                                </a>
-                                            </div>
-                                        ))}
+                                                    <div className="sidebar-item-inner">
+                                                        {postData?.image && (
+                                                            <div className="sidebar-thumbnail">
+                                                                <Image
+                                                                    src={postData.image}
+                                                                    alt={post.title}
+                                                                    width={80}
+                                                                    height={80}
+                                                                    style={{
+                                                                        width: "100%",
+                                                                        height: "100%",
+                                                                        objectFit: "cover",
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        <div className="sidebar-content-text">
+                                                            <h5 className="sidebar-post-title">{post.title}</h5>
+                                                            {post.excerpt && (
+                                                                <p className="sidebar-post-excerpt">
+                                                                    {post.excerpt.length > 80 
+                                                                        ? `${post.excerpt.substring(0, 80)}...` 
+                                                                        : post.excerpt
+                                                                    }
+                                                                </p>
+                                                            )}
+                                                            <div className="sidebar-post-meta">
+                                                                {postData?.date && (
+                                                                    <div className="sidebar-meta-item">
+                                                                        <i className="feather-calendar"></i>
+                                                                        <span>
+                                                                            {formatDate(postData.date)}
+                                                                        </span>
+                                                                    </div>
+                                                                )}
+                                                                {post.author && (
+                                                                    <div className="sidebar-meta-item">
+                                                                        <i className="feather-user"></i>
+                                                                        <span>{post.author}</span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
 
                             {/* Main Content */}
-                            <div className="col-lg-9">
+                            <div className="col-lg-8">
                                 <div className="blog-posts-list">
                                     {blogPosts.map((post) => (
                                         <article
@@ -122,8 +166,8 @@ const BlogPage = () => {
                                                         <Image
                                                             src={blogPostsData.find(p => p.id === post.id).image}
                                                             alt={post.title}
-                                                            width={800}
-                                                            height={400}
+                                                            width={600}
+                                                            height={300}
                                                             style={{
                                                                 width: "100%",
                                                                 height: "auto",

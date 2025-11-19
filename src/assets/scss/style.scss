@@ -94,6 +94,7 @@
 @use "elements/cursor";
 @use "elements/edit-profile";
 @use "elements/accordion";
+@use "elements/faq";
 @use "elements/section-title";
 @use "elements/banner";
 @use "elements/about";
@@ -138,3 +139,6 @@
 @use "elements/store";
 @use "elements/white-version";
 @use "elements/language-switcher";
+
+/* RTL Support */
+@use "default/rtl";

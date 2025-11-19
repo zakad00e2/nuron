@@ -152,6 +152,10 @@
             font-size: 15px;
             font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
             
             @media #{variables.$sm-layout} {
                 padding: 10px 20px;
@@ -163,14 +167,22 @@
                 transition: transform 0.3s ease;
             }
             
-            &:hover {
+            &:hover,
+            &:focus {
                 background: var(--color-primary);
-                transform: translateX(2px);
-                box-shadow: 0 5px 15px rgba(0, 163, 255, 0.3);
+                color: var(--color-white) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0, 163, 255, 0.4);
+                outline: none;
                 
                 i {
-                    transform: translateX(3px);
+                    transform: translateX(4px);
                 }
+            }
+            
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 4px 10px rgba(0, 163, 255, 0.3);
             }
         }
     }
@@ -221,6 +233,20 @@ html[data-theme="light"] {
         
         .book-description {
             color: var(--color-light-body);
+        }
+        
+        .book-actions {
+            .btn-book-link {
+                background: linear-gradient(135deg, var(--color-primary), rgba(0, 163, 255, 0.8));
+                color: var(--color-white);
+                
+                &:hover,
+                &:focus {
+                    background: var(--color-primary);
+                    color: var(--color-white) !important;
+                    box-shadow: 0 8px 20px rgba(0, 163, 255, 0.3);
+                }
+            }
         }
     }
 }

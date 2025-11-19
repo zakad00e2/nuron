@@ -1234,6 +1234,28 @@ html[data-theme="light"] body {
     .mainmenu-nav {
         .mainmenu {
             li {
+                a {
+                    // Hover effect - white color (or dark for light mode visibility)
+                    &:hover {
+                        color: var(--color-light-heading) !important;
+                        transform: translateY(-2px);
+                    }
+                    
+                    // Active state - highlighted (black color in light mode)
+                    &.active {
+                        color: var(--color-dark) !important;
+                        font-weight: 600;
+                    }
+                }
+                
+                // Active state for list item
+                &.active {
+                    a {
+                        color: var(--color-dark) !important;
+                        font-weight: 600;
+                    }
+                }
+                
                 .submenu {
                     background: var(--color-white);
                     border-bottom: 1px solid rgba(0, 0, 0, 0.082);
@@ -1963,6 +1985,51 @@ html[data-theme="light"] body {
     }
     .product-share-wrapper .profile-share a.more-author-text{
         color: var(--color-light-body) !important;
+    }
+
+    // Enhanced Footer Styles for Light Mode
+    .rn-footer-enhanced {
+        background-color: #f5f8fa !important;
+        border-top-color: var(--color-border-white);
+        
+        .footer-section {
+            .footer-section-title {
+                color: var(--color-light-heading);
+            }
+            
+            .footer-link-item {
+                color: var(--color-light-body);
+                
+                &:hover {
+                    color: var(--color-primary);
+                }
+            }
+            
+            .footer-social-link {
+                color: var(--color-light-body);
+                
+                &:hover {
+                    color: var(--color-primary);
+                }
+            }
+        }
+        
+        .footer-copyright {
+            border-top-color: var(--color-border-white);
+            
+            p {
+                color: var(--color-light-body);
+            }
+        }
+    }
+    
+    .border-top-footer {
+        border-top-color: var(--color-border-white);
+    }
+    
+    // Footer background color in light mode
+    .footer-top {
+        background-color: #f5f8fa !important;
     }
 }
 

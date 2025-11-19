@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
@@ -22,12 +22,77 @@ import productData from "../data/products.json";
 import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 
+// API base URLs
+const API_HOMEPAGE_URL = "https://books-blog-production-7ac3.up.railway.app/api/homepage";
+const API_QUESTIONS_URL = "https://books-blog-production-7ac3.up.railway.app/api/questions";
+
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
 const Home = () => {
     const { language } = useLanguage();
+    const [apiHomepageData, setApiHomepageData] = useState(null);
+    const [apiFaqData, setApiFaqData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // Fetch homepage data from API
+    useEffect(() => {
+        const fetchHomepageData = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                // Support Arabic, German, and English locales
+                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
+                const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch homepage data: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                setApiHomepageData(result.data);
+            } catch (err) {
+                console.error("Error fetching homepage data:", err);
+                setError(err.message);
+                // Fallback to null, will use static data
+                setApiHomepageData(null);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchHomepageData();
+    }, [language]);
+
+    // Fetch FAQ data from API
+    useEffect(() => {
+        const fetchFaqData = async () => {
+            try {
+                // Support Arabic, German, and English locales
+                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
+                // Always include locale parameter for consistency
+                const url = `${API_QUESTIONS_URL}?locale=${locale}`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch FAQ data: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                setApiFaqData(result.data || []);
+            } catch (err) {
+                console.error("Error fetching FAQ data:", err);
+                // Fallback to null, will use static data
+                setApiFaqData(null);
+            }
+        };
+
+        fetchFaqData();
+    }, [language]);
+
     const content = normalizedData(homepageData?.content || []);
     const liveAuctionData = productData.filter(
         (prod) =>
@@ -43,11 +108,52 @@ const Home = () => {
 
     // Get translated content
     const translatedContent = useMemo(() => {
-        const heroHeading = getTranslation(language, "homepage.hero.heading");
-        const heroText = getTranslation(language, "homepage.hero.text");
+        // Use API data if available, otherwise fall back to translations
+        const heroHeading = apiHomepageData?.hero_title 
+            ? apiHomepageData.hero_title 
+            : getTranslation(language, "homepage.hero.heading");
+        const heroText = apiHomepageData?.hero_subtitle 
+            ? apiHomepageData.hero_subtitle 
+            : getTranslation(language, "homepage.hero.text");
+        
         const faqTitle = getTranslation(language, "homepage.faq.title");
         const faqSubtitle = getTranslation(language, "homepage.faq.subtitle");
-        const faqItems = getTranslation(language, "homepage.faq.items");
+        
+        // Helper function to process mixed Arabic/English text and wrap English parts in bdi
+        const processMixedText = (text) => {
+            if (!text || language !== "ar") return text;
+            
+            // Match English acronyms (2+ uppercase letters), numbers, and English words
+            // This handles cases like "الـ NFT" or "ما هو NFT؟"
+            const parts = text.split(/([A-Z]{2,}|[A-Za-z]+|\d+)/g);
+            
+            return parts.map((part, index) => {
+                // If it's an English acronym (2+ uppercase), number, or English word, wrap in bdi
+                if (/^[A-Z]{2,}$/.test(part) || /^\d+$/.test(part) || /^[A-Za-z]+$/.test(part)) {
+                    return `<bdi dir="ltr">${part}</bdi>`;
+                }
+                return part;
+            }).join("");
+        };
+        
+        // Use API FAQ data if available, otherwise fall back to translations
+        let faqItems;
+        if (apiFaqData && apiFaqData.length > 0) {
+            // Map API data to expected format and process mixed text
+            faqItems = apiFaqData.map((item, index) => ({
+                id: item.id || index,
+                title: processMixedText(item.Question || ""),
+                description: processMixedText(item.Answer || ""),
+            }));
+        } else {
+            // Fallback to translations and process mixed text
+            const translatedFaqItems = getTranslation(language, "homepage.faq.items");
+            faqItems = translatedFaqItems.map((item, index) => ({
+                id: index,
+                title: processMixedText(item.title),
+                description: processMixedText(item.description),
+            }));
+        }
 
         return {
             "hero-section": {
@@ -71,14 +177,10 @@ const Home = () => {
                     title: faqTitle,
                     subtitle: faqSubtitle,
                 },
-                items: faqItems.map((item, index) => ({
-                    id: index,
-                    title: item.title,
-                    description: item.description,
-                })),
+                items: faqItems,
             },
         };
-    }, [language, content]);
+    }, [language, content, apiHomepageData, apiFaqData]);
 
     return (
         <Wrapper>

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { Offcanvas, OffcanvasHeader, OffcanvasBody } from "@ui/offcanvas";
 import Anchor from "@ui/anchor";
 import Logo from "@components/logo";
+import ColorSwitcher from "@components/color-switcher";
 import { slideToggle, slideUp } from "@utils/methods";
 import SubMenu from "./submenu";
 import MegaMenu from "./megamenu";
@@ -67,6 +68,11 @@ const MobileMenu = ({ isOpen, onClick, menu, logo }) => {
                         })}
                     </ul>
                 </nav>
+                <div className="mobile-menu-switcher">
+                    <div className="setting-option my_switcher">
+                        <ColorSwitcher />
+                    </div>
+                </div>
             </OffcanvasBody>
         </Offcanvas>
     );

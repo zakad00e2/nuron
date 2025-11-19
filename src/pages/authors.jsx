@@ -82,6 +82,8 @@ const AuthorsPage = ({ authorsData }) => {
     const { language } = useLanguage();
     const authorsTitle = getTranslation(language, "authors.title");
     const authorsSubtitle = getTranslation(language, "authors.subtitle");
+    const authorsPageTitle = getTranslation(language, "authors.pageTitle") || "Our Authors";
+    const authorsCurrentPage = getTranslation(language, "authors.currentPage") || "Authors";
 
     return (
         <Wrapper>
@@ -89,8 +91,8 @@ const AuthorsPage = ({ authorsData }) => {
             <Header />
             <main id="main-content">
                 <Breadcrumb
-                    pageTitle="Our Authors"
-                    currentPage="Authors"
+                    pageTitle={authorsPageTitle}
+                    currentPage={authorsCurrentPage}
                 />
                 <div className="rn-authors-area rn-section-gapTop">
                     <div className="container">
@@ -120,7 +122,6 @@ const AuthorsPage = ({ authorsData }) => {
                                         slug={`/author/${author.slug}`}
                                         bio={author.bio}
                                         image={author.image}
-                                        booksCount={author.booksCount}
                                         isVerified={author.isVerified}
                                     />
                                 </div>

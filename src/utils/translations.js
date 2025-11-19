@@ -1,9 +1,11 @@
 import enTranslations from "../locales/en.json";
 import deTranslations from "../locales/de.json";
+import arTranslations from "../locales/ar.json";
 
 const translations = {
     en: enTranslations,
     de: deTranslations,
+    ar: arTranslations,
 };
 
 export const getTranslation = (language, path) => {

@@ -13,6 +13,10 @@
         "discoverBookCollection": "Entdecken Sie unsere Büchersammlung",
         "exploreBooks": "Entdecken Sie unsere kuratierte Auswahl an Büchern über Blockchain, NFTs und Web3"
     },
+    "books": {
+        "viewButton": "Website besuchen",
+        "by": "Von"
+    },
     "homepage": {
         "hero": {
             "heading": "Entdecken Sie digitale Kunst, sammeln und verkaufen Sie Ihre spezifischen NFTs.",
@@ -51,9 +55,13 @@
     },
     "authors": {
         "title": "Unsere Autoren kennenlernen",
-        "subtitle": "Entdecken Sie die brillanten Köpfe hinter unserer Buchsammlung"
+        "subtitle": "Entdecken Sie die brillanten Köpfe hinter unserer Buchsammlung",
+        "pageTitle": "Unsere Autoren",
+        "currentPage": "Autoren"
     },
     "blog": {
+        "pageTitle": "Blog",
+        "currentPage": "Blog",
         "sidebarTitle": "Artikel",
         "posts": [
             {
@@ -249,6 +257,8 @@
     },
     "books": {
         "title": "Büchersammlung",
+        "viewButton": "Details anzeigen",
+        "by": "Von",
         "items": [
             {
                 "title": "Die Blockchain-Revolution",
@@ -396,6 +406,8 @@
         "pagesTitle": "Seiten",
         "followUsTitle": "Folgen Sie uns",
         "copyright": "Alle Rechte vorbehalten.",
+        "copyrightText": "Khalil Alsmadi, Inc. Alle Rechte vorbehalten",
+        "facebook": "Facebook",
         "pages": {
             "home": "Startseite",
             "books": "Bücher",

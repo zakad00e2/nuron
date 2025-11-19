@@ -1,0 +1,210 @@
+@use "../default/variables";
+
+// FAQ Area Styles
+.rn-faq-area {
+    padding: 80px 0;
+    
+    @media #{variables.$sm-layout} {
+        padding: 60px 0;
+    }
+    
+    .faq-header {
+        text-align: center;
+        margin-bottom: 60px;
+        
+        @media #{variables.$sm-layout} {
+            margin-bottom: 40px;
+        }
+        
+        .faq-subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            opacity: 0.9;
+            
+            @media #{variables.$sm-layout} {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        .faq-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-white);
+            margin: 0;
+            
+            @media #{variables.$md-layout} {
+                font-size: 42px;
+            }
+            
+            @media #{variables.$sm-layout} {
+                font-size: 32px;
+            }
+            
+            .faq-title-highlight {
+                color: var(--color-primary);
+            }
+        }
+    }
+    
+    .faq-accordion {
+        .accordion {
+            .accordion-item {
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid var(--color-border);
+                border-radius: 0;
+                margin-bottom: 0;
+                padding: 20px 0;
+                
+                @media #{variables.$sm-layout} {
+                    padding: 15px 0;
+                }
+                
+                &:first-child {
+                    border-top: 1px solid var(--color-border);
+                }
+                
+                .accordion-header {
+                    button {
+                        background: transparent;
+                        border: none;
+                        color: var(--color-white);
+                        font-size: 20px;
+                        font-weight: 500;
+                        padding: 0;
+                        height: auto;
+                        min-height: 50px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        text-align: left;
+                        transition: color 0.3s ease;
+                        
+                        @media #{variables.$sm-layout} {
+                            font-size: 18px;
+                            min-height: 45px;
+                        }
+                        
+                        i {
+                            color: var(--color-white);
+                            font-size: 20px;
+                            transition: transform 0.3s ease, color 0.3s ease;
+                            flex-shrink: 0;
+                            margin-left: 20px;
+                            
+                            @media #{variables.$sm-layout} {
+                                font-size: 18px;
+                                margin-left: 15px;
+                            }
+                        }
+                        
+                        &[aria-expanded="false"] {
+                            i {
+                                transform: rotate(180deg);
+                            }
+                        }
+                        
+                        &[aria-expanded="true"] {
+                            color: var(--color-primary);
+                            
+                            i {
+                                color: var(--color-primary);
+                                transform: rotate(0deg);
+                            }
+                        }
+                        
+                        &:hover {
+                            color: var(--color-primary);
+                            
+                            i {
+                                color: var(--color-primary);
+                            }
+                        }
+                    }
+                }
+                
+                .accordion-body {
+                    padding: 20px 0 0 0;
+                    color: var(--color-body);
+                    font-size: 16px;
+                    line-height: 1.7;
+                    
+                    @media #{variables.$sm-layout} {
+                        font-size: 15px;
+                        padding: 15px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Light Mode Styles for FAQ Area
+html[data-theme="light"] {
+    .rn-faq-area {
+        .faq-header {
+            .faq-subtitle {
+                color: var(--color-light-body);
+            }
+            
+            .faq-title {
+                color: var(--color-light-heading);
+                
+                .faq-title-highlight {
+                    color: var(--color-primary);
+                }
+            }
+        }
+        
+        .faq-accordion {
+            .accordion {
+                .accordion-item {
+                    border-bottom-color: var(--color-border-white);
+                    
+                    &:first-child {
+                        border-top-color: var(--color-border-white);
+                    }
+                    
+                    .accordion-header {
+                        button {
+                            color: var(--color-light-heading);
+                            
+                            i {
+                                color: var(--color-light-body);
+                            }
+                            
+                            &[aria-expanded="true"] {
+                                color: var(--color-primary);
+                                
+                                i {
+                                    color: var(--color-primary);
+                                }
+                            }
+                            
+                            &:hover {
+                                color: var(--color-primary);
+                                
+                                i {
+                                    color: var(--color-primary);
+                                }
+                            }
+                        }
+                    }
+                    
+                    .accordion-body {
+                        color: var(--color-light-body);
+                        background: transparent !important; // Remove background in light mode
+                    }
+                }
+            }
+        }
+    }
+}
+

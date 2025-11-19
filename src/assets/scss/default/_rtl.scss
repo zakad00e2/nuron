@@ -1,0 +1,1604 @@
+/*--------------------------
+    RTL (Right-to-Left) Support
+----------------------------*/
+
+@use "variables";
+
+// RTL Base Styles
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+
+    // Typography - Arabic font support
+    body,
+    html {
+        font-family: var(--font-arabic), var(--font-primary);
+    }
+
+    // Typography
+    body {
+        direction: rtl;
+        text-align: right;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: var(--font-arabic), var(--font-primary);
+        text-align: right;
+    }
+
+    p, span, div, a, li {
+        font-family: var(--font-arabic), var(--font-primary);
+    }
+
+    // Text alignment
+    .text-left {
+        text-align: right !important;
+    }
+
+    .text-right {
+        text-align: left !important;
+    }
+
+    .text-start {
+        text-align: right !important;
+    }
+
+    .text-end {
+        text-align: left !important;
+    }
+
+    // Flexbox direction
+    .flex-row {
+        flex-direction: row-reverse;
+    }
+
+    .flex-row-reverse {
+        flex-direction: row;
+    }
+
+    // Margins and padding
+    .ml-auto {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    .mr-auto {
+        margin-right: 0 !important;
+        margin-left: auto !important;
+    }
+
+    .ms-auto {
+        margin-inline-start: auto !important;
+        margin-inline-end: 0 !important;
+    }
+
+    .me-auto {
+        margin-inline-end: auto !important;
+        margin-inline-start: 0 !important;
+    }
+
+    // Float
+    .float-left {
+        float: right !important;
+    }
+
+    .float-right {
+        float: left !important;
+    }
+
+    // Position adjustments
+    .left-0 {
+        left: auto !important;
+        right: 0 !important;
+    }
+
+    .right-0 {
+        right: auto !important;
+        left: 0 !important;
+    }
+
+    // Transform origin
+    * {
+        transform-origin: center;
+    }
+
+    // Icons and arrows
+    i[class*="arrow-left"],
+    i[class*="chevron-left"] {
+        transform: scaleX(-1);
+    }
+
+    i[class*="arrow-right"],
+    i[class*="chevron-right"] {
+        transform: scaleX(-1);
+    }
+
+    // Language switcher
+    .language-switcher-dropdown {
+        right: auto;
+        left: 0;
+    }
+
+    // Header navigation
+    .mainmenu-nav {
+        .mainmenu {
+            direction: rtl;
+            justify-content: flex-end;
+            
+            li {
+                a {
+                    text-align: right;
+                }
+                
+                .submenu {
+                    left: auto;
+                    right: 0;
+                    text-align: right;
+                    
+                    li {
+                        a {
+                            text-align: right;
+                            
+                            svg,
+                            i {
+                                left: auto;
+                                right: -10px;
+                            }
+                        }
+                    }
+                }
+                
+                &.has-droupdown,
+                &.with-megamenu {
+                    & > a {
+                        &::after {
+                            right: auto;
+                            left: -7px;
+                        }
+                    }
+                }
+                
+                &.with-megamenu {
+                    .rn-megamenu {
+                        left: auto;
+                        right: 50%;
+                        transform: translateX(50%);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Header
+    .rn-header {
+        .header-right {
+            direction: rtl;
+        }
+        
+        .header-left {
+            direction: rtl;
+        }
+        
+        // Keep divider between logo and menu in RTL
+        .logo-thumbnail {
+            padding-right: 0;
+            padding-left: 15px;
+            margin-right: 0;
+            margin-left: 15px;
+            
+            &::after {
+                right: auto;
+                left: 0;
+            }
+        }
+    }
+    
+    // Hero section - reverse image direction and increase spacing
+    .slider-one {
+        .slider-thumbnail {
+            img {
+                transform: scaleX(-1);
+            }
+        }
+        
+        // Increase spacing between text and image in RTL
+        .row {
+            .col-lg-5 {
+                &:first-child {
+                    // Text column - add margin-right to increase spacing
+                    margin-right: 40px;
+                    
+                    @media #{variables.$md-layout} {
+                        margin-right: 30px;
+                    }
+                    
+                    @media #{variables.$sm-layout} {
+                        margin-right: 0;
+                    }
+                }
+                
+                &.offset-lg-1 {
+                    // Image column - adjust offset and add margin-left for extra spacing
+                    margin-left: 0;
+                    margin-right: auto;
+                    padding-left: 40px;
+                    
+                    @media #{variables.$md-layout} {
+                        padding-left: 30px;
+                    }
+                    
+                    @media #{variables.$sm-layout} {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Other banner/slider styles - reverse image direction
+    .slider-thumbnail,
+    .banner-read-thumb,
+    .banner-read-thumb-lg {
+        img {
+            transform: scaleX(-1);
+        }
+    }
+    
+    // Fullscreen banner images
+    .fullscreen_image-banner {
+        img {
+            transform: scaleX(-1);
+        }
+    }
+    
+    // Left header style
+    .left-header-style {
+        left: auto;
+        right: 0;
+        transform: translateX(0);
+    }
+    
+    .rn-nft-mid-wrapper {
+        padding-left: 420px;
+        padding-right: 320px;
+        
+        @media #{variables.$laptop-device} {
+            padding-left: 30px;
+            padding-right: 320px;
+        }
+        
+        @media #{variables.$lg-layout} {
+            padding-left: 30px;
+            padding-right: 320px;
+        }
+        
+        @media #{variables.$md-layout} {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        @media #{variables.$sm-layout} {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    
+    // Mobile menu
+    .popup-mobile-menu {
+        // Override RTL positioning to match English version (slide from left)
+        .inner {
+            left: -150px !important;
+            right: auto !important;
+            
+            &.active {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        
+        &.active {
+            .inner {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        
+        .mainmenu {
+            @media #{variables.$sm-layout} {
+                text-align: center !important;
+            }
+            
+            li {
+                @media #{variables.$sm-layout} {
+                    text-align: center !important;
+                }
+                
+                a {
+                    text-align: right;
+                    
+                    @media #{variables.$sm-layout} {
+                        text-align: center !important;
+                        justify-content: center !important;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Light mode mobile menu fixes for RTL (matching English version)
+    html[data-theme="light"] & {
+        .popup-mobile-menu {
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            
+            .inner {
+                background-color: var(--color-white) !important;
+                
+                &,
+                &.active {
+                    background-color: var(--color-white) !important;
+                }
+                
+                @media #{variables.$sm-layout} {
+                    background-color: var(--color-white) !important;
+                    
+                    &.active {
+                        background-color: var(--color-white) !important;
+                    }
+                }
+                
+                .header-top {
+                    background-color: var(--color-white) !important;
+                    border-bottom-color: var(--color-border-white) !important;
+                    
+                    .logo-thumbnail,
+                    .logo-custom-css {
+                        .logo-dark {
+                            display: block !important;
+                        }
+                        
+                        .logo-light {
+                            display: none !important;
+                        }
+                    }
+                    
+                    .close-menu {
+                        .close-button {
+                            background: var(--color-gray-2) !important;
+                            color: var(--color-light-heading) !important;
+                            border-color: var(--color-border-white) !important;
+                            
+                            &:hover {
+                                background: var(--color-primary) !important;
+                                color: var(--color-white) !important;
+                            }
+                        }
+                    }
+                }
+                
+                .mainmenu {
+                    li {
+                        a {
+                            color: var(--color-light-heading) !important;
+                            
+                            &:hover {
+                                color: var(--color-primary) !important;
+                            }
+                            
+                            &.active {
+                                color: var(--color-primary) !important;
+                            }
+                        }
+                        
+                        & + li {
+                            border-top-color: var(--color-border-white) !important;
+                        }
+                        
+                        &.has-droupdown {
+                            .submenu {
+                                li {
+                                    a {
+                                        color: var(--color-light-body) !important;
+                                        
+                                        &:hover,
+                                        &.active {
+                                            color: var(--color-primary) !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        .rn-megamenu {
+                            .mega-menu-item {
+                                li {
+                                    a {
+                                        color: var(--color-light-body) !important;
+                                        
+                                        &:hover {
+                                            color: var(--color-primary) !important;
+                                        }
+                                    }
+                                    
+                                    &:last-child {
+                                        border-bottom-color: var(--color-border-white) !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .mobile-menu-switcher {
+                    background-color: var(--color-white) !important;
+                    border-top-color: var(--color-border-white) !important;
+                }
+            }
+        }
+    }
+
+    // Cards and containers
+    .product-style-one,
+    .rn-book-card,
+    .blog-post-card {
+        text-align: right;
+    }
+
+    // Buttons
+    .btn {
+        text-align: center;
+        
+        i {
+            &[class*="arrow-right"] {
+                transform: scaleX(-1);
+            }
+            
+            &[class*="arrow-left"] {
+                transform: scaleX(-1);
+            }
+        }
+    }
+
+    // Forms
+    input,
+    textarea,
+    select {
+        text-align: right;
+        direction: rtl;
+    }
+
+    // Lists
+    ul,
+    ol {
+        padding-right: 20px;
+        padding-left: 0;
+    }
+
+    // Grid and flex containers
+    .row {
+        direction: rtl;
+    }
+
+    // Spacing utilities
+    @for $i from 1 through 5 {
+        .ms-#{$i} {
+            margin-left: 0 !important;
+            margin-right: #{$i * 0.25}rem !important;
+        }
+        
+        .me-#{$i} {
+            margin-right: 0 !important;
+            margin-left: #{$i * 0.25}rem !important;
+        }
+        
+        .ps-#{$i} {
+            padding-left: 0 !important;
+            padding-right: #{$i * 0.25}rem !important;
+        }
+        
+        .pe-#{$i} {
+            padding-right: 0 !important;
+            padding-left: #{$i * 0.25}rem !important;
+        }
+    }
+
+    // Bootstrap grid adjustments
+    [class*="col-"] {
+        direction: ltr; // Keep grid columns LTR for proper layout
+    }
+
+    // Product cards
+    .product-style-one {
+        .card-thumbnail {
+            margin: -15px -15px 15px -15px;
+        }
+    }
+
+    // Book cards
+    .book-content-wrapper {
+        text-align: right;
+    }
+
+    .book-author {
+        span {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+    }
+
+    // Blog cards
+    .blog-post-card {
+        .post-header {
+            text-align: right;
+        }
+
+        .post-content {
+            text-align: right;
+        }
+    }
+
+    // Sidebar
+    .blog-sidebar {
+        direction: rtl;
+        border-right: none;
+        border-left: 1px solid var(--color-border);
+        padding-right: 0;
+        padding-left: 20px;
+        
+        .sidebar-title {
+            text-align: right !important;
+            direction: rtl;
+            font-family: var(--font-arabic);
+        }
+        
+        .sidebar-content {
+            direction: rtl;
+        }
+        
+        .sidebar-item {
+            direction: rtl;
+            
+            .sidebar-item-inner {
+                flex-direction: row-reverse !important; // Reverse: thumbnail on right, content on left in RTL
+                text-align: right;
+                direction: rtl;
+            }
+            
+            .sidebar-thumbnail {
+                order: 2; // Thumbnail appears on the right in RTL
+            }
+            
+            .sidebar-content-text {
+                order: 1; // Content appears on the left in RTL
+                text-align: right !important;
+                direction: rtl;
+                
+                .sidebar-post-title {
+                    text-align: right !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                }
+                
+                .sidebar-post-excerpt {
+                    text-align: right !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                }
+                
+                .sidebar-post-meta {
+                    flex-direction: row-reverse !important;
+                    direction: rtl;
+                    justify-content: flex-start;
+                    
+                    .sidebar-meta-item {
+                        flex-direction: row-reverse !important; // Reverse: icon appears after text (on the right)
+                        direction: rtl;
+                        font-family: var(--font-arabic);
+                        gap: 6px; // Maintain gap between text and icon
+                        
+                        // HTML order: <i>icon</i><span>text</span>
+                        // With row-reverse: text (left), icon (right) ✓
+                        
+                        i {
+                            margin-right: 0;
+                            margin-left: 0; // Gap handles spacing
+                            order: 2; // Ensure icon appears second (on right)
+                        }
+                        
+                        span {
+                            order: 1; // Ensure text appears first (on left)
+                            direction: rtl;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Footer
+    .footer-list-one {
+        text-align: right;
+        
+        li {
+            text-align: right;
+        }
+        
+        .single-list {
+            a {
+                &::after {
+                    left: auto;
+                    right: 0;
+                }
+                
+                &:hover {
+                    &::after {
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Footer social link - icon on right, text on left in RTL
+    .footer-social-link {
+        flex-direction: row-reverse; // Reverse to put icon on right, text on left in RTL
+        
+        span {
+            direction: rtl; // Keep RTL for Arabic text content
+        }
+    }
+    
+    .footer-widget {
+        text-align: right;
+        
+        &.widget-quicklink {
+            margin-left: 0;
+            margin-right: 100px;
+            
+            @media #{variables.$md-layout} {
+                margin-right: 0;
+            }
+        }
+        
+        &.widget-information {
+            margin-left: 0;
+            margin-right: 50px;
+            
+            @media #{variables.$md-layout} {
+                margin-right: 0;
+            }
+        }
+    }
+    
+    .rn-footer-one {
+        .footer-left {
+            .rn-footer-describe {
+                padding: 0 0 0 30px;
+                
+                @media #{variables.$lg-layout} {
+                    padding: 0;
+                }
+            }
+        }
+    }
+    
+    .widget-content-wrapper {
+        .input-group {
+            .input-group-append {
+                left: auto;
+                right: -5px;
+            }
+        }
+    }
+    
+    
+    // Icon positioning
+    .icon-box {
+        direction: rtl;
+    }
+    
+    // Author info
+    .author-info {
+        direction: rtl;
+        
+        .author-avatar {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+    }
+    
+    // Post meta
+    .post-meta {
+        direction: rtl;
+        
+        i {
+            margin-right: 0;
+            margin-left: 6px;
+        }
+    }
+    
+    // Sidebar meta
+    .sidebar-meta-item {
+        direction: rtl;
+        
+        i {
+            margin-right: 0;
+            margin-left: 6px;
+        }
+    }
+    
+    // Button icons
+    .btn {
+        i {
+            &[class*="arrow-right"] {
+                margin-left: 0;
+                margin-right: 8px;
+            }
+            
+            &[class*="arrow-left"] {
+                margin-right: 0;
+                margin-left: 8px;
+            }
+        }
+    }
+    
+    // Social share
+    .social-share-list {
+        direction: rtl;
+    }
+    
+    // Form elements
+    .form-group {
+        text-align: right;
+        
+        label {
+            text-align: right;
+        }
+    }
+    
+    // Input groups
+    .input-group {
+        direction: rtl;
+        
+        .input-group-text {
+            border-left: none;
+            border-right: 1px solid var(--color-border);
+        }
+    }
+    
+    // Checkbox and radio
+    input[type="checkbox"],
+    input[type="radio"] {
+        margin-right: 0;
+        margin-left: 8px;
+    }
+    
+    // Tabs
+    .nav-tabs {
+        .nav-item {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+    }
+    
+    // Pagination
+    .pagination {
+        .page-item {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+    }
+    
+    // Badge positioning
+    .badge {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+    
+    // Notification badge
+    .notification-badge {
+        .badge {
+            right: auto;
+            left: -5px;
+        }
+    }
+    
+    // Dropdown positioning
+    .dropdown {
+        .dropdown-toggle {
+            &::after {
+                margin-left: 0;
+                margin-right: 0.5em;
+            }
+        }
+    }
+    
+    // Modal
+    .modal {
+        .modal-header {
+            .btn-close {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
+    
+    // Accordion
+    .accordion-button {
+        text-align: right;
+        
+        &::after {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+    
+    // Card actions
+    .card-actions {
+        direction: rtl;
+    }
+    
+    // Product share wrapper
+    .product-share-wrapper {
+        direction: rtl;
+    }
+    
+    // Profile share
+    .profile-share {
+        direction: rtl;
+    }
+    
+    // More author text
+    .more-author-text {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+    
+    // Countdown timer
+    .countdown {
+        direction: ltr; // Keep numbers LTR
+        display: inline-flex;
+    }
+    
+    // Price display
+    .price,
+    .amount {
+        direction: ltr;
+        display: inline-block;
+        unicode-bidi: embed;
+    }
+    
+    // Numbers and currency
+    [class*="price"],
+    [class*="amount"],
+    [class*="bid"] {
+        direction: ltr;
+        unicode-bidi: embed;
+    }
+    
+    // Date and time
+    time,
+    [class*="date"],
+    [class*="time"] {
+        direction: ltr;
+        unicode-bidi: embed;
+    }
+    
+    // Code blocks
+    code,
+    pre {
+        direction: ltr;
+        text-align: left;
+    }
+    
+    // URLs and emails
+    a[href^="http"],
+    a[href^="mailto"],
+    a[href^="tel"] {
+        direction: ltr;
+        unicode-bidi: embed;
+    }
+    
+    // Mixed Arabic/English text handling with bdi elements
+    // bdi (Bidirectional Isolation) elements for proper RTL/LTR handling
+    bdi {
+        direction: ltr;
+        unicode-bidi: embed;
+        display: inline;
+    }
+    
+    // General mixed content handling - allow bidirectional algorithm to work
+    // Apply to text elements that may contain mixed Arabic/English content
+    h1, h2, h3, h4, h5, h6, p, li, button, span, div {
+        // Use plaintext to allow proper bidirectional text flow
+        unicode-bidi: plaintext;
+        
+        // bdi elements within should be isolated with LTR direction
+        bdi {
+            direction: ltr !important;
+            unicode-bidi: embed !important;
+        }
+    }
+    
+    // Slick carousel arrows
+    .slick-prev {
+        left: auto !important;
+        right: 22px !important;
+    }
+    
+    .slick-next {
+        right: auto !important;
+        left: 22px !important;
+    }
+    
+    .slick-arrow-between {
+        .slick-prev {
+            left: auto !important;
+            right: 40px !important;
+        }
+        
+        .slick-next {
+            right: auto !important;
+            left: 40px !important;
+        }
+    }
+    
+    // Breadcrumb styles for RTL
+    .rn-breadcrumb-inner {
+        direction: rtl;
+        
+        .container {
+            .row {
+                flex-direction: row-reverse !important; // Reverse columns to put pageTitle on the right in RTL
+                direction: rtl;
+                
+                .col-lg-6 {
+                    &:first-child {
+                        // PageTitle column - ensure it's on the right
+                        order: 2;
+                        text-align: right !important;
+                        
+                        @media #{variables.$sm-layout} {
+                            text-align: center !important;
+                            width: 100% !important;
+                            display: flex !important;
+                            justify-content: center !important;
+                        }
+                        
+                        .pageTitle {
+                            text-align: right !important;
+                            width: 100%;
+                            
+                            @media #{variables.$sm-layout} {
+                                text-align: center !important;
+                                width: 100% !important;
+                                margin: 0 auto !important;
+                            }
+                        }
+                    }
+                    
+                    &:last-child {
+                        // Breadcrumb list column - ensure it's on the left
+                        order: 1;
+                    }
+                }
+            }
+        }
+        
+        .pageTitle {
+            text-align: right !important;
+            margin: 0 !important;
+            direction: rtl;
+            
+            // Override Bootstrap utility classes with higher specificity
+            &.text-center.text-md-start {
+                text-align: right !important;
+                
+                @media (min-width: 768px) {
+                    text-align: right !important;
+                }
+            }
+            
+            @media #{variables.$sm-layout} {
+                text-align: center !important;
+                width: 100% !important;
+                display: block;
+            }
+            
+            @media #{variables.$large-mobile} {
+                text-align: center !important;
+            }
+        }
+        
+        .breadcrumb-list {
+            direction: rtl !important;
+            justify-content: flex-start !important; // Override flex-end from base styles
+            flex-direction: row-reverse !important; // Reverse the order for RTL
+            text-align: right;
+            
+            @media #{variables.$sm-layout} {
+                justify-content: center !important;
+            }
+            
+            li {
+                display: flex;
+                align-items: center;
+                direction: rtl;
+                
+                // Swap positions: current page first (on right), home last (on left)
+                &.item {
+                    text-align: right !important;
+                    direction: rtl;
+                    order: 3; // Home appears last (on left)
+                }
+                
+                &.separator {
+                    margin: 0 15px;
+                    order: 2; // Separator in middle
+                    
+                    i {
+                        transform: scaleX(-1) !important; // Flip chevron icon for RTL
+                    }
+                }
+                
+                &.current {
+                    text-align: right !important;
+                    direction: rtl;
+                    order: 1; // Current page appears first (on right)
+                }
+                
+                a {
+                    text-align: right !important;
+                    direction: rtl;
+                }
+            }
+        }
+    }
+    
+    // Whitepaper sidebar
+    .whitepaper-sidebar {
+        border-right: none;
+        border-left: 1px solid var(--color-border);
+        padding-right: 0;
+        padding-left: 20px;
+        
+        .sidebar-item {
+            .sidebar-link {
+                text-align: right;
+                
+                &:hover {
+                    padding-left: 8px;
+                    padding-right: 16px;
+                }
+            }
+        }
+    }
+    
+    .whitepaper-content {
+        padding-left: 0;
+        padding-right: 40px;
+        
+        @media #{variables.$lg-layout} {
+            padding-right: 0;
+        }
+    }
+
+    // Dropdowns
+    .dropdown-menu {
+        right: auto;
+        left: 0;
+        text-align: right;
+    }
+
+    // Modal
+    .modal {
+        .modal-content {
+            text-align: right;
+        }
+    }
+
+    // Navigation
+    nav {
+        ul {
+            li {
+                a {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    // Social icons
+    .social-share-list {
+        direction: rtl;
+    }
+
+    // Countdown
+    .countdown {
+        direction: ltr; // Keep numbers LTR
+    }
+
+    // Price and numbers
+    .price,
+    .amount,
+    [class*="price"],
+    [class*="amount"] {
+        direction: ltr;
+        display: inline-block;
+    }
+
+    // Tables
+    table {
+        direction: rtl;
+        
+        th,
+        td {
+            text-align: right;
+        }
+    }
+
+    // Accordion
+    .accordion {
+        .accordion-item {
+            text-align: right;
+        }
+    }
+    
+    // FAQ Area - Center the section in RTL
+    .rn-faq-area {
+        // Center the FAQ header title
+        .faq-header {
+            text-align: center !important;
+            direction: rtl;
+            
+            .faq-subtitle {
+                text-align: center !important;
+                direction: rtl;
+                font-family: var(--font-arabic);
+            }
+            
+            .faq-title {
+                text-align: center !important;
+                direction: rtl !important;
+                font-family: var(--font-arabic);
+                width: 100%;
+                unicode-bidi: plaintext; // Allow natural bidirectional algorithm for proper word order
+                
+                // Ensure all spans within title are properly styled
+                span {
+                    direction: rtl !important;
+                    text-align: center;
+                    unicode-bidi: embed;
+                    display: inline; // Keep inline to maintain word flow
+                    
+                    &.faq-title-highlight {
+                        direction: rtl !important;
+                        text-align: center;
+                        unicode-bidi: embed;
+                        display: inline;
+                    }
+                }
+            }
+        }
+        
+        // Center the FAQ accordion container
+        .col-lg-10.offset-lg-1 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq-accordion {
+            .accordion {
+                .accordion-item {
+                    .accordion-header {
+                        button {
+                            text-align: right;
+                            direction: rtl;
+                            flex-direction: row; // Normal order: question on left, arrow on right in RTL
+                            
+                            // Proper bidirectional text handling for mixed Arabic/English content
+                            unicode-bidi: plaintext;
+                            
+                            // bdi elements for English acronyms/words - isolate with LTR direction
+                            bdi {
+                                direction: ltr !important;
+                                unicode-bidi: embed !important;
+                                display: inline;
+                            }
+                            
+                            // Question text should be on the left (start in RTL reading)
+                            span {
+                                order: 1;
+                                flex: 1;
+                                text-align: right;
+                            }
+                            
+                            // Arrow icon should be on the right (end in RTL reading)
+                            i {
+                                order: 2;
+                                margin-left: 20px;
+                                margin-right: 0;
+                                
+                                @media #{variables.$sm-layout} {
+                                    margin-left: 15px;
+                                }
+                            }
+                        }
+                    }
+                    
+                    .accordion-body {
+                        text-align: right;
+                        direction: rtl;
+                        unicode-bidi: plaintext;
+                        
+                        // bdi elements in body content
+                        bdi {
+                            direction: ltr !important;
+                            unicode-bidi: embed !important;
+                            display: inline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Tabs
+    .nav-tabs {
+        direction: rtl;
+    }
+
+    // Pagination
+    .pagination {
+        direction: rtl;
+    }
+
+    // Search
+    .search-form-wrapper {
+        .search-icon {
+            right: auto;
+            left: 15px;
+        }
+    }
+
+    // Avatar and images
+    .author-avatar,
+    .client-avatar {
+        margin-right: 0;
+        margin-left: 15px;
+    }
+
+    // Badge
+    .badge {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+
+    // Tooltip
+    .tooltip {
+        .tooltiptext {
+            left: auto;
+            right: 50%;
+            margin-left: 0;
+            margin-right: -70px;
+        }
+    }
+
+    // Section titles
+    .section-title {
+        text-align: right;
+    }
+    
+    // Authors area RTL styles
+    .rn-authors-area {
+        direction: rtl;
+        
+        .section-title {
+            text-align: center !important;
+            
+            .title {
+                text-align: center !important;
+                direction: rtl;
+                font-family: var(--font-arabic);
+            }
+            
+            .subtitle {
+                text-align: center !important;
+                direction: rtl;
+                font-family: var(--font-arabic);
+            }
+        }
+        
+        // Author card text alignment
+        .rn-author-card {
+            .author-card-inner {
+                text-align: center !important;
+                direction: rtl;
+            }
+            
+            .author-content {
+                text-align: center !important;
+                direction: rtl;
+                
+                .author-name {
+                    text-align: center !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                    
+                    a {
+                        text-align: center !important;
+                        direction: rtl;
+                    }
+                }
+                
+                .author-stats {
+                    text-align: center !important;
+                    direction: rtl;
+                    
+                    .books-count {
+                        text-align: center !important;
+                        direction: rtl;
+                        font-family: var(--font-arabic);
+                    }
+                }
+                
+                .author-bio {
+                    text-align: center !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                }
+            }
+        }
+    }
+    
+    // Publishers area RTL styles
+    .rn-publishers-area {
+        direction: rtl;
+        
+        .section-title {
+            text-align: center !important;
+            
+            .title {
+                text-align: center !important;
+                direction: rtl;
+                font-family: var(--font-arabic);
+            }
+            
+            .subtitle {
+                text-align: center !important;
+                direction: rtl;
+                font-family: var(--font-arabic);
+            }
+        }
+        
+        // Publisher card text alignment
+        .rn-publisher-card {
+            .publisher-card-inner {
+                text-align: center !important;
+                direction: rtl;
+            }
+            
+            .publisher-content {
+                text-align: center !important;
+                direction: rtl;
+                
+                .publisher-name {
+                    text-align: center !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                    
+                    a {
+                        text-align: center !important;
+                        direction: rtl;
+                    }
+                }
+                
+                .publisher-description {
+                    text-align: center !important;
+                    direction: rtl;
+                    font-family: var(--font-arabic);
+                }
+            }
+        }
+    }
+
+    // Buttons with icons
+    // Book button - icon on left, text on right in RTL
+    .product-style-one.book-mode .book-button-wrapper .btn-book-link,
+    .book-button-wrapper .btn-book-link,
+    .btn-book-link {
+        display: inline-flex !important;
+        flex-direction: row-reverse !important; // Reverse order: icon on left, text on right
+        direction: rtl !important;
+        align-items: center !important;
+        gap: 8px !important; // Maintain gap
+        
+        // With row-reverse, HTML order <span>text</span><i>icon</i> becomes visually: icon, text
+        // In RTL: icon (left), text (right) ✓
+        
+        // Icon appears on the left (first visually due to row-reverse)
+        i {
+            transform: scaleX(-1) !important; // Flip arrow direction for RTL
+            order: 1 !important;
+        }
+        
+        // Text appears on the right (second visually due to row-reverse)
+        .btn-text {
+            order: 2 !important;
+        }
+        
+        &:hover,
+        &:focus {
+            i {
+                transform: scaleX(-1) translateX(4px) !important; // Flip and reverse hover animation (moves right in RTL)
+            }
+        }
+    }
+
+    // Product area
+    .rn-product-area {
+        .row {
+            direction: rtl;
+        }
+    }
+
+    // Books area
+    .rn-books-area {
+        .row {
+            direction: rtl;
+        }
+    }
+
+    // Store area
+    .rn-store-area {
+        .row {
+            direction: rtl;
+        }
+    }
+
+    // Blog area
+    .rn-blog-area {
+        .row {
+            direction: rtl;
+        }
+    }
+
+    // Header
+    .rn-header {
+        .header-right {
+            direction: rtl;
+        }
+    }
+
+    // Mobile menu (duplicate section - ensure consistency)
+    .popup-mobile-menu {
+        // Override RTL positioning to match English version (slide from left)
+        .inner {
+            left: -150px !important;
+            right: auto !important;
+            
+            &.active {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        
+        &.active {
+            .inner {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        
+        .mainmenu {
+            @media #{variables.$sm-layout} {
+                text-align: center !important;
+            }
+            
+            li {
+                @media #{variables.$sm-layout} {
+                    text-align: center !important;
+                }
+                
+                a {
+                    text-align: right;
+                    
+                    @media #{variables.$sm-layout} {
+                        text-align: center !important;
+                        justify-content: center !important;
+                    }
+                }
+            }
+        }
+        
+        .mobile-menu-switcher {
+            @media #{variables.$sm-layout} {
+                justify-content: center !important;
+            }
+        }
+    }
+    
+    // Light mode mobile menu fixes for RTL (second section - matching English version)
+    html[data-theme="light"] & {
+        .popup-mobile-menu {
+            .inner {
+                @media #{variables.$sm-layout} {
+                    background-color: var(--color-white) !important;
+                    
+                    &.active {
+                        background-color: var(--color-white) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Card hover shadow direction reversal for RTL
+    .product-style-one {
+        &:hover {
+            &::before {
+                transform: rotate(-2deg) translateX(7px) translateY(11px) !important; // Reverse rotation and X translation
+            }
+        }
+    }
+    
+    .rn-author-card {
+        .author-card-inner {
+            &:hover {
+                box-shadow: -10px 10px 30px rgba(0, 163, 255, 0.15) !important; // Shadow appears on left side in RTL (negative X offset)
+            }
+        }
+    }
+    
+    .rn-publisher-card {
+        .publisher-card-inner {
+            &:hover {
+                box-shadow: -10px 10px 30px rgba(0, 163, 255, 0.15) !important; // Shadow appears on left side in RTL (negative X offset)
+            }
+        }
+    }
+    
+    .store-product-card {
+        .product-card-inner {
+            &:hover {
+                box-shadow: -10px 10px 30px rgba(0, 163, 255, 0.15) !important; // Shadow appears on left side in RTL (negative X offset)
+            }
+        }
+    }
+
+    // Light mode RTL adjustments
+    &[data-theme="light"] {
+        .blog-sidebar {
+            border-left-color: var(--color-border-white);
+        }
+        
+        .rn-author-card {
+            .author-card-inner {
+                &:hover {
+                    box-shadow: -10px 10px 30px rgba(0, 163, 255, 0.1) !important;
+                }
+            }
+        }
+        
+        .rn-publisher-card {
+            .publisher-card-inner {
+                &:hover {
+                    box-shadow: -10px 10px 30px rgba(0, 163, 255, 0.1) !important;
+                }
+            }
+        }
+    }
+}
+
+// RTL specific utility classes
+[dir="rtl"] {
+    .rtl-mirror {
+        transform: scaleX(-1);
+    }
+
+    .rtl-flip {
+        transform: scaleX(-1);
+    }
+}
+

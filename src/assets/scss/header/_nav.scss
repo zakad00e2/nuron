@@ -28,6 +28,26 @@
                 @media #{variables.$laptop-device} {
                     padding: 28px 6px;
                 }
+                
+                // Simple hover effect - white color
+                &:hover {
+                    color: var(--color-white);
+                    transform: translateY(-2px);
+                }
+                
+                // Active state - highlighted (white color)
+                &.active {
+                    color: var(--color-white);
+                    font-weight: 600;
+                }
+            }
+            
+            // Active state for list item
+            &.active {
+                a {
+                    color: var(--color-white);
+                    font-weight: 600;
+                }
             }
             .submenu {
                 min-width: 230px;

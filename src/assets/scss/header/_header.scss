@@ -383,6 +383,13 @@
             @media #{variables.$small-mobile} {
                 margin: 0 2px;
             }
+            
+            // Hide mode-switch button on small screens (it's in mobile menu)
+            &.my_switcher {
+                @media #{variables.$sm-layout} {
+                    display: none !important;
+                }
+            }
         }
         ul {
             margin: 0;
@@ -440,7 +447,22 @@
                     transition: var(--transition);
 
                     &:hover {
-                        color: var(--color-primary);
+                        color: var(--color-white);
+                        transform: translateY(-2px);
+                    }
+                    
+                    // Active state - highlighted (white color)
+                    &.active {
+                        color: var(--color-white);
+                        font-weight: 600;
+                    }
+                }
+                
+                // Active state for list item
+                &.active {
+                    a {
+                        color: var(--color-white);
+                        font-weight: 600;
                     }
                 }
             }
