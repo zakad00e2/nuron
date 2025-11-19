@@ -12,7 +12,7 @@ import authorsData from "../data/authors.json";
 
 export async function getStaticProps() {
     try {
-        const res = await fetch('https://books-blog-production-7ac3.up.railway.app/api/authors?populate=*');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/authors?populate=*`);
         const json = await res.json();
 
         const apiAuthors = (json?.data || []).map((item) => {

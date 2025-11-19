@@ -22,9 +22,9 @@ import productData from "../data/products.json";
 import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 
-// API base URLs
-const API_HOMEPAGE_URL = "https://books-blog-production-7ac3.up.railway.app/api/homepage";
-const API_QUESTIONS_URL = "https://books-blog-production-7ac3.up.railway.app/api/questions";
+// API base URLs from environment variables
+const API_HOMEPAGE_URL = process.env.NEXT_PUBLIC_API_HOMEPAGE_URL;
+const API_QUESTIONS_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/questions`;
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
