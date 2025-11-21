@@ -2057,4 +2057,27 @@ html[data-theme="light"] body {
             color: var(--color-primary);
         }
     }
+
+    // Brand Strip
+    .brand-strip-wrapper {
+        &::before {
+            background: linear-gradient(to right, #f5f8fa 0%, transparent 100%);
+        }
+        &::after {
+            background: linear-gradient(to left, #f5f8fa 0%, transparent 100%);
+        }
+    }
+
+    // Language Switcher
+    .language-switcher-button {
+        background: transparent;
+        color: var(--color-light-heading);
+        border: 1px solid var(--color-border-white);
+        
+        &:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+    }
 }

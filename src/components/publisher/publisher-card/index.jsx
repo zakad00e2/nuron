@@ -18,7 +18,7 @@ const PublisherCard = ({ className, name, slug, description, logo, booksCount, .
                                     width={logo?.width || 200}
                                     height={logo?.height || 100}
                                     style={{
-                                        objectFit: "contain",
+                                        objectFit: "cover",
                                     }}
                                 />
                             </Anchor>
