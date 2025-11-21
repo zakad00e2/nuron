@@ -39,16 +39,17 @@
         background: var(--background-color-2);
         border: 1px solid var(--color-border);
         border-radius: 12px;
-        padding: 30px;
+        padding: 0;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         transition: all 0.3s ease;
+        overflow: hidden;
         
         @media #{variables.$sm-layout} {
-            padding: 25px;
+            padding: 0;
         }
         
         &:hover {
@@ -60,25 +61,25 @@
     
     .publisher-logo-wrapper {
         position: relative;
-        margin-bottom: 25px;
+        margin-bottom: 0;
         width: 100%;
     }
     
     .publisher-logo {
         position: relative;
         width: 100%;
-        height: 120px;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--background-color-1);
-        border-radius: 8px;
+        border-radius: 0;
         padding: 0;
         overflow: hidden;
         transition: all 0.3s ease;
         
         @media #{variables.$sm-layout} {
-            height: 100px;
+            height: 150px;
             padding: 0;
         }
         
@@ -115,6 +116,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        padding: 25px;
     }
     
     .publisher-name {
