@@ -1,1 +1,12 @@
-{}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/authors": "pages/authors.js",
+  "/books": "pages/books.js",
+  "/api/authors": "pages/api/authors.js",
+  "/api/books": "pages/api/books.js",
+  "/publishers": "pages/publishers.js",
+  "/api/publishers": "pages/api/publishers.js"
+}

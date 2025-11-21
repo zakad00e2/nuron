@@ -10,7 +10,19 @@ const AuthorCard = ({ className, name, slug, bio, image, isVerified, ...rest }) 
             <div className="author-thumbnail-wrapper">
                 <div className={clsx("author-thumbnail")}>
                     {image?.src && (
-                        <Anchor path={slug}>
+                        slug ? (
+                            <Anchor path={slug}>
+                                <Image
+                                    src={image.src}
+                                    alt={image?.alt || name}
+                                    width={image?.width || 200}
+                                    height={image?.height || 200}
+                                    style={{
+                                        objectFit: "cover",
+                                    }}
+                                />
+                            </Anchor>
+                        ) : (
                             <Image
                                 src={image.src}
                                 alt={image?.alt || name}
@@ -20,13 +32,13 @@ const AuthorCard = ({ className, name, slug, bio, image, isVerified, ...rest }) 
                                     objectFit: "cover",
                                 }}
                             />
-                        </Anchor>
+                        )
                     )}
                 </div>
             </div>
             <div className="author-content">
                 <h4 className="author-name">
-                    <Anchor path={slug}>{name}</Anchor>
+                    {slug ? <Anchor path={slug}>{name}</Anchor> : name}
                 </h4>
                 {bio && (
                     <p className="author-bio">{bio}</p>
@@ -39,7 +51,7 @@ const AuthorCard = ({ className, name, slug, bio, image, isVerified, ...rest }) 
 AuthorCard.propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
+    slug: PropTypes.string,
     bio: PropTypes.string,
     image: ImageType,
     isVerified: PropTypes.bool,

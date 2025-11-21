@@ -48,6 +48,14 @@
         text-align: left !important;
     }
 
+    .text-center {
+        text-align: center !important;
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6, p {
+            text-align: center;
+        }
+    }
+
     // Flexbox direction
     .flex-row {
         flex-direction: row-reverse;
@@ -196,6 +204,13 @@
     
     // Hero section - reverse image direction and increase spacing
     .slider-one {
+        @media #{variables.$sm-layout} {
+            text-align: center;
+            h2, .title, p, .slide-disc {
+                text-align: center;
+            }
+        }
+
         .slider-thumbnail {
             img {
                 transform: scaleX(-1);
@@ -1080,6 +1095,10 @@
         padding-right: 40px;
         
         @media #{variables.$lg-layout} {
+            padding-right: 0;
+        }
+
+        @media #{variables.$sm-layout} {
             padding-right: 0;
         }
     }

@@ -34,7 +34,7 @@ const MyApp = ({ Component, pageProps }) => {
     }, []);
     
     return (
-        <ThemeProvider defaultTheme="dark">
+        <ThemeProvider defaultTheme="dark" enableSystem={false} attribute="data-theme">
             <LanguageProvider>
                 <Component {...pageProps} />
             </LanguageProvider>

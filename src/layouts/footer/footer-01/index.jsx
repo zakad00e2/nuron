@@ -65,7 +65,7 @@ const Footer = ({ space = 1, className, data }) => {
                 <div className="container py--60">
                     <div className="row g-5">
                         {/* Links Section */}
-                        <div className="col-lg-6 col-md-6 col-12">
+                        <div className="col-lg-6 col-md-6 col-6">
                             <div className="footer-section">
                                 <h3 className="footer-section-title">{pagesTitle}</h3>
                                 <div className="footer-links-grid">
@@ -83,7 +83,7 @@ const Footer = ({ space = 1, className, data }) => {
                         </div>
 
                         {/* Social Section */}
-                        <div className="col-lg-6 col-md-6 col-12">
+                        <div className="col-lg-6 col-md-6 col-6">
                             <div className="footer-section">
                                 <h3 className="footer-section-title">{followUsTitle}</h3>
                                 {facebookLink && (

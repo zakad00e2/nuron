@@ -1,0 +1,79 @@
+@use "../default/variables";
+
+.skeleton {
+    background-color: var(--color-border);
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite;
+    
+    &.skeleton-text {
+        height: 1em;
+        margin-bottom: 0.5em;
+        width: 100%;
+    }
+
+    &.skeleton-title {
+        height: 2em;
+        margin-bottom: 1em;
+        width: 80%;
+    }
+
+    &.skeleton-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    &.skeleton-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    
+    &.skeleton-card {
+        padding: 20px;
+        border-radius: 10px;
+        background: var(--background-color-4);
+        height: 100%;
+        position: relative;
+        
+        .skeleton-image {
+            height: 300px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-title {
+            height: 24px;
+            width: 70%;
+            margin-bottom: 10px;
+        }
+        
+        .skeleton-text {
+            height: 16px;
+            width: 40%;
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .skeleton {
+        background-color: var(--color-light);
+        
+        &.skeleton-card {
+            background: var(--color-white);
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+        }
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}

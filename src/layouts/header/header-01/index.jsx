@@ -157,13 +157,13 @@ const Header = ({ className }) => {
                                     <BurgerButton onClick={offcanvasHandler} />
                                 </div>
                             </div> */}
+                            <div className="setting-option">
+                                <LanguageSwitcher />
+                            </div>
                             <div className="setting-option mobile-menu-bar d-block d-xl-none">
                                 <div className="hamberger">
                                     <BurgerButton onClick={offcanvasHandler} />
                                 </div>
-                            </div>
-                            <div className="setting-option">
-                                <LanguageSwitcher />
                             </div>
                             <div
                                 id="my_switcher"

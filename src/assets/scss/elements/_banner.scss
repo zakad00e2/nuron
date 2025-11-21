@@ -107,6 +107,9 @@
 ---------------------------*/
 
 .slider-one {
+    @media #{variables.$sm-layout} {
+        text-align: center;
+    }
     h2 {
         &.title {
             font-size: 60px;
@@ -121,13 +124,22 @@
             }
 
             @media #{variables.$sm-layout} {
-                font-size: 30px;
+                font-size: 36px;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     }
 
     .slide-disc {
         font-size: 22px;
+        @media #{variables.$sm-layout} {
+            font-size: 18px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .slider-thumbnail {

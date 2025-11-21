@@ -367,12 +367,12 @@
         margin-bottom: 20px;
         
         @media #{variables.$sm-layout} {
-            font-size: 16px;
+            font-size: 18px;
             margin-bottom: 16px;
         }
         
         @media #{variables.$large-mobile} {
-            font-size: 15px;
+            font-size: 16px;
             margin-bottom: 14px;
         }
     }
@@ -402,12 +402,12 @@
         padding: 4px 0;
         
         @media #{variables.$sm-layout} {
-            font-size: 14px;
+            font-size: 16px;
             padding: 3px 0;
         }
         
         @media #{variables.$large-mobile} {
-            font-size: 13px;
+            font-size: 15px;
             padding: 2px 0;
         }
         
@@ -426,12 +426,12 @@
         transition: color 0.2s ease;
         
         @media #{variables.$sm-layout} {
-            font-size: 14px;
+            font-size: 16px;
             gap: 8px;
         }
         
         @media #{variables.$large-mobile} {
-            font-size: 13px;
+            font-size: 15px;
             gap: 6px;
         }
         

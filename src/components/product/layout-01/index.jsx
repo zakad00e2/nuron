@@ -109,6 +109,11 @@ const Product = ({
                             {description && (
                                 <p className="book-description">{description}</p>
                             )}
+                            {price && price.amount > 0 && (
+                                <div className="book-price">
+                                    {price.amount} {price.currency}
+                                </div>
+                            )}
                         </div>
                         {websiteUrl && (
                             <div className="book-button-wrapper">
@@ -120,6 +125,19 @@ const Product = ({
                                 >
                                     <span className="btn-text">{viewButtonText}</span>
                                     <i className="feather-arrow-right" />
+                                </Anchor>
+                            </div>
+                        )}
+                        {purchaseUrl && (
+                            <div className="book-button-wrapper">
+                                <Anchor 
+                                    path={purchaseUrl} 
+                                    className="btn-book-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className="btn-text">{buyNowText}</span>
+                                    <i className="feather-shopping-cart" style={{ marginLeft: '5px' }} />
                                 </Anchor>
                             </div>
                         )}

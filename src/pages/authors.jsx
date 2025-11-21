@@ -1,89 +1,85 @@
+import { useState, useEffect } from "react";
+import sal from "sal.js";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer-01";
 import Breadcrumb from "@components/breadcrumb";
 import AuthorCard from "@components/author/author-card";
+import Skeleton from "@components/skeleton";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 
-// Demo Data
-import authorsData from "../data/authors.json";
-
 export async function getStaticProps() {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/authors?populate=*`);
-        const json = await res.json();
-
-        const apiAuthors = (json?.data || []).map((item) => {
-            const attrs = item?.attributes || item || {};
-
-            // parse bio: Strapi returns rich text blocks - extract plain text
-            const parseBio = (bio) => {
-                if (!bio) return "";
-                if (typeof bio === "string") return bio;
-                if (Array.isArray(bio)) {
-                    return bio
-                        .map((block) => {
-                            if (block?.children && Array.isArray(block.children)) {
-                                return block.children.map((ch) => ch.text).join("");
-                            }
-                            if (block?.text) return block.text;
-                            return "";
-                        })
-                        .join("\n\n");
-                }
-                return "";
-            };
-
-            // choose image from possible fields
-            const photoField = attrs.photo || attrs.image || attrs.avatar || attrs.profileImage;
-            let imageSrc = null;
-            let width = 200;
-            let height = 200;
-
-            if (photoField) {
-                if (photoField?.data?.attributes) {
-                    const att = photoField.data.attributes;
-                    imageSrc = att.formats?.thumbnail?.url || att.formats?.small?.url || att.url || att.formats?.medium?.url || att.formats?.large?.url;
-                    width = att.width || att.formats?.thumbnail?.width || 200;
-                    height = att.height || att.formats?.thumbnail?.height || 200;
-                } else if (typeof photoField === "string") {
-                    imageSrc = photoField;
-                } else if (photoField?.url) {
-                    imageSrc = photoField.url;
-                    width = photoField.width || width;
-                    height = photoField.height || height;
-                }
-            }
-
-            return {
-                id: item.id || attrs.id,
-                name: attrs.name || attrs.fullName || attrs.title || "",
-                slug: attrs.slug || (attrs.name ? attrs.name.toLowerCase().replace(/\s+/g, '-') : ""),
-                bio: parseBio(attrs.bio || attrs.description),
-                booksCount: attrs.booksCount || attrs.books_count || 0,
-                isVerified: attrs.isVerified || attrs.is_verified || false,
-                image: imageSrc ? { src: imageSrc, alt: attrs.name || "", width, height } : null,
-            };
-        });
-
-        return {
-            props: { className: "template-color-1", authorsData: apiAuthors.length ? apiAuthors : authorsData },
-            revalidate: 60,
-        };
-    } catch (error) {
-        console.error('Error fetching authors:', error);
-        return { props: { className: "template-color-1", authorsData } };
-    }
+    return { props: { className: "template-color-1" } };
 }
 
-const AuthorsPage = ({ authorsData }) => {
+const AuthorsPage = () => {
     const { language } = useLanguage();
+    const [authors, setAuthors] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const authorsTitle = getTranslation(language, "authors.title");
     const authorsSubtitle = getTranslation(language, "authors.subtitle");
     const authorsPageTitle = getTranslation(language, "authors.pageTitle") || "Our Authors";
     const authorsCurrentPage = getTranslation(language, "authors.currentPage") || "Authors";
+
+    useEffect(() => {
+        const fetchAuthors = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch(`/api/authors?locale=${language}`);
+                const data = await response.json();
+
+                if (data && data.data) {
+                    const mappedAuthors = data.data.map((item) => {
+                        // parse bio: Strapi returns rich text blocks - extract plain text
+                        let bioText = "";
+                        if (Array.isArray(item.bio)) {
+                            bioText = item.bio
+                                .map((block) => {
+                                    if (block.type === 'paragraph' && block.children) {
+                                        return block.children.map((child) => child.text).join("");
+                                    }
+                                    return "";
+                                })
+                                .join("\n");
+                        } else {
+                            bioText = item.bio || "";
+                        }
+
+                        const photo = item.photo;
+
+                        return {
+                            id: item.id,
+                            name: item.name,
+                            slug: item.slug,
+                            bio: bioText,
+                            booksCount: item.booksCount || 0,
+                            isVerified: item.isVerified || false,
+                            image: photo ? { 
+                                src: photo.url, 
+                                alt: item.name || "", 
+                                width: photo.width, 
+                                height: photo.height 
+                            } : null,
+                        };
+                    });
+                    setAuthors(mappedAuthors);
+                }
+            } catch (error) {
+                console.error('Error fetching authors:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAuthors();
+    }, [language]);
+
+    useEffect(() => {
+        sal();
+    }, [authors]);
 
     return (
         <Wrapper>
@@ -109,23 +105,31 @@ const AuthorsPage = ({ authorsData }) => {
                             </div>
                         </div>
                         <div className="row g-5">
-                            {(authorsData || []).map((author) => (
-                                <div
-                                    key={author.id}
-                                    className="col-lg-4 col-md-6 col-12"
-                                    data-sal="slide-up"
-                                    data-sal-delay="150"
-                                    data-sal-duration="800"
-                                >
-                                    <AuthorCard
-                                        name={author.name}
-                                        slug={`/author/${author.slug}`}
-                                        bio={author.bio}
-                                        image={author.image}
-                                        isVerified={author.isVerified}
-                                    />
-                                </div>
-                            ))}
+                            {loading ? (
+                                Array.from({ length: 6 }).map((_, index) => (
+                                    <div key={index} className="col-lg-4 col-md-6 col-12">
+                                        <Skeleton type="card" />
+                                    </div>
+                                ))
+                            ) : (
+                                authors.map((author) => (
+                                    <div
+                                        key={author.id}
+                                        className="col-lg-4 col-md-6 col-12"
+                                        data-sal="slide-up"
+                                        data-sal-delay="150"
+                                        data-sal-duration="800"
+                                    >
+                                        <AuthorCard
+                                            name={author.name}
+                                            // slug={`/author/${author.slug}`}
+                                            bio={author.bio}
+                                            image={author.image}
+                                            isVerified={author.isVerified}
+                                        />
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>

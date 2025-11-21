@@ -4,6 +4,10 @@
 .rn-books-area {
     .section-title {
         margin-bottom: 60px;
+
+        @media #{variables.$sm-layout} {
+            margin-bottom: 15px;
+        }
         
         .title {
             font-size: 48px;

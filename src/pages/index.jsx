@@ -22,9 +22,9 @@ import productData from "../data/products.json";
 import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 
-// API base URLs from environment variables
-const API_HOMEPAGE_URL = process.env.NEXT_PUBLIC_API_HOMEPAGE_URL;
-const API_QUESTIONS_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/questions`;
+// API base URLs
+const API_HOMEPAGE_URL = "https://books-blog-production-7ac3.up.railway.app/api/homepage";
+const API_QUESTIONS_URL = "https://books-blog-production-7ac3.up.railway.app/api/questions";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
@@ -48,7 +48,9 @@ const Home = () => {
                 const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}`);
                 
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch homepage data: ${response.statusText}`);
+                    console.warn(`Failed to fetch homepage data: ${response.statusText}`);
+                    setApiHomepageData(null);
+                    return;
                 }
                 
                 const result = await response.json();
@@ -78,7 +80,9 @@ const Home = () => {
                 const response = await fetch(url);
                 
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch FAQ data: ${response.statusText}`);
+                    console.warn(`Failed to fetch FAQ data: ${response.statusText}`);
+                    setApiFaqData(null);
+                    return;
                 }
                 
                 const result = await response.json();
@@ -184,7 +188,7 @@ const Home = () => {
 
     return (
         <Wrapper>
-            <SEO pageTitle="Home Khaled" />
+            <SEO pageTitle="Home" />
             <Header />
             <main id="main-content">
                 <HeroArea data={translatedContent["hero-section"]} />
