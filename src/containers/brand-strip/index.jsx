@@ -26,9 +26,9 @@ const BrandStrip = ({ data }) => (
                                                 />
                                             </div>
                                         )}
-                                        {title && (
+                                        {/* {title && (
                                             <span className="brand-strip-title">{title}</span>
-                                        )}
+                                        )} */}
                                     </div>
                                 ))}
                             </div>
@@ -49,9 +49,9 @@ const BrandStrip = ({ data }) => (
                                                 />
                                             </div>
                                         )}
-                                        {title && (
+                                        {/* {title && (
                                             <span className="brand-strip-title">{title}</span>
-                                        )}
+                                        )} */}
                                     </div>
                                 ))}
                             </div>

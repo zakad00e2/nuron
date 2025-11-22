@@ -25,6 +25,7 @@ import collectionsData from "../data/collections.json";
 // API base URLs
 const API_HOMEPAGE_URL = "https://books-blog-production-7ac3.up.railway.app/api/homepage";
 const API_QUESTIONS_URL = "https://books-blog-production-7ac3.up.railway.app/api/questions";
+const API_IMAGE_SLIDERS_URL = "https://books-blog-production-7ac3.up.railway.app/api/image-sliders";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
@@ -34,6 +35,7 @@ const Home = () => {
     const { language } = useLanguage();
     const [apiHomepageData, setApiHomepageData] = useState(null);
     const [apiFaqData, setApiFaqData] = useState(null);
+    const [apiBrandStripData, setApiBrandStripData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -95,6 +97,32 @@ const Home = () => {
         };
 
         fetchFaqData();
+    }, [language]);
+
+    // Fetch Brand Strip data from API
+    useEffect(() => {
+        const fetchBrandStripData = async () => {
+            try {
+                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
+                const url = `${API_IMAGE_SLIDERS_URL}?locale=${locale}&populate=addImages`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    console.warn(`Failed to fetch Brand Strip data: ${response.statusText}`);
+                    setApiBrandStripData(null);
+                    return;
+                }
+                
+                const result = await response.json();
+                setApiBrandStripData(result.data || []);
+            } catch (err) {
+                console.error("Error fetching Brand Strip data:", err);
+                setApiBrandStripData(null);
+            }
+        };
+
+        fetchBrandStripData();
     }, [language]);
 
     const content = normalizedData(homepageData?.content || []);
@@ -184,7 +212,33 @@ const Home = () => {
                 items: faqItems,
             },
         };
-    }, [language, content, apiHomepageData, apiFaqData]);
+    }, [language, content, apiHomepageData, apiFaqData, apiBrandStripData]);
+
+    // Process Brand Strip data
+    const brandStripData = useMemo(() => {
+        if (apiBrandStripData && apiBrandStripData.length > 0) {
+            // Flatten all addImages from all sliders into a single list of items
+            const items = apiBrandStripData.flatMap(slider => 
+                (slider.addImages || []).map(img => ({
+                    id: img.id,
+                    title: img.name, // Or any other title field if available
+                    image: {
+                        src: img.url,
+                        alt: img.name || "Brand Logo",
+                        width: img.width,
+                        height: img.height
+                    }
+                }))
+            );
+            
+            return {
+                items: items
+            };
+        }
+        
+        // Fallback to static content
+        return content["brand-strip-section"];
+    }, [apiBrandStripData, content]);
 
     return (
         <Wrapper>
@@ -192,7 +246,7 @@ const Home = () => {
             <Header />
             <main id="main-content">
                 <HeroArea data={translatedContent["hero-section"]} />
-                <BrandStrip data={content["brand-strip-section"]} />
+                <BrandStrip data={brandStripData} />
                 <FaqArea data={translatedContent["faq-section"]} />
                 {/* <LiveExploreArea
                     data={{
