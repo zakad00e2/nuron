@@ -1553,6 +1553,13 @@
         }
     }
 
+    // Keep small gap for Arabic/RTL
+    .product-style-one {
+        .product-name {
+            margin-top: 2px;
+        }
+    }
+
     // Card hover shadow direction reversal for RTL
     .product-style-one {
         &:hover {
@@ -1618,6 +1625,22 @@
 
     .rtl-flip {
         transform: scaleX(-1);
+    }
+    
+    // Skeleton RTL support
+    .skeleton {
+        &.skeleton-title {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+
+    .skeleton-card {
+        .skeleton-title,
+        .skeleton-text {
+            margin-left: auto;
+            margin-right: 0;
+        }
     }
 }
 

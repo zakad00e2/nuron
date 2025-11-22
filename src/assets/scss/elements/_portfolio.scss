@@ -154,6 +154,8 @@
             img {
                 max-height: 250px;
                 object-fit: cover;
+                display: block;
+                width: 100%;
             }
         }
         
@@ -183,7 +185,7 @@
         }
         
         .book-button-wrapper {
-            padding-top: 8px;
+            padding-top: 2px;
         }
         
         .btn-book-link {
