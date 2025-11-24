@@ -14,6 +14,8 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
+const API_AUTHORS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/authors";
+
 const AuthorsPage = () => {
     const { language } = useLanguage();
     const [authors, setAuthors] = useState([]);
@@ -28,7 +30,7 @@ const AuthorsPage = () => {
         const fetchAuthors = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`/api/authors?locale=${language}`);
+                const response = await fetch(`${API_AUTHORS_URL}?locale=${language}&populate=photo`);
                 const data = await response.json();
 
                 if (data && data.data) {

@@ -9,12 +9,18 @@ module.exports = {
     },
     images: {
         // allow next/image to load external images from ImageKit (author photos)
-        domains: ["ik.imagekit.io"],
+        domains: ["ik.imagekit.io", "brilliant-boot-036dae9a94.media.strapiapp.com"],
         // remotePatterns supported for fine-grained control
         remotePatterns: [
             {
                 protocol: "https",
                 hostname: "ik.imagekit.io",
+                port: "",
+                pathname: "/**",
+            },
+            {
+                protocol: "https",
+                hostname: "brilliant-boot-036dae9a94.media.strapiapp.com",
                 port: "",
                 pathname: "/**",
             },

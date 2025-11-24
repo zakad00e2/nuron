@@ -17,6 +17,8 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
+const API_BLOGS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/blogs";
+
 const BlogPage = () => {
     const { language } = useLanguage();
     const [posts, setPosts] = useState([]);
@@ -31,7 +33,7 @@ const BlogPage = () => {
         const fetchBlogs = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`/api/blogs?locale=${language}`);
+                const response = await fetch(`${API_BLOGS_URL}?locale=${language}&populate=image`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

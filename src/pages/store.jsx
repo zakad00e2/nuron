@@ -19,6 +19,8 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
+const API_STORE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/stores";
+
 const StorePage = () => {
     const { language } = useLanguage();
     const [products, setProducts] = useState([]);
@@ -33,7 +35,7 @@ const StorePage = () => {
         const fetchProducts = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`https://books-blog-production-7ac3.up.railway.app/api/stores?locale=${language}&populate=Images`);
+                const response = await fetch(`${API_STORE_URL}?locale=${language}&populate=Images`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

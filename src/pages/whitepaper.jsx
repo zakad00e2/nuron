@@ -15,6 +15,8 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
+const API_WHITEPAPERS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/white-papers";
+
 const WhitepaperPage = () => {
     const { language } = useLanguage();
     const [whitepaperSections, setWhitepaperSections] = useState([]);
@@ -28,7 +30,7 @@ const WhitepaperPage = () => {
         const fetchWhitepapers = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`/api/white-papers?locale=${language}`);
+                const response = await fetch(`${API_WHITEPAPERS_URL}?locale=${language}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

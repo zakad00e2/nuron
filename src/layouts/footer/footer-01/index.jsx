@@ -10,14 +10,14 @@ import { ItemType } from "@utils/types";
 import footerData from "../../../data/general/footer-01.json";
 import contactData from "../../../data/general/contact.json";
 
-const Footer = ({ space = 1, className, data }) => {
+const Footer = ({ space = 1, className, data, copyright }) => {
     const { language } = useLanguage();
     const currentYear = new Date().getFullYear();
     
     const pagesTitle = getTranslation(language, "footer.pagesTitle");
     const followUsTitle = getTranslation(language, "footer.followUsTitle");
     const facebookTitle = getTranslation(language, "footer.facebook") || "Facebook";
-    const copyrightText = getTranslation(language, "footer.copyrightText") || footerData.copyright_text;
+    const copyrightText = copyright || getTranslation(language, "footer.copyrightText") || footerData.copyright_text;
     
     const footerLinks = footerData["quicklink-widget"]?.menu || [];
     const facebookLink = contactData.socials.find(social => social.title === "Facebook");
@@ -105,7 +105,7 @@ const Footer = ({ space = 1, className, data }) => {
                     <div className="row mt--40">
                         <div className="col-12">
                             <div className="footer-copyright">
-                                <p>&copy; {currentYear} {copyrightText}</p>
+                                <p>{copyrightText}</p>
                             </div>
                         </div>
                     </div>

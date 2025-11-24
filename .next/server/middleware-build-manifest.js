@@ -25,20 +25,15 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/authors": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/authors.js"
-    ],
-    "/books": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/books.js"
-    ],
     "/publishers": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/publishers.js"
+    ],
+    "/store": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/store.js"
     ]
   },
   "ampFirstPages": []

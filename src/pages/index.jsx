@@ -23,9 +23,9 @@ import sellerData from "../data/sellers.json";
 import collectionsData from "../data/collections.json";
 
 // API base URLs
-const API_HOMEPAGE_URL = "https://books-blog-production-7ac3.up.railway.app/api/homepage";
-const API_QUESTIONS_URL = "https://books-blog-production-7ac3.up.railway.app/api/questions";
-const API_IMAGE_SLIDERS_URL = "https://books-blog-production-7ac3.up.railway.app/api/image-sliders";
+const API_HOMEPAGE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage";
+const API_QUESTIONS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/questions";
+const API_IMAGE_SLIDERS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/image-sliders";
 
 export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
@@ -47,7 +47,7 @@ const Home = () => {
             try {
                 // Support Arabic, German, and English locales
                 const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
-                const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}`);
+                const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}&populate=Super_image`);
                 
                 if (!response.ok) {
                     console.warn(`Failed to fetch homepage data: ${response.statusText}`);
@@ -148,6 +148,12 @@ const Home = () => {
             ? apiHomepageData.hero_subtitle 
             : getTranslation(language, "homepage.hero.text");
         
+        const heroImage = apiHomepageData?.Super_image?.url 
+            ? { src: apiHomepageData.Super_image.url } 
+            : null;
+
+        const copyrightText = apiHomepageData?.Property_Rights || null;
+        
         const faqTitle = getTranslation(language, "homepage.faq.title");
         const faqSubtitle = getTranslation(language, "homepage.faq.subtitle");
         
@@ -202,6 +208,7 @@ const Home = () => {
                         content: heroText,
                     },
                 ],
+                images: heroImage ? [heroImage] : content["hero-section"].images,
             },
             "faq-section": {
                 ...content["faq-section"],
@@ -211,6 +218,7 @@ const Home = () => {
                 },
                 items: faqItems,
             },
+            copyrightText,
         };
     }, [language, content, apiHomepageData, apiFaqData, apiBrandStripData]);
 
@@ -282,7 +290,7 @@ const Home = () => {
                 /> */}
               
             </main>
-            <Footer />
+            <Footer copyright={translatedContent.copyrightText} />
         </Wrapper>
     );
 };

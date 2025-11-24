@@ -2,7 +2,7 @@ export default async function handler(req, res) {
     const { locale = 'en' } = req.query;
     console.log(`API Route called with locale: ${locale}`);
     try {
-        const apiUrl = `https://books-blog-production-7ac3.up.railway.app/api/books?locale=${locale}&populate=cover`;
+        const apiUrl = `https://brilliant-boot-036dae9a94.strapiapp.com/api/books?locale=${locale}&populate=cover`;
         console.log(`Fetching from external API: ${apiUrl}`);
         const response = await fetch(apiUrl);
         if (!response.ok) {
