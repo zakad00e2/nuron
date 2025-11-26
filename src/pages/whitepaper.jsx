@@ -79,6 +79,20 @@ const WhitepaperPage = () => {
         sal();
     }, [whitepaperSections]);
 
+    useEffect(() => {
+        const handleCopy = (e) => {
+            e.preventDefault();
+        };
+
+        document.addEventListener("copy", handleCopy);
+        document.addEventListener("cut", handleCopy);
+
+        return () => {
+            document.removeEventListener("copy", handleCopy);
+            document.removeEventListener("cut", handleCopy);
+        };
+    }, []);
+
     const scrollToSection = (id) => {
         const element = document.getElementById(`section-${id}`);
         if (element) {
@@ -97,7 +111,7 @@ const WhitepaperPage = () => {
         <Wrapper>
             <SEO pageTitle={whitepaperTitle} />
             <Header />
-            <main id="main-content">
+            <main id="main-content" style={{ userSelect: "none" }}>
                 <Breadcrumb pageTitle={whitepaperTitle} currentPage={whitepaperTitle} />
                 <div className="rn-whitepaper-area rn-section-gapTop">
                     <div className="container">
