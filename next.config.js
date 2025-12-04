@@ -8,8 +8,6 @@ module.exports = {
         silenceDeprecations: ["legacy-js-api"],
     },
     images: {
-        // allow next/image to load external images from ImageKit (author photos)
-        domains: ["ik.imagekit.io", "brilliant-boot-036dae9a94.media.strapiapp.com"],
         // remotePatterns supported for fine-grained control
         remotePatterns: [
             {
@@ -26,7 +24,7 @@ module.exports = {
             },
         ],
     },
-
+    turbopack: {},
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // eslint-disable-next-line no-param-reassign
         config.ignoreWarnings = [
