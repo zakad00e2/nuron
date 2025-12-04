@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
+import sal from "sal.js";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
@@ -12,6 +13,7 @@ import ExploreProductArea from "@containers/explore-product/layout-01";
 import CollectionArea from "@containers/collection/layout-01";
 import BrandStrip from "@containers/brand-strip";
 import FaqArea from "@containers/faq";
+import Skeleton from "@components/skeleton";
 import { normalizedData } from "@utils/methods";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
@@ -37,6 +39,8 @@ const Home = () => {
     const [apiFaqData, setApiFaqData] = useState(null);
     const [apiBrandStripData, setApiBrandStripData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isFaqLoading, setIsFaqLoading] = useState(true);
+    const [isBrandLoading, setIsBrandLoading] = useState(true);
     const [error, setError] = useState(null);
 
     // Fetch homepage data from API
@@ -73,6 +77,7 @@ const Home = () => {
     // Fetch FAQ data from API
     useEffect(() => {
         const fetchFaqData = async () => {
+            setIsFaqLoading(true);
             try {
                 // Support Arabic, German, and English locales
                 const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
@@ -93,6 +98,8 @@ const Home = () => {
                 console.error("Error fetching FAQ data:", err);
                 // Fallback to null, will use static data
                 setApiFaqData(null);
+            } finally {
+                setIsFaqLoading(false);
             }
         };
 
@@ -102,6 +109,7 @@ const Home = () => {
     // Fetch Brand Strip data from API
     useEffect(() => {
         const fetchBrandStripData = async () => {
+            setIsBrandLoading(true);
             try {
                 const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
                 const url = `${API_IMAGE_SLIDERS_URL}?locale=${locale}&populate=addImages`;
@@ -119,6 +127,8 @@ const Home = () => {
             } catch (err) {
                 console.error("Error fetching Brand Strip data:", err);
                 setApiBrandStripData(null);
+            } finally {
+                setIsBrandLoading(false);
             }
         };
 
@@ -140,19 +150,30 @@ const Home = () => {
 
     // Get translated content
     const translatedContent = useMemo(() => {
+        // Normalize API data to handle both flattened and nested (attributes) structure
+        const apiData = apiHomepageData?.attributes ? apiHomepageData.attributes : apiHomepageData;
+
         // Use API data if available, otherwise fall back to translations
-        const heroHeading = apiHomepageData?.hero_title 
-            ? apiHomepageData.hero_title 
+        const heroHeading = apiData?.hero_title 
+            ? apiData.hero_title 
             : getTranslation(language, "homepage.hero.heading");
-        const heroText = apiHomepageData?.hero_subtitle 
-            ? apiHomepageData.hero_subtitle 
+        const heroText = apiData?.hero_subtitle 
+            ? apiData.hero_subtitle 
             : getTranslation(language, "homepage.hero.text");
         
-        const heroImage = apiHomepageData?.Super_image?.url 
-            ? { src: apiHomepageData.Super_image.url } 
+        // Handle image structure (Strapi v4 nested vs flattened)
+        let heroImageUrl = null;
+        if (apiData?.Super_image?.url) {
+            heroImageUrl = apiData.Super_image.url;
+        } else if (apiData?.Super_image?.data?.attributes?.url) {
+            heroImageUrl = apiData.Super_image.data.attributes.url;
+        }
+
+        const heroImage = heroImageUrl 
+            ? { src: heroImageUrl } 
             : null;
 
-        const copyrightText = apiHomepageData?.Property_Rights || null;
+        const copyrightText = apiData?.Property_Rights || null;
         
         const faqTitle = getTranslation(language, "homepage.faq.title");
         const faqSubtitle = getTranslation(language, "homepage.faq.subtitle");
@@ -247,6 +268,41 @@ const Home = () => {
         // Fallback to static content
         return content["brand-strip-section"];
     }, [apiBrandStripData, content]);
+
+    useEffect(() => {
+        if (!isLoading && !isFaqLoading && !isBrandLoading) {
+            sal();
+        }
+    }, [isLoading, isFaqLoading, isBrandLoading]);
+
+    if (isLoading || isFaqLoading || isBrandLoading) {
+        return (
+            <Wrapper>
+                <SEO pageTitle="Home" />
+                <Header />
+                <main id="main-content">
+                    <div className="slider-one rn-section-gapTop">
+                        <div className="container">
+                            <div className="row row-reverce-sm align-items-center">
+                                <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
+                                    <Skeleton type="title" className="mb--20" style={{ height: '50px', width: '80%' }} />
+                                    <Skeleton type="text" count={3} className="mb--20" />
+                                    <div className="button-group">
+                                        <Skeleton type="text" className="mb--20" style={{ height: '50px', width: '150px', display: 'inline-block', marginRight: '20px' }} />
+                                        <Skeleton type="text" className="mb--20" style={{ height: '50px', width: '150px', display: 'inline-block' }} />
+                                    </div>
+                                </div>
+                                <div className="col-lg-5 col-md-6 col-sm-12 offset-lg-1">
+                                    <Skeleton type="image" style={{ height: '500px', width: '100%' }} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
+            </Wrapper>
+        );
+    }
 
     return (
         <Wrapper>
