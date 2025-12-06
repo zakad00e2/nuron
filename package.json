@@ -12,6 +12,7 @@
         "clean": "rimraf node_modules .next"
     },
     "dependencies": {
+        "@copilotlive/react-sdk": "^1.1.2",
         "@tsparticles/react": "^3.0.0",
         "@tsparticles/slim": "^3.5.0",
         "axios": "^1.7.7",

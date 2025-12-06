@@ -18,8 +18,8 @@ const BrandStrip = ({ data }) => (
                                                 <Image
                                                     src={image.src}
                                                     alt={image?.alt || title || "brand"}
-                                                    width={120}
-                                                    height={60}
+                                                    width={200}
+                                                    height={100}
                                                     style={{
                                                         objectFit: "contain",
                                                     }}
@@ -41,8 +41,8 @@ const BrandStrip = ({ data }) => (
                                                 <Image
                                                     src={image.src}
                                                     alt={image?.alt || title || "brand"}
-                                                    width={120}
-                                                    height={60}
+                                                    width={200}
+                                                    height={100}
                                                     style={{
                                                         objectFit: "contain",
                                                     }}

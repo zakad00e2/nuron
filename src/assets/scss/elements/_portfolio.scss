@@ -152,10 +152,12 @@
             margin: -20px -20px 0 -20px;
             
             img {
-                max-height: 250px;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 2/3;
                 object-fit: cover;
                 display: block;
-                width: 100%;
+                max-height: none;
             }
         }
         
