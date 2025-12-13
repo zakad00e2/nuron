@@ -39,6 +39,7 @@ const Header = ({ className }) => {
             5: "common.whitepaper",
             6: "common.blog",
             7: "common.store",
+            8: "common.pricing",
         };
 
         return menuData.map((item) => ({

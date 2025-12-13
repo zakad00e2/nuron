@@ -1,0 +1,260 @@
+.rn-pricing-area {
+    .section-title {
+        margin-bottom: 50px;
+        .subtitle {
+            color: var(--color-primary);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+        .description {
+            color: var(--color-body);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+
+    .pricing-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+        gap: 15px;
+        
+        .label {
+            color: var(--color-white);
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .badge-discount {
+            background: #1a3c35;
+            color: #4ade80;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.pricing-card {
+    background: var(--background-color-2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    position: relative;
+    border: 1px solid transparent;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-color: var(--color-primary);
+    }
+
+    &.active {
+        border-color: var(--color-primary);
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: 0 15px 40px rgba(0, 163, 255, 0.15);
+    }
+
+    .pricing-header {
+        background: linear-gradient(180deg, #0066ff 0%, #003380 100%);
+        padding: 40px 30px 60px;
+        text-align: center;
+        position: relative;
+        border-radius: 0 0 50% 50% / 0 0 20px 20px;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: var(--background-color-2);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scaleX(1.5);
+        }
+
+        .title {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            
+            i, svg {
+                font-size: 30px;
+                color: var(--color-primary);
+            }
+        }
+    }
+
+    .pricing-body {
+        padding: 0 30px 40px;
+        text-align: center;
+
+        .price-wrapper {
+            margin-bottom: 30px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 1;
+
+            .currency {
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--color-white);
+                vertical-align: top;
+                position: relative;
+                top: 10px;
+            }
+
+            .price {
+                font-size: 60px;
+                font-weight: 700;
+                color: var(--color-white);
+                line-height: 1;
+            }
+
+            .period {
+                font-size: 14px;
+                color: var(--color-body);
+                font-weight: 400;
+            }
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+
+            li {
+                color: var(--color-body);
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+
+                i {
+                    color: var(--color-primary);
+                    margin-right: 10px;
+                    font-size: 14px;
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                    i {
+                        color: var(--color-body);
+                    }
+                }
+            }
+        }
+
+        .btn-pricing {
+            width: 100%;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            
+            &.btn-primary {
+                background: var(--color-primary);
+                color: #ffffff;
+                border: none;
+                
+                &:hover {
+                    background: darken(#00a3ff, 10%);
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+}
+
+/* Light Mode Support */
+html[data-theme="light"] {
+    .rn-pricing-area {
+        .section-title {
+            .title {
+                color: var(--color-light-heading);
+            }
+            .description {
+                color: var(--color-light-body);
+            }
+        }
+        .pricing-toggle {
+            .label {
+                color: var(--color-light-heading);
+            }
+        }
+    }
+
+    .pricing-card {
+        background: var(--color-white);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border: 1px solid var(--color-border);
+
+        .pricing-header {
+            &::after {
+                background: var(--color-white);
+            }
+            .title {
+                color: #ffffff;
+            }
+        }
+
+        .pricing-body {
+            .price-wrapper {
+                .currency, .price {
+                    color: var(--color-light-heading);
+                }
+                .period {
+                    color: var(--color-light-body);
+                }
+            }
+            .features-list {
+                li {
+                    color: var(--color-light-body);
+                    &.disabled {
+                        i {
+                            color: var(--color-light-body);
+                        }
+                    }
+                }
+            }
+        }
+        
+        &:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+    }
+}

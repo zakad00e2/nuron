@@ -1,0 +1,26 @@
+import SEO from "@components/seo";
+import Wrapper from "@layout/wrapper";
+import Header from "@layout/header/header-01";
+import Footer from "@layout/footer/footer-01";
+import Breadcrumb from "@components/breadcrumb";
+import PricingArea from "@containers/pricing/layout-01";
+
+export async function getStaticProps() {
+    return { props: { className: "template-color-1" } };
+}
+
+const PricingPage = () => {
+    return (
+        <Wrapper>
+            <SEO pageTitle="Pricing Plans" />
+            <Header />
+            <main id="main-content">
+                <Breadcrumb pageTitle="Pricing Plans" currentPage="Pricing" />
+                <PricingArea />
+            </main>
+            <Footer />
+        </Wrapper>
+    );
+};
+
+export default PricingPage;
