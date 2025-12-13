@@ -41,7 +41,7 @@ const PrivacyConsent = () => {
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background-color: var(--background-color-1);
+                    background-color: var(--background-color-4);
                     border-top: 1px solid var(--color-border);
                     padding: 20px;
                     z-index: 9999;
@@ -61,6 +61,17 @@ const PrivacyConsent = () => {
                     text-decoration: underline;
                     cursor: pointer;
                 }
+
+                /* Light Mode Overrides */
+                :global(html[data-theme="light"]) .privacy-consent-banner {
+                    background-color: var(--color-white);
+                    border-top: 1px solid var(--color-light);
+                    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+                }
+                :global(html[data-theme="light"]) .content p {
+                    color: var(--color-light-body);
+                }
+
                 @media (max-width: 768px) {
                     .privacy-consent-banner {
                         flex-direction: column;
