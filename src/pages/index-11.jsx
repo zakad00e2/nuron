@@ -48,7 +48,7 @@ const Home = () => {
                 <HeroArea
                     data={{
                         ...content["hero-section"],
-                        product: liveAuctionData[0],
+                        product: liveAuctionData[0] || productData[0],
                     }}
                 />
                 <CategoryArea data={content["category-section"]} />

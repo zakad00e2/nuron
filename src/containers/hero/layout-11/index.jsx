@@ -83,25 +83,27 @@ const HeroArea = ({
                             data-sal="slide-left"
                             data-sal-duration="800"
                         >
-                            <Tilt
-                                tiltReverse
-                                tiltMaxAngleX={3}
-                                tiltMaxAngleY={3}
-                                perspective={500}
-                                gyroscope
-                            >
-                                <Product
-                                    title={product.title}
-                                    slug={product.slug}
-                                    latestBid={product.latestBid}
-                                    price={product.price}
-                                    likeCount={product.likeCount}
-                                    auction_date={product.auction_date}
-                                    image={product.images?.[0]}
-                                    authors={product.authors}
-                                    bitCount={product.bitCount}
-                                />
-                            </Tilt>
+                            {product && (
+                                <Tilt
+                                    tiltReverse
+                                    tiltMaxAngleX={3}
+                                    tiltMaxAngleY={3}
+                                    perspective={500}
+                                    gyroscope
+                                >
+                                    <Product
+                                        title={product.title}
+                                        slug={product.slug}
+                                        latestBid={product.latestBid}
+                                        price={product.price}
+                                        likeCount={product.likeCount}
+                                        auction_date={product.auction_date}
+                                        image={product.images?.[0]}
+                                        authors={product.authors}
+                                        bitCount={product.bitCount}
+                                    />
+                                </Tilt>
+                            )}
                         </div>
 
                         {badge?.image?.src && (
