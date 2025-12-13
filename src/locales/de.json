@@ -10,8 +10,17 @@
         "getStarted": "Loslegen",
         "create": "Erstellen",
         "contents": "Inhalt",
+        "agree": "Zustimmen",
+        "decline": "Ablehnen",
         "discoverBookCollection": "Entdecken Sie unsere Büchersammlung",
         "exploreBooks": "Entdecken Sie unsere kuratierte Auswahl an Büchern über Blockchain, NFTs und Web3"
+    },
+    "privacyConsent": {
+        "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch die Nutzung unserer Website stimmen Sie unseren",
+        "terms": "Allgemeinen Geschäftsbedingungen",
+        "and": "und",
+        "privacy": "Datenschutzbestimmungen",
+        "accept": "Akzeptieren"
     },
     "books": {
         "viewButton": "Website besuchen",
@@ -416,8 +425,65 @@
             "white paper": "Whitepaper",
             "whitepaper": "Whitepaper",
             "blog": "Blog",
-            "store": "Shop"
+            "store": "Shop",
+            "privacy policy": "Datenschutzrichtlinie",
+            "terms & condition": "Allgemeine Geschäftsbedingungen"
         }
+    },
+    "terms": {
+        "title": "Allgemeine Geschäftsbedingungen",
+        "sections": [
+            {
+                "title": "NFT-Gebotsbedingungen von Nuron",
+                "content": [
+                    "Es könnte ein Haus sein oder ein Gemälde wie die Mona Lisa, das einzigartig ist. Sie können ein Foto des Gemäldes machen oder einen Druck kaufen, aber es wird immer nur ein Originalgemälde geben. NFTs sind \"einzigartige\" Vermögenswerte in der digitalen Welt, die wie jedes andere Eigentum gekauft und verkauft werden können, aber keine eigene materielle Form haben.",
+                    "Nicht-fungible Token oder NFTs sind bereit, den Krypto-Asset-Markt radikal neu zu konfigurieren und revolutionieren unsere Vorstellung von Geld und Wert. Sie schaffen nicht nur völlig neue Märkte, sondern sogar neue Volkswirtschaften, die global skalieren und Werte an ungeahnten Orten entdecken können, wodurch Fiat-Währungen und alte Geschäftsmethoden in Vergessenheit geraten.",
+                    "Da eine Vereinbarung über die Allgemeinen Geschäftsbedingungen die Vereinbarung ist, in der Sie die Benutzer Ihrer Website über die Regeln, Bedingungen und Richtlinien informieren, die sie befolgen müssen, um Ihre Website zu nutzen und darauf zuzugreifen, ist eine Vereinbarung über die Allgemeinen Geschäftsbedingungen äußerst wichtig geworden."
+                ]
+            },
+            {
+                "title": "Verkaufsbedingungen von Nuron",
+                "content": [
+                    "Nur ein Scherz. Der vorstehende Absatz ist eine Parodie (wenn so etwas möglich ist) auf den Hype, der in der ersten Hälfte des Jahres 2021 um nicht-fungible Token entstanden ist. Tatsächlich ist der Hype so überwältigend geworden, dass er sich sogar einer Parodie entziehen kann. Nicht-fungible Token können Legitimität haben, und ich werde am Ende dieses Artikels erörtern, wie das sein kann. Aber im Moment ist die überwältigende Mehrheit dessen, was als NFTs durchgeht, eine Täuschung, die von der Hoffnung auf eine schnelle Rendite und dem Glauben genährt wird, dass man etwas für nichts (oder fast nichts) bekommen kann.",
+                    "Hier kann ich die Eigenschaft der \"Nicht-Fungibilität\" von NFTs erklären und hervorheben. Der Hauptunterschied zwischen NFTs und Bitcoins besteht darin, dass Bitcoins begrenzt und fungibel sind (Sie können einen Bitcoin gegen einen anderen tauschen und beide haben den gleichen Wert und Preis). NFTs sind einzigartig, aber unbegrenzt und nicht fungibel (keine zwei Kunstwerke sind gleich). Während NFTs an Wert gewinnen können (genau wie Immobilien), können sie nicht gegen einen anderen NFT ausgetauscht werden."
+                ]
+            },
+            {
+                "title": "NFT-Gebotsbedingungen von Nuron",
+                "content": [
+                    "Warren Buffett bemerkte 2018 bekanntermaßen, dass Bitcoin (und implizit alle Kryptowährungen) \"wahrscheinlich Rattengift im Quadrat\" seien. Das scheint übermäßig pessimistisch, wenn man bedenkt, dass Kryptowährungen eine Möglichkeit bieten, Dinge sicher zu bewegen, die zumindest wie Währung aussehen und die an einigen Orten tatsächlich wie Währung verwendet werden. In Venezuela bietet Bitcoin beispielsweise einen Ausweg aus der korrupten Zentralbank des Landes und der von ihr verursachten Hyperinflation. Und Anfang Juni 2021 genehmigte die Regierung von El Salvador Bitcoin sogar als gesetzliches Zahlungsmittel."
+                ]
+            }
+        ]
+    },
+    "privacy": {
+        "title": "Datenschutzrichtlinie",
+        "sections": [
+            {
+                "title": "Willkommen bei der Datenschutzrichtlinie von Nuron",
+                "items": [
+                    "Wo Bitcoin als die digitale Antwort auf Währung gefeiert wurde, werden NFTs jetzt als die digitale Antwort auf Sammlerstücke angepriesen, aber viele Skeptiker befürchten, dass sie eine Blase sind, die darauf wartet, zu platzen.",
+                    "Es könnte ein Haus sein oder ein Gemälde wie die Mona Lisa, das einzigartig ist. Sie können ein Foto des Gemäldes machen oder einen Druck kaufen, aber es wird immer nur ein Originalgemälde geben.",
+                    "Der ehemalige Christie's-Auktionator Charles Allsopp sagte, das Konzept des Kaufs von NFTs mache \"keinen Sinn\". \"Die Idee, etwas zu kaufen, das nicht da ist, ist einfach seltsam\", sagte er der BBC."
+                ]
+            },
+            {
+                "title": "Die Art der personenbezogenen Daten, die wir sammeln",
+                "items": [
+                    "Es mag lächerlich klingen, aber der explosive Markt für Krypto-Sammlerstücke und Krypto-Kunst ist kein Scherz. Ich untersuche Kryptowährungen und habe wissenschaftliche Veröffentlichungen zu Bitcoin-Märkten. Um Ihnen zu helfen zu verstehen, was ein NFT ist und warum sie so beliebt werden, hier eine Erklärung, um alles zu verstehen.",
+                    "Das Gebot für Musks Tweet hat bereits 1 Million US-Dollar überschritten, und Millionen weitere strömen in den Markt – er hat seitdem getwittert: \"Eigentlich fühlt es sich nicht ganz richtig an, dies zu verkaufen. Werde passen.\" Und Websites wie NBA Top Shot (wo Sie digitale NBA-Karten kaufen, verkaufen und handeln können) haben einzelne Karten, die für über 200.000 US-Dollar verkauft werden.",
+                    "Ein nicht-fungibler Token (NFT) ist eine digitale Datei mit verifizierter Identität und Eigentum. Diese Überprüfung erfolgt mithilfe der Blockchain-Technologie. Die Blockchain-Technologie ist einfach ausgedrückt ein nicht hackbares System, das auf der Mathematik der Kryptographie basiert. Deshalb hören Sie viel von \"Krypto\", wenn es um NFTs geht – Krypto-Kunst, Krypto-Sammlerstücke usw."
+                ]
+            },
+            {
+                "title": "Wie wir personenbezogene Daten sammeln",
+                "items": [
+                    "Nicht-fungible Token oder NFTs sind bereit, den Krypto-Asset-Markt radikal neu zu konfigurieren und revolutionieren unsere Vorstellung von Geld und Wert. Sie schaffen nicht nur völlig neue Märkte, sondern sogar neue Volkswirtschaften, die global skalieren und Werte an ungeahnten Orten entdecken können, wodurch Fiat-Währungen und alte Geschäftsmethoden in Vergessenheit geraten.",
+                    "Nur ein Scherz. Der vorstehende Absatz ist eine Parodie (wenn so etwas möglich ist) auf den Hype, der in der ersten Hälfte des Jahres 2021 um nicht-fungible Token entstanden ist. Tatsächlich ist der Hype so überwältigend geworden, dass er sich sogar einer Parodie entziehen kann. Nicht-fungible Token können Legitimität haben, und ich werde am Ende dieses Artikels erörtern, wie das sein kann. Aber im Moment ist die überwältigende Mehrheit dessen, was als NFTs durchgeht, eine Täuschung, die von der Hoffnung auf eine schnelle Rendite und dem Glauben genährt wird, dass man etwas für nichts (oder fast nichts) bekommen kann.",
+                    "Aber digitale Sammlerstücke, was auch immer sie sonst sein mögen, sind – ohne Ausnahme oder Rest – digitale Dateien. Und digitale Dateien können kopiert werden. Tatsächlich sind die Kosten für das Kopieren vernachlässigbar. Was kaufen Sie also, wenn Sie einen NFT kaufen? Sie kaufen einen Zeiger auf eine digitale Datei."
+                ]
+            }
+        ]
     }
 }
 

@@ -57,6 +57,16 @@
         "id": 7,
         "text": "Store",
         "path": "/store"
+    },
+    {
+        "id": 8,
+        "text": "Privacy Policy",
+        "path": "/privacy-policy"
+    },
+    {
+        "id": 9,
+        "text": "Terms & Condition",
+        "path": "/terms-condition"
     }
         ]
     },

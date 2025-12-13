@@ -1,3 +1,5 @@
+@use "../default/variables" as *;
+
 .mb_dec--50 {
     margin-bottom: -50px;
 }
@@ -158,6 +160,19 @@
                     }
                 }
             }
+        }
+    }
+}
+
+[dir="rtl"] {
+    .rn-privacy-policy-area,
+    .terms-condition-area {
+        .offset-lg-2 {
+            margin-left: 0 !important;
+            margin-right: 16.666667% !important;
+        }
+        .btns-group {
+            direction: rtl;
         }
     }
 }

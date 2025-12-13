@@ -9,6 +9,7 @@ import "../assets/css/feather.css";
 import "../assets/css/modal-video.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../assets/scss/style.scss";
+import PrivacyConsent from "@components/privacy-consent";
 
 const MyApp = ({ Component, pageProps }) => {
     const router = useRouter();
@@ -35,16 +36,11 @@ const MyApp = ({ Component, pageProps }) => {
 
     useEffect(() => {
         if (!document.getElementById("copilot")) {
-            (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-o4lz67y1");
-        }
-        if (window.copilot) {
-            window.copilot("init",{
-                position: "bottom-left",
-                style: {
-                    bottom: "20px",
-                    left: "20px"
-                }
-            });
+            (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-lek3x169");
+            
+            if (window.copilot) {
+                window.copilot("init",{});
+            }
         }
     }, []);
     
@@ -52,6 +48,7 @@ const MyApp = ({ Component, pageProps }) => {
         <ThemeProvider defaultTheme="dark" enableSystem={false} attribute="data-theme">
             <LanguageProvider>
                 <Component {...pageProps} />
+                <PrivacyConsent />
             </LanguageProvider>
         </ThemeProvider>
     );

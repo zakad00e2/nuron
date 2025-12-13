@@ -43,19 +43,53 @@ const WhitepaperPage = () => {
                     // Based on the current UI, it expects an array of { title, content }.
                     
                     const mappedSections = data.data.map(item => {
-                        // Handle rich text for content if needed
                         let contentText = "";
-                        if (Array.isArray(item.content)) {
-                            contentText = item.content
+                        if (Array.isArray(item.new_content)) {
+                            contentText = item.new_content
                                 .map(block => {
                                     if (block.type === 'paragraph' && block.children) {
-                                        return block.children.map(child => child.text).join("");
+                                        const text = block.children.map(child => {
+                                            let t = child.text;
+                                            if (child.bold) t = `<strong>${t}</strong>`;
+                                            if (child.italic) t = `<em>${t}</em>`;
+                                            if (child.underline) t = `<u>${t}</u>`;
+                                            if (child.strikethrough) t = `<del>${t}</del>`;
+                                            if (child.code) t = `<code>${t}</code>`;
+                                            return t;
+                                        }).join("");
+                                        return text ? `<p>${text}</p>` : "<br/>";
                                     }
+                                    
+                                    if (block.type === 'heading' && block.children) {
+                                        const level = block.level || 2;
+                                        const text = block.children.map(child => child.text).join("");
+                                        return `<h${level}>${text}</h${level}>`;
+                                    }
+
+                                    if (block.type === 'list' && block.children) {
+                                        const tag = block.format === 'ordered' ? 'ol' : 'ul';
+                                        const items = block.children.map(item => `<li>${item.children.map(c => c.text).join("")}</li>`).join("");
+                                        return `<${tag}>${items}</${tag}>`;
+                                    }
+
+                                    if (block.type === 'image') {
+                                        console.log('Image Block Found:', block);
+                                        const imgData = block.image || block;
+                                        let { url, alternativeText, width, height } = imgData;
+                                        
+                                        if (url) {
+                                            if (url.startsWith('/')) {
+                                                url = `https://brilliant-boot-036dae9a94.strapiapp.com${url}`;
+                                            }
+                                            return `<div class="block-image my-4"><img src="${url}" alt="${alternativeText || ''}" width="${width}" height="${height}" style="max-width: 100%; height: auto;" /></div>`;
+                                        }
+                                    }
+
                                     return "";
                                 })
-                                .join("\n");
+                                .join("");
                         } else {
-                            contentText = item.content || "";
+                            contentText = item.new_content || "";
                         }
 
                         return {
@@ -167,9 +201,10 @@ const WhitepaperPage = () => {
                                                 <h2 className="section-title">
                                                     {entry.title}
                                                 </h2>
-                                                <p className="section-content">
-                                                    {entry.content}
-                                                </p>
+                                                <div 
+                                                    className="section-content"
+                                                    dangerouslySetInnerHTML={{ __html: entry.content }}
+                                                />
                                             </div>
                                         ))
                                     )}

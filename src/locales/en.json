@@ -10,8 +10,17 @@
         "getStarted": "Get Started",
         "create": "Create",
         "contents": "Contents",
+        "agree": "Agree",
+        "decline": "Decline",
         "discoverBookCollection": "Discover Our Book Collection",
         "exploreBooks": "Explore our curated selection of books on blockchain, NFTs, and Web3"
+    },
+    "privacyConsent": {
+        "text": "We use cookies to improve your experience. By using our site, you agree to our",
+        "terms": "Terms & Conditions",
+        "and": "and",
+        "privacy": "Privacy Policy",
+        "accept": "Accept"
     },
     "books": {
         "viewButton": "View Details",
@@ -416,8 +425,65 @@
             "white paper": "Whitepaper",
             "whitepaper": "Whitepaper",
             "blog": "Blog",
-            "store": "Store"
+            "store": "Store",
+            "privacy policy": "Privacy Policy",
+            "terms & condition": "Terms & Condition"
         }
+    },
+    "terms": {
+        "title": "Terms & Condition",
+        "sections": [
+            {
+                "title": "NFT Bidding Terms & Condition of Nuron",
+                "content": [
+                    "It could be a house, or a painting such as the Mona Lisa, which is one of a kind. You can take a photo of the painting or buy a print but there will only ever be one original painting. NFTs are \"one-of-a-kind\" assets in the digital world that can be bought and sold like any other piece of property, but which have no tangible form of their own.",
+                    "Poised to radically reconfigure the crypto-asset market, non-fungible tokens, or NFTs, are revolutionizing our conception of money and value, creating not just entirely new markets but even new economies that are able to scale globally and to discover value in undreamt places, relegating to oblivion fiat currencies and old ways of doing business.",
+                    "Because a Terms and Conditions agreement is the agreement where you inform the users of your website about the rules, terms and guidelines that they need to follow in order to use and access your website, a Terms and Conditions agreement has become extremely important."
+                ]
+            },
+            {
+                "title": "Selling Condition Terms & Condition of Nuron",
+                "content": [
+                    "Just kidding. The previous paragraph is a parody (if such is possible) of the hype that in the first half of 2021 has come to surround non-fungible tokens. Indeed, the hype has become so overpowering that it may even defy parody. Non-fungible tokens can have legitimacy, and I’ll discuss how that can be at the end of this article. But for now the overwhelming majority of what passes for NFTs is delusion, fueled by the hope of a quick return and the belief that something can be gotten for nothing (or virtually nothing).",
+                    "This is where I can explain and emphasize the “non-fungibility” property of NFTs. The main difference between NFTs and Bitcoins is the fact that Bitcoins are limited, and fungible (you can trade one Bitcoin with another and both have the same value and price). NFTs are unique but unlimited, and non-fungible (no two artworks are the same). While NFTs can appreciate in value (just like real estate), they cannot be interchanged for another NFT."
+                ]
+            },
+            {
+                "title": "NFT Bidding Terms & Condition of Nuron",
+                "content": [
+                    "Warren Buffett famously remarked in 2018 that Bitcoin (and by implication all cryptocurrencies) were “probably rat poison squared.” That seems unduly pessimistic given that cryptocurrencies provide a way of securely moving around things that at least look like currency and that in some locales are actually being used like currency. In Venezuela, for instance, Bitcoin provides one way around the country’s corrupt central bank and the hyperinflation it has created. And in early June of 2021, the El Salvador government even approved Bitcoin as legal tender."
+                ]
+            }
+        ]
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "sections": [
+            {
+                "title": "Welcome to Nuron Privacy Policy",
+                "items": [
+                    "Where Bitcoin was hailed as the digital answer to currency, NFTs are now being touted as the digital answer to collectables, but plenty of sceptics fear they're a bubble waiting to burst.",
+                    "It could be a house, or a painting such as the Mona Lisa, which is one of a kind. You can take a photo of the painting or buy a print but there will only ever be one original painting.",
+                    "Former Christie's auctioneer Charles Allsopp said the concept of buying NFTs made \"no sense\". \"The idea of buying something which isn't there is just strange,\" he told the BBC."
+                ]
+            },
+            {
+                "title": "The type of personal information we collect",
+                "items": [
+                    "It might sound ridiculous but the explosive market of crypto-collectibles and crypto-art is no joke. I investigate cryptocurrencies and have academic publications on Bitcoin markets. To help you understand what an NFT is and why they’re becoming so popular, here’s an explainer to make sense of it all.",
+                    "The bidding on Musk’s tweet has already topped $1 million and millions more are pouring into the market — he has since tweeted, “Actually, doesn’t feel quite right selling this. Will pass.” And sites like NBA Top Shot (where you can buy, sell and trade digital NBA cards) have individual cards selling for over US$200,000.",
+                    "A non-fungible token (NFT) is a digital file with verified identity and ownership. This verification is done using blockchain technology. Blockchain technology, simply put, is an un-hackable system based on the mathematics of cryptography. So, that’s why you hear a lot of “crypto” when referring to NFTs — crypto-art, crypto-collectibles, etc."
+                ]
+            },
+            {
+                "title": "How we collect personal information",
+                "items": [
+                    "Poised to radically reconfigure the crypto-asset market, non-fungible tokens, or NFTs, are revolutionizing our conception of money and value, creating not just entirely new markets but even new economies that are able to scale globally and to discover value in undreamt places, relegating to oblivion fiat currencies and old ways of doing business.",
+                    "Just kidding. The previous paragraph is a parody (if such is possible) of the hype that in the first half of 2021 has come to surround non-fungible tokens. Indeed, the hype has become so overpowering that it may even defy parody. Non-fungible tokens can have legitimacy, and I’ll discuss how that can be at the end of this article. But for now the overwhelming majority of what passes for NFTs is delusion, fueled by the hope of a quick return and the belief that something can be gotten for nothing (or virtually nothing).",
+                    "But digital collectibles, whatever else they may be, are—without exception or remainder—digital files. And digital files can be copied. Indeed, the cost of copying them is negligible. So what are you buying when you buy an NFT? You are buying a pointer to a digital file."
+                ]
+            }
+        ]
     }
 }
 

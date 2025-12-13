@@ -24,7 +24,7 @@ const BlogPage = () => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const sidebarTitle = getTranslation(language, "blog.sidebarTitle");
+    const sidebarTitle = getTranslation(language, "blog.sidebarTitle") || "Recent Posts";
     // const blogPosts = getTranslation(language, "blog.posts");
     const blogPageTitle = getTranslation(language, "blog.pageTitle") || "Blog";
     const blogCurrentPage = getTranslation(language, "blog.currentPage") || "Blog";
@@ -33,7 +33,7 @@ const BlogPage = () => {
         const fetchBlogs = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`${API_BLOGS_URL}?locale=${language}&populate=image`);
+                const response = await fetch(`${API_BLOGS_URL}?locale=${language}&populate=*`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -41,27 +41,76 @@ const BlogPage = () => {
                 
                 if (data && data.data) {
                     const mappedPosts = data.data.map(item => {
-                        // Handle rich text for content/excerpt if needed
                         let contentText = "";
-                        if (Array.isArray(item.content)) {
-                            contentText = item.content
+                        let plainText = "";
+
+                        if (Array.isArray(item.new_content)) {
+                            contentText = item.new_content
                                 .map(block => {
                                     if (block.type === 'paragraph' && block.children) {
-                                        return block.children.map(child => child.text).join("");
+                                        const text = block.children.map(child => {
+                                            let t = child.text || "";
+                                            plainText += t + " ";
+                                            if (child.bold) t = `<strong>${t}</strong>`;
+                                            if (child.italic) t = `<em>${t}</em>`;
+                                            if (child.underline) t = `<u>${t}</u>`;
+                                            if (child.strikethrough) t = `<del>${t}</del>`;
+                                            if (child.code) t = `<code>${t}</code>`;
+                                            return t;
+                                        }).join("");
+                                        return text ? `<p>${text}</p>` : "<br/>";
                                     }
+                                    
+                                    if (block.type === 'heading' && block.children) {
+                                        const level = block.level || 2;
+                                        const text = block.children.map(child => {
+                                            const t = child.text || "";
+                                            plainText += t + " ";
+                                            return t;
+                                        }).join("");
+                                        return `<h${level}>${text}</h${level}>`;
+                                    }
+
+                                    if (block.type === 'list' && block.children) {
+                                        const tag = block.format === 'ordered' ? 'ol' : 'ul';
+                                        const items = block.children.map(item => {
+                                            const itemText = item.children.map(c => {
+                                                const t = c.text || "";
+                                                plainText += t + " ";
+                                                return t;
+                                            }).join("");
+                                            return `<li>${itemText}</li>`;
+                                        }).join("");
+                                        return `<${tag}>${items}</${tag}>`;
+                                    }
+
+                                    if (block.type === 'image') {
+                                        const imgData = block.image || block;
+                                        let { url, alternativeText, width, height } = imgData;
+                                        
+                                        if (url) {
+                                            if (url.startsWith('/')) {
+                                                url = `https://brilliant-boot-036dae9a94.strapiapp.com${url}`;
+                                            }
+                                            return `<div class="block-image my-4"><img src="${url}" alt="${alternativeText || ''}" width="${width}" height="${height}" style="max-width: 100%; height: auto;" /></div>`;
+                                        }
+                                    }
+
                                     return "";
                                 })
-                                .join("\n");
+                                .join("");
                         } else {
-                            contentText = item.content || "";
+                            contentText = item.new_content || "";
+                            plainText = contentText.replace(/<[^>]+>/g, '');
                         }
 
+                        plainText = plainText.replace(/&nbsp;/g, ' ');
                         const image = item.image ? item.image : null;
 
                         return {
                             id: item.id,
                             title: item.title,
-                            excerpt: contentText.substring(0, 150) + (contentText.length > 150 ? "..." : ""), // Create excerpt from content
+                            excerpt: plainText.trim().substring(0, 150) + (plainText.length > 150 ? "..." : ""),
                             content: contentText,
                             author: item.author_name,
                             date: item.publishedAt || item.createdAt,
@@ -261,9 +310,10 @@ const BlogPage = () => {
                                                     <h2 className="post-title">
                                                         {post.title}
                                                     </h2>
-                                                    <p className="post-excerpt">
-                                                        {post.content}
-                                                    </p>
+                                                    <div 
+                                                        className="post-excerpt"
+                                                        dangerouslySetInnerHTML={{ __html: post.content }}
+                                                    />
                                                 </div>
                                             </article>
                                         ))
