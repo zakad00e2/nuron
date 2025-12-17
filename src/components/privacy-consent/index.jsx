@@ -72,6 +72,15 @@ const PrivacyConsent = () => {
                     color: var(--color-light-body);
                 }
 
+                /* Light Mode: make links black for better contrast */
+                :global(html[data-theme="light"]) .privacy-consent-banner .consent-link {
+                    color: #000000;
+                }
+                :global(html[data-theme="light"]) .privacy-consent-banner .consent-link:hover {
+                    color: #000000;
+                    text-decoration: underline;
+                }
+
                 @media (max-width: 768px) {
                     .privacy-consent-banner {
                         flex-direction: column;
