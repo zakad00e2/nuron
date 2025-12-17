@@ -174,5 +174,87 @@
         .btns-group {
             direction: rtl;
         }
+
+        // Ensure bullets appear before text in Arabic (all breakpoints)
+        .privacy-wrapper,
+        .condition-wrapper {
+            ul,
+            ol {
+                direction: rtl;
+                list-style-position: outside;
+                padding-left: 0;
+                padding-right: 24px; // space between bullet and text on the right
+                margin-left: 0;
+                margin-right: 0;
+                text-align: right;
+            }
+            li {
+                direction: rtl;
+                text-align: right;
+            }
+        }
+
+        // Small screens: ensure Arabic content starts at the right edge
+        @media #{$small-mobile} {
+            .privacy-wrapper,
+            .condition-wrapper {
+                text-align: right;
+                direction: rtl;
+            }
+
+            .privacy-wrapper,
+            .condition-wrapper {
+                h1, h2, h3, h4, h5, h6, p, div {
+                    text-align: right !important;
+                }
+
+                ul, ol {
+                    padding-left: 0 !important;
+                    padding-right: 24px !important;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                    text-align: right !important;
+                    direction: rtl;
+                    list-style-position: outside;
+                }
+
+                li {
+                    text-align: right !important;
+                    direction: rtl;
+                }
+            }
+        }
+
+        // On small screens, remove offsets and make columns full width
+        @media #{$small-mobile} {
+            .offset-lg-2 {
+                margin-right: 0 !important;
+                margin-left: 0 !important;
+            }
+            .col-lg-8 {
+                width: 100% !important;
+            }
+        }
+
+        // Tablets (small + medium layouts): remove offsets and use full width
+        @media #{$sm-layout} {
+            .offset-lg-2 {
+                margin-right: 0 !important;
+                margin-left: 0 !important;
+            }
+            .col-lg-8 {
+                width: 100% !important;
+            }
+        }
+
+        @media #{$md-layout} {
+            .offset-lg-2 {
+                margin-right: 0 !important;
+                margin-left: 0 !important;
+            }
+            .col-lg-8 {
+                width: 100% !important;
+            }
+        }
     }
 }
