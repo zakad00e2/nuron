@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import sal from "sal.js";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
@@ -37,12 +36,10 @@ const WhitepaperPage = () => {
                 const data = await response.json();
                 
                 if (data && data.data) {
-                    // Assuming the API returns a list of sections or a single entry with sections
-                    // If it's a collection type "white-papers", it returns an array of entries.
-                    // Let's assume each entry is a section for now, or we might need to inspect the data.
-                    // Based on the current UI, it expects an array of { title, content }.
-                    
-                    const mappedSections = data.data.map(item => {
+                    // Sort data by createdAt to ensure consistent order across languages
+                    const sortedData = data.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+                    const mappedSections = sortedData.map(item => {
                         let contentText = "";
                         if (Array.isArray(item.new_content)) {
                             contentText = item.new_content
@@ -110,10 +107,6 @@ const WhitepaperPage = () => {
     }, [language]);
 
     useEffect(() => {
-        sal();
-    }, [whitepaperSections]);
-
-    useEffect(() => {
         const handleCopy = (e) => {
             e.preventDefault();
         };
@@ -151,7 +144,7 @@ const WhitepaperPage = () => {
                     <div className="container">
                         <div className="row">
                             {/* Sidebar */}
-                            <div className="col-lg-3 d-none d-lg-block">
+                            <div className="col-lg-4 d-none d-lg-block">
                                 <div className="whitepaper-sidebar">
                                     <h4 className="sidebar-title">{contentsLabel}</h4>
                                     <div className="sidebar-content">
@@ -177,7 +170,7 @@ const WhitepaperPage = () => {
                             </div>
 
                             {/* Main Content */}
-                            <div className="col-lg-9">
+                            <div className="col-lg-8">
                                 <div className="whitepaper-content">
                                     {loading ? (
                                         <div className="whitepaper-loading">
@@ -194,9 +187,6 @@ const WhitepaperPage = () => {
                                                 key={index + 1}
                                                 id={`section-${index + 1}`}
                                                 className="whitepaper-section"
-                                                data-sal="slide-up"
-                                                data-sal-delay="150"
-                                                data-sal-duration="800"
                                             >
                                                 <h2 className="section-title">
                                                     {entry.title}
