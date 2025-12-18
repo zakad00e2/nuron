@@ -6,7 +6,7 @@
         "publishers": "Verlage",
         "whitepaper": "Whitepaper",
         "blog": "Blog",
-        "store": "Shop",
+        "store": "Gemeinschaft",
         "pricing": "Preise",
         "getStarted": "Loslegen",
         "create": "Erstellen",
@@ -15,6 +15,55 @@
         "decline": "Ablehnen",
         "discoverBookCollection": "Entdecken Sie unsere Büchersammlung",
         "exploreBooks": "Entdecken Sie unsere kuratierte Auswahl an Büchern über Blockchain, NFTs und Web3"
+    },
+    "pricing": {
+        "title": "Community-Abonnementpläne",
+        "description": "Wählen Sie den Plan, der Ihren Bedürfnissen entspricht, um unserer Community beizutreten",
+        "yearly": "Jährlich",
+        "discount": "50% RABATT",
+        "orderNow": "Jetzt bestellen",
+        "perMonth": "/Monat",
+        "plans": [
+            {
+                "id": 1,
+                "title": "STARTER",
+                "price": "65",
+                "features": [
+                    "Der Punkt bei der Verwendung von Lorem-Angeboten",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Premium-Telefonsupport",
+                    "Unbegrenzte Bandbreite",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Der Punkt bei der Verwendung von Lorem"
+                ]
+            },
+            {
+                "id": 2,
+                "title": "PREMIUM",
+                "price": "85",
+                "features": [
+                    "Der Punkt bei der Verwendung von Lorem-Angeboten",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Premium-Telefonsupport",
+                    "Unbegrenzte Bandbreite",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Der Punkt bei der Verwendung von Lorem"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "ULTIMATE",
+                "price": "97",
+                "features": [
+                    "Der Punkt bei der Verwendung von Lorem-Angeboten",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Premium-Telefonsupport",
+                    "Unbegrenzte Bandbreite",
+                    "Lorem Ipsum ist einfach nur Dummy",
+                    "Der Punkt bei der Verwendung von Lorem"
+                ]
+            }
+        ]
     },
     "privacyConsent": {
         "text": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch die Nutzung unserer Website stimmen Sie unseren",
@@ -125,8 +174,8 @@
         ]
     },
     "store": {
-        "pageTitle": "Shop",
-        "breadcrumbTitle": "Shop",
+        "pageTitle": "Gemeinschaft",
+        "breadcrumbTitle": "Gemeinschaft",
         "sectionTitle": "Unsere Produkte",
         "sectionSubtitle": "Entdecken Sie hochwertige Produkte für Buchliebhaber und Leser",
         "buyNow": "Jetzt kaufen",
@@ -341,8 +390,8 @@
         ]
     },
     "store": {
-        "pageTitle": "Shop",
-        "breadcrumbTitle": "Shop",
+        "pageTitle": "Gemeinschaft",
+        "breadcrumbTitle": "Gemeinschaft",
         "sectionTitle": "Unsere Produkte",
         "sectionSubtitle": "Entdecken Sie hochwertige Produkte für Buchliebhaber und Leser",
         "buyNow": "Jetzt kaufen",
@@ -426,7 +475,7 @@
             "white paper": "Whitepaper",
             "whitepaper": "Whitepaper",
             "blog": "Blog",
-            "store": "Shop",
+            "store": "Gemeinschaft",
             "privacy policy": "Datenschutzrichtlinie",
             "terms & condition": "Allgemeine Geschäftsbedingungen"
         }

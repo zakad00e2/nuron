@@ -40,10 +40,5 @@
         "id": 7,
         "text": "Store",
         "path": "/store"
-    },
-    {
-        "id": 8,
-        "text": "Pricing",
-        "path": "/pricing"
     }
 ]

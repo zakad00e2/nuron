@@ -58,7 +58,8 @@ const Product = ({
                     "product-style-one",
                     !overlay && "no-overlay",
                     placeBid && "with-placeBid",
-                    (author || description || websiteUrl) && "book-mode"
+                    (author || description || websiteUrl) && "book-mode",
+                    purchaseUrl && "store-mode"
                 )}
             >
                 <div className="card-thumbnail">

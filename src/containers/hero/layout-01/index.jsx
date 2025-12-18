@@ -4,7 +4,7 @@ import Button from "@ui/button";
 import { HeadingType, TextType, ButtonType, ImageType } from "@utils/types";
 
 const HeroArea = ({ data }) => (
-    <div className="slider-one rn-section-gapTop">
+    <div className="slider-one rn-section-gapTop" style={{ minHeight: "500px", display: "flex", alignItems: "center" }}>
         <div className="container">
             <div className="row row-reverce-sm align-items-center">
                 <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
@@ -19,15 +19,14 @@ const HeroArea = ({ data }) => (
                         </h2>
                     )}
                     {data?.texts?.map((text) => (
-                        <p
+                        <div
                             className="slide-disc"
                             data-sal-delay="300"
                             data-sal="slide-up"
                             data-sal-duration="800"
                             key={text.id}
-                        >
-                            {text.content}
-                        </p>
+                            dangerouslySetInnerHTML={{ __html: text.content }}
+                        />
                     ))}
                     {/* {data?.buttons && (
                         <div className="button-group">
@@ -51,9 +50,10 @@ const HeroArea = ({ data }) => (
                             <Image
                                 src={data.images[0].src}
                                 alt={data.images[0]?.alt || "Slider Images"}
-                                width={585}
-                                height={593}
+                                width={850}
+                                height={850}
                                 priority
+                                style={{ objectFit: "cover", height: "100%", maxHeight: "850px" }}
                             />
                         </div>
                     )}

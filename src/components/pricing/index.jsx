@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Button from "@ui/button";
+import { useLanguage } from "@contexts/LanguageContext";
 
 const PricingCard = ({ 
     title, 
@@ -13,10 +14,19 @@ const PricingCard = ({
     buttonText = "Shop Now",
     onButtonClick 
 }) => {
+    const { language } = useLanguage();
+    const isRtl = language === "ar";
+
     return (
-        <div className={clsx("pricing-card", isActive && "active")}>
-            <div className="pricing-header">
-                <h3 className="title">{title}</h3>
+        <div 
+            className={clsx("pricing-card", isActive && "active")}
+            style={{ 
+                direction: isRtl ? 'rtl' : 'ltr',
+                fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit'
+            }}
+        >
+            <div className="pricing-header" style={{ textAlign: 'center' }}>
+                <h3 className="title" style={{ textAlign: 'center' }}>{title}</h3>
                 <div className="icon-wrapper">
                     <i className={icon}></i>
                 </div>
@@ -27,10 +37,10 @@ const PricingCard = ({
                     <span className="price">{price}</span>
                     <span className="period">{period}</span>
                 </div>
-                <ul className="features-list">
+                <ul className="features-list" style={{ textAlign: isRtl ? 'right' : 'left' }}>
                     {features.map((feature, index) => (
-                        <li key={index} className={clsx(!feature.included && "disabled")}>
-                            <i className="feather-check"></i>
+                        <li key={index} className={clsx(!feature.included && "disabled")} style={{ justifyContent: isRtl ? 'flex-start' : 'flex-start' }}>
+                            <i className="feather-check" style={{ marginLeft: isRtl ? '10px' : '0', marginRight: isRtl ? '0' : '10px' }}></i>
                             {feature.text}
                         </li>
                     ))}

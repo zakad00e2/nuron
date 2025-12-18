@@ -160,6 +160,15 @@
                 max-height: none;
             }
         }
+
+        &.store-mode {
+            .card-thumbnail {
+                img {
+                    aspect-ratio: 1/1;
+                    max-height: 300px;
+                }
+            }
+        }
         
         .product-name {
             margin-top: 10px;

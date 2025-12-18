@@ -6,7 +6,7 @@
         "publishers": "Publishers",
         "whitepaper": "White paper",
         "blog": "Blog",
-        "store": "Store",
+        "store": "Community",
         "pricing": "Pricing",
         "getStarted": "Get Started",
         "create": "Create",
@@ -15,6 +15,55 @@
         "decline": "Decline",
         "discoverBookCollection": "Discover Our Book Collection",
         "exploreBooks": "Explore our curated selection of books on blockchain, NFTs, and Web3"
+    },
+    "pricing": {
+        "title": "Community Subscription Plans",
+        "description": "Choose the plan that suits your needs to join our community",
+        "yearly": "Yearly",
+        "discount": "50% OFF",
+        "orderNow": "Order Now",
+        "perMonth": "/Month",
+        "plans": [
+            {
+                "id": 1,
+                "title": "STARTER",
+                "price": "65",
+                "features": [
+                    "The point of using lorem offer",
+                    "Lorem Ipsum is simply dummy",
+                    "Premium Phone Support",
+                    "Unlimited Bandwidth",
+                    "Lorem Ipsum is simply dummy",
+                    "The point of using lorem"
+                ]
+            },
+            {
+                "id": 2,
+                "title": "PREMIUM",
+                "price": "85",
+                "features": [
+                    "The point of using lorem offer",
+                    "Lorem Ipsum is simply dummy",
+                    "Premium Phone Support",
+                    "Unlimited Bandwidth",
+                    "Lorem Ipsum is simply dummy",
+                    "The point of using lorem"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "ULTIMATE",
+                "price": "97",
+                "features": [
+                    "The point of using lorem offer",
+                    "Lorem Ipsum is simply dummy",
+                    "Premium Phone Support",
+                    "Unlimited Bandwidth",
+                    "Lorem Ipsum is simply dummy",
+                    "The point of using lorem"
+                ]
+            }
+        ]
     },
     "privacyConsent": {
         "text": "We use cookies to improve your experience. By using our site, you agree to our",
@@ -125,8 +174,8 @@
         ]
     },
     "store": {
-        "pageTitle": "Store",
-        "breadcrumbTitle": "Store",
+        "pageTitle": "Community",
+        "breadcrumbTitle": "Community",
         "sectionTitle": "Our Products",
         "sectionSubtitle": "Discover quality products for book lovers and readers",
         "buyNow": "Buy Now",
@@ -341,8 +390,8 @@
         ]
     },
     "store": {
-        "pageTitle": "Store",
-        "breadcrumbTitle": "Store",
+        "pageTitle": "Community",
+        "breadcrumbTitle": "Community",
         "sectionTitle": "Our Products",
         "sectionSubtitle": "Discover quality products for book lovers and readers",
         "buyNow": "Buy Now",
@@ -426,7 +475,7 @@
             "white paper": "Whitepaper",
             "whitepaper": "Whitepaper",
             "blog": "Blog",
-            "store": "Store",
+            "store": "Community",
             "privacy policy": "Privacy Policy",
             "terms & condition": "Terms & Condition"
         }
