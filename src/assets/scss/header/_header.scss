@@ -340,16 +340,8 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        flex-basis: 55%;
-        @media #{variables.$lg-layout} {
-            flex-basis: 35%;
-        }
-        @media #{variables.$md-layout} {
-            flex-basis: 35%;
-        }
-        @media #{variables.$sm-layout} {
-            flex-basis: 35%;
-        }
+        flex: 1;
+        
         @media #{variables.$large-mobile} {
             justify-content: flex-start;
             flex-basis: auto;
@@ -358,21 +350,9 @@
     .header-right {
         justify-content: flex-end;
         display: flex;
-        flex-basis: 45%;
+        flex-shrink: 0;
         align-items: center;
 
-        @media #{variables.$lg-layout} {
-            flex-basis: 65%;
-        }
-        @media #{variables.$md-layout} {
-            flex-basis: 65%;
-        }
-        @media #{variables.$md-layout} {
-            flex-basis: 65%;
-        }
-        @media #{variables.$sm-layout} {
-            flex-basis: 65%;
-        }
         @media #{variables.$large-mobile} {
             justify-content: flex-end;
             flex-basis: auto;
@@ -395,6 +375,7 @@
             margin: 0;
         }
         .connectBtn {
+            border-radius: 5px;
             @media #{variables.$laptop-device} {
                 padding: 8px 11px;
                 font-size: 14px;
@@ -402,17 +383,17 @@
             @media #{variables.$lg-layout} {
                 padding: 10px 11px;
                 font-size: 12px;
-                border-radius: 6px;
+                border-radius: 5px;
             }
             @media #{variables.$md-layout} {
                 padding: 10px 11px;
                 font-size: 12px;
-                border-radius: 6px;
+                border-radius: 5px;
             }
             @media #{variables.$sm-layout} {
-                padding: 8px 11px;
-                font-size: 12px;
-                border-radius: 6px;
+                padding: 10px 14px;
+                font-size: 14px;
+                border-radius: 5px;
             }
         }
     }

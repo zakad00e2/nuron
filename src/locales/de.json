@@ -8,6 +8,7 @@
         "blog": "Blog",
         "store": "Gemeinschaft",
         "pricing": "Preise",
+        "joinUs": "Mach mit",
         "getStarted": "Loslegen",
         "create": "Erstellen",
         "contents": "Inhalt",
@@ -21,7 +22,7 @@
         "description": "Wählen Sie den Plan, der Ihren Bedürfnissen entspricht, um unserer Community beizutreten",
         "yearly": "Jährlich",
         "discount": "50% RABATT",
-        "orderNow": "Jetzt bestellen",
+        "orderNow": "Jetzt beitreten",
         "perMonth": "/Monat",
         "plans": [
             {

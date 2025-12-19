@@ -158,7 +158,19 @@ const Header = ({ className }) => {
                                     <BurgerButton onClick={offcanvasHandler} />
                                 </div>
                             </div> */}
-                            <div className="setting-option">
+                            <div className="setting-option header-btn">
+                                <div className="icon-box">
+                                    <Button
+                                        color="primary-alta"
+                                        className="connectBtn"
+                                        size="small"
+                                        path="/sign-up"
+                                    >
+                                        {getTranslation(language, "common.joinUs") || "Join Us"}
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className="setting-option d-none d-md-block">
                                 <LanguageSwitcher />
                             </div>
                             <div className="setting-option mobile-menu-bar d-block d-xl-none">

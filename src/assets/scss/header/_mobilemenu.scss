@@ -261,6 +261,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 15px;
         
         @media #{variables.$sm-layout} {
             padding: 15px 20px;

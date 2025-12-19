@@ -2,11 +2,14 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import Button from "@ui/button";
 import { HeadingType, TextType, ButtonType, ImageType } from "@utils/types";
+import { useLanguage } from "@contexts/LanguageContext";
 
-const HeroArea = ({ data }) => (
+const HeroArea = ({ data }) => {
+    const { language } = useLanguage();
+    return (
     <div className="slider-one rn-section-gapTop" style={{ minHeight: "500px", display: "flex", alignItems: "center" }}>
         <div className="container">
-            <div className="row row-reverce-sm align-items-center">
+            <div className="row row-reverce-sm align-items-center justify-content-between">
                 <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
                     {data?.headings[0]?.content && (
                         <h2
@@ -44,7 +47,7 @@ const HeroArea = ({ data }) => (
                         </div>
                     )} */}
                 </div>
-                <div className="col-lg-5 col-md-6 col-sm-12 offset-lg-1">
+                <div className={`col-lg-5 col-md-6 col-sm-12 ${language === "ar" ? "offset-lg-1" : ""}`}>
                     {data?.images?.[0]?.src && (
                         <div className="slider-thumbnail">
                             <Image
@@ -61,7 +64,8 @@ const HeroArea = ({ data }) => (
             </div>
         </div>
     </div>
-);
+    );
+};
 
 HeroArea.propTypes = {
     data: PropTypes.shape({

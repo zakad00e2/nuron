@@ -134,10 +134,6 @@ const BlogPage = () => {
         fetchBlogs();
     }, [language]);
 
-    useEffect(() => {
-        sal();
-    }, [posts]);
-
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString("en-US", {
@@ -266,9 +262,6 @@ const BlogPage = () => {
                                                 key={post.id}
                                                 id={`post-${post.id}`}
                                                 className="blog-post-card"
-                                                data-sal="slide-up"
-                                                data-sal-delay="150"
-                                                data-sal-duration="800"
                                             >
                                                 {/* Post Header */}
                                                 <div className="post-header">

@@ -22,6 +22,7 @@ export async function getStaticProps() {
 }
 
 const API_STORE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/stores";
+const API_HOMEPAGE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage";
 
 const StorePage = () => {
     const { language } = useLanguage();
@@ -29,6 +30,7 @@ const StorePage = () => {
     const [loading, setLoading] = useState(true);
     const [heroDataState, setHeroDataState] = useState(null);
     const [pricingData, setPricingData] = useState(null);
+    const [copyright, setCopyright] = useState(null);
     
     const pageTitle = getTranslation(language, "store.pageTitle");
     const breadcrumbTitle = getTranslation(language, "store.breadcrumbTitle");
@@ -101,6 +103,24 @@ const StorePage = () => {
         };
 
         fetchProducts();
+    }, [language]);
+
+    useEffect(() => {
+        const fetchCopyright = async () => {
+            try {
+                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
+                const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.data && data.data.Property_Rights) {
+                        setCopyright(data.data.Property_Rights);
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching copyright:", error);
+            }
+        };
+        fetchCopyright();
     }, [language]);
 
     useEffect(() => {
@@ -193,7 +213,7 @@ const StorePage = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
+            <Footer copyright={copyright} />
         </Wrapper>
     );
 };

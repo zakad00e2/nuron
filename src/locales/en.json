@@ -8,6 +8,7 @@
         "blog": "Blog",
         "store": "Community",
         "pricing": "Pricing",
+        "joinUs": "Join Us",
         "getStarted": "Get Started",
         "create": "Create",
         "contents": "Contents",
@@ -21,7 +22,7 @@
         "description": "Choose the plan that suits your needs to join our community",
         "yearly": "Yearly",
         "discount": "50% OFF",
-        "orderNow": "Order Now",
+        "orderNow": "Join Us",
         "perMonth": "/Month",
         "plans": [
             {

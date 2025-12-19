@@ -4,6 +4,7 @@ import { Offcanvas, OffcanvasHeader, OffcanvasBody } from "@ui/offcanvas";
 import Anchor from "@ui/anchor";
 import Logo from "@components/logo";
 import ColorSwitcher from "@components/color-switcher";
+import LanguageSwitcher from "@components/language-switcher";
 import { slideToggle, slideUp } from "@utils/methods";
 import SubMenu from "./submenu";
 import MegaMenu from "./megamenu";
@@ -72,6 +73,7 @@ const MobileMenu = ({ isOpen, onClick, menu, logo }) => {
                     <div className="setting-option my_switcher">
                         <ColorSwitcher />
                     </div>
+                    <LanguageSwitcher className="d-block d-md-none" />
                 </div>
             </OffcanvasBody>
         </Offcanvas>
