@@ -30,13 +30,14 @@ const PricingArea = ({ className, space = 1, data }) => {
     const t = getTranslation(language, "pricing");
 
     useEffect(() => {
+        let isMounted = true;
         const fetchTitles = async () => {
             try {
                 const response = await fetch(
                     `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
                 );
                 const data = await response.json();
-                if (data && data.data) {
+                if (isMounted && data && data.data) {
                     setApiTitles(data.data);
                 }
             } catch (error) {
@@ -44,6 +45,7 @@ const PricingArea = ({ className, space = 1, data }) => {
             }
         };
         fetchTitles();
+        return () => { isMounted = false; };
     }, [language]);
     
     if (!t) return null;

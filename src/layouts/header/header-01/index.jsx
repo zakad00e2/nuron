@@ -28,16 +28,27 @@ const Header = ({ className }) => {
     const { search, searchHandler } = useFlyoutSearch();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [ethBalance, setEthBalance] = useState("");
-    const [joinUsLink, setJoinUsLink] = useState("/sign-up");
+    const [joinUsLink, setJoinUsLink] = useState("");
 
     useEffect(() => {
+        let isMounted = true;
         const fetchJoinUsLink = async () => {
             try {
                 const response = await fetch(`https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage?locale=${language}&populate=*`);
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.data && data.data.join_us_link) {
-                        setJoinUsLink(data.data.join_us_link);
+                    if (isMounted && data.data) {
+                        let link = data.data.join_us_link;
+                        
+                        // Fallback to other locales if link is missing
+                        if (!link && data.data.localizations) {
+                            const fallbackLoc = data.data.localizations.find(loc => loc.join_us_link);
+                            if (fallbackLoc) {
+                                link = fallbackLoc.join_us_link;
+                            }
+                        }
+                        
+                        setJoinUsLink(link || "");
                     }
                 }
             } catch (error) {
@@ -45,6 +56,7 @@ const Header = ({ className }) => {
             }
         };
         fetchJoinUsLink();
+        return () => { isMounted = false; };
     }, [language]);
 
     // Translate menu items

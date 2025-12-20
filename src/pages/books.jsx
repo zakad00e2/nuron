@@ -35,13 +35,14 @@ const BooksPage = () => {
   const exploreSubtitle = getTranslation(language, "common.exploreBooks");
 
   useEffect(() => {
+    let isMounted = true;
     const fetchTitles = async () => {
       try {
         const response = await fetch(
           `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
         );
         const data = await response.json();
-        if (data && data.data) {
+        if (isMounted && data && data.data) {
           setApiTitles(data.data);
         }
       } catch (error) {
@@ -49,9 +50,11 @@ const BooksPage = () => {
       }
     };
     fetchTitles();
+    return () => { isMounted = false; };
   }, [language]);
 
   useEffect(() => {
+    let isMounted = true;
     const fetchBooks = async () => {
       setLoading(true);
       try {
@@ -114,18 +117,19 @@ const BooksPage = () => {
             };
           });
           console.log("Mapped books:", mappedBooks);
-          setBooks(mappedBooks);
+          if (isMounted) setBooks(mappedBooks);
         } else {
           console.warn("No data found in API response");
         }
       } catch (error) {
         console.error("Error fetching books:", error);
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     };
 
     fetchBooks();
+    return () => { isMounted = false; };
   }, [language]);
 
   useEffect(() => {

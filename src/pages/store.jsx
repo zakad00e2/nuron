@@ -45,13 +45,14 @@ const StorePage = () => {
     };
 
     useEffect(() => {
+        let isMounted = true;
         const fetchTitles = async () => {
             try {
                 const response = await fetch(
                     `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
                 );
                 const data = await response.json();
-                if (data && data.data) {
+                if (isMounted && data && data.data) {
                     setApiTitles(data.data);
                 }
             } catch (error) {
@@ -59,9 +60,11 @@ const StorePage = () => {
             }
         };
         fetchTitles();
+        return () => { isMounted = false; };
     }, [language]);
 
     useEffect(() => {
+        let isMounted = true;
         const fetchProducts = async () => {
             setLoading(true);
             try {
@@ -73,7 +76,7 @@ const StorePage = () => {
                 }
                 const data = await response.json();
                 
-                if (data && data.data && data.data.length > 0) {
+                if (isMounted && data && data.data && data.data.length > 0) {
                     const storeData = data.data[0];
 
                     // Map Products
@@ -116,11 +119,12 @@ const StorePage = () => {
             } catch (error) {
                 console.error("Error fetching store products:", error);
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
 
         fetchProducts();
+        return () => { isMounted = false; };
     }, [language]);
 
     useEffect(() => {

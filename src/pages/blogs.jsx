@@ -30,6 +30,7 @@ const BlogPage = () => {
     const blogCurrentPage = getTranslation(language, "blog.currentPage") || "Blog";
 
     useEffect(() => {
+        let isMounted = true;
         const fetchBlogs = async () => {
             setLoading(true);
             try {
@@ -122,16 +123,17 @@ const BlogPage = () => {
                             } : null
                         };
                     });
-                    setPosts(mappedPosts);
+                    if (isMounted) setPosts(mappedPosts);
                 }
             } catch (error) {
                 console.error("Error fetching blogs:", error);
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         };
 
         fetchBlogs();
+        return () => { isMounted = false; };
     }, [language]);
 
     const formatDate = (dateString) => {

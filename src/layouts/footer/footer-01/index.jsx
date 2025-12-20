@@ -25,12 +25,13 @@ const Footer = ({ space = 1, className, data, copyright }) => {
     const facebookLink = contactData.socials.find(social => social.title === "Facebook");
 
     useEffect(() => {
+        let isMounted = true;
         const fetchFooterLinks = async () => {
             try {
                 const response = await fetch(`https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage?locale=${language}&populate=*`);
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.data && data.data.footer_links) {
+                    if (isMounted && data.data && data.data.footer_links) {
                         const fbLink = data.data.footer_links.find(link => link.Label.toLowerCase() === "facebook");
                         if (fbLink) {
                             setApiFacebookLink(fbLink.URL);
@@ -42,6 +43,7 @@ const Footer = ({ space = 1, className, data, copyright }) => {
             }
         };
         fetchFooterLinks();
+        return () => { isMounted = false; };
     }, [language]);
 
     return (
