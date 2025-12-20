@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import PricingCard from '@components/pricing';
@@ -25,8 +25,26 @@ const staticPricingConfig = [
 
 const PricingArea = ({ className, space = 1, data }) => {
     const { language } = useLanguage();
+    const [apiTitles, setApiTitles] = useState(null);
     const isRtl = language === "ar";
     const t = getTranslation(language, "pricing");
+
+    useEffect(() => {
+        const fetchTitles = async () => {
+            try {
+                const response = await fetch(
+                    `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
+                );
+                const data = await response.json();
+                if (data && data.data) {
+                    setApiTitles(data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching titles:", error);
+            }
+        };
+        fetchTitles();
+    }, [language]);
     
     if (!t) return null;
 
@@ -38,9 +56,11 @@ const PricingArea = ({ className, space = 1, data }) => {
                 <div className="row mb--50">
                     <div className="col-lg-12">
                         <div className="section-title text-center" style={{ textAlign: 'center' }}>
-                            <h2 className="title" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>{t.title}</h2>
+                            <h2 className="title" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>
+                                {apiTitles?.subscriptions_hero_title || t.title}
+                            </h2>
                             <p className="description" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>
-                                {t.description}
+                                {apiTitles?.subscriptions_hero_subtitle || t.description}
                             </p>
                         </div>
                         {/* <div className="pricing-toggle">

@@ -31,6 +31,7 @@ const StorePage = () => {
     const [heroDataState, setHeroDataState] = useState(null);
     const [pricingData, setPricingData] = useState(null);
     const [copyright, setCopyright] = useState(null);
+    const [apiTitles, setApiTitles] = useState(null);
     
     const pageTitle = getTranslation(language, "store.pageTitle");
     const breadcrumbTitle = getTranslation(language, "store.breadcrumbTitle");
@@ -42,6 +43,23 @@ const StorePage = () => {
         texts: [{ content: storeSubtitle, id: 1 }],
         images: [{ src: "/images/banner/banner-06.png" }]
     };
+
+    useEffect(() => {
+        const fetchTitles = async () => {
+            try {
+                const response = await fetch(
+                    `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
+                );
+                const data = await response.json();
+                if (data && data.data) {
+                    setApiTitles(data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching titles:", error);
+            }
+        };
+        fetchTitles();
+    }, [language]);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -153,14 +171,14 @@ const StorePage = () => {
 
                 <div className="rn-store-area rn-section-gapTop">
                     <div className="container">
-                         <div className="row mb--50">
+                         <div className="row mb--5">
                             <div className="col-lg-12">
                                 <div className="section-title text-center">
                                     <h2 className="title">
-                                        {storeTitle}
+                                        {apiTitles?.product_hero_title || storeTitle}
                                     </h2>
                                     <p className="subtitle">
-                                        {storeSubtitle}
+                                        {apiTitles?.product_hero_subtitle || storeSubtitle}
                                     </p>
                                 </div>
                             </div>

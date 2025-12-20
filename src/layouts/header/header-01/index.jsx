@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Web3 from "web3";
@@ -28,6 +28,24 @@ const Header = ({ className }) => {
     const { search, searchHandler } = useFlyoutSearch();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [ethBalance, setEthBalance] = useState("");
+    const [joinUsLink, setJoinUsLink] = useState("/sign-up");
+
+    useEffect(() => {
+        const fetchJoinUsLink = async () => {
+            try {
+                const response = await fetch(`https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage?locale=${language}&populate=*`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.data && data.data.join_us_link) {
+                        setJoinUsLink(data.data.join_us_link);
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching join us link:", error);
+            }
+        };
+        fetchJoinUsLink();
+    }, [language]);
 
     // Translate menu items
     const translatedMenu = useMemo(() => {
@@ -164,7 +182,7 @@ const Header = ({ className }) => {
                                         color="primary-alta"
                                         className="connectBtn"
                                         size="small"
-                                        path="/sign-up"
+                                        path={joinUsLink}
                                     >
                                         {getTranslation(language, "common.joinUs") || "Join Us"}
                                     </Button>

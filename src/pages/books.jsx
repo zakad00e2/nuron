@@ -24,6 +24,7 @@ const BooksPage = () => {
   const { language } = useLanguage();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [apiTitles, setApiTitles] = useState(null);
 
   const booksTitle = getTranslation(language, "common.books");
   const booksCollectionTitle = getTranslation(language, "books.title");
@@ -32,6 +33,23 @@ const BooksPage = () => {
     "common.discoverBookCollection"
   );
   const exploreSubtitle = getTranslation(language, "common.exploreBooks");
+
+  useEffect(() => {
+    const fetchTitles = async () => {
+      try {
+        const response = await fetch(
+          `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
+        );
+        const data = await response.json();
+        if (data && data.data) {
+          setApiTitles(data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching titles:", error);
+      }
+    };
+    fetchTitles();
+  }, [language]);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -126,8 +144,12 @@ const BooksPage = () => {
             <div className="row mb--50">
               <div className="col-lg-12">
                 <div className="section-title text-center">
-                  <h2 className="title">{discoverTitle}</h2>
-                  <p className="subtitle">{exploreSubtitle}</p>
+                  <h2 className="title">
+                    {apiTitles?.book_hero_title || discoverTitle}
+                  </h2>
+                  <p className="subtitle">
+                    {apiTitles?.book_hero_subtitle || exploreSubtitle}
+                  </p>
                 </div>
               </div>
             </div>

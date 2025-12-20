@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Image from "next/image";
@@ -12,6 +13,7 @@ import contactData from "../../../data/general/contact.json";
 
 const Footer = ({ space = 1, className, data, copyright }) => {
     const { language } = useLanguage();
+    const [apiFacebookLink, setApiFacebookLink] = useState(null);
     const currentYear = new Date().getFullYear();
     
     const pagesTitle = getTranslation(language, "footer.pagesTitle");
@@ -21,6 +23,26 @@ const Footer = ({ space = 1, className, data, copyright }) => {
     
     const footerLinks = footerData["quicklink-widget"]?.menu || [];
     const facebookLink = contactData.socials.find(social => social.title === "Facebook");
+
+    useEffect(() => {
+        const fetchFooterLinks = async () => {
+            try {
+                const response = await fetch(`https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage?locale=${language}&populate=*`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.data && data.data.footer_links) {
+                        const fbLink = data.data.footer_links.find(link => link.Label.toLowerCase() === "facebook");
+                        if (fbLink) {
+                            setApiFacebookLink(fbLink.URL);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching footer links:", error);
+            }
+        };
+        fetchFooterLinks();
+    }, [language]);
 
     return (
         <>
@@ -88,7 +110,7 @@ const Footer = ({ space = 1, className, data, copyright }) => {
                                 <h3 className="footer-section-title">{followUsTitle}</h3>
                                 {facebookLink && (
                                     <a
-                                        href={facebookLink.link}
+                                        href={apiFacebookLink || facebookLink.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="footer-social-link"

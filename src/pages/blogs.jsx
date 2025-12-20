@@ -33,7 +33,7 @@ const BlogPage = () => {
         const fetchBlogs = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`${API_BLOGS_URL}?locale=${language}&populate=*`);
+                const response = await fetch(`${API_BLOGS_URL}?locale=${language}&populate=*&sort[0]=publishedAt:desc`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -285,7 +285,7 @@ const BlogPage = () => {
 
                                                 {/* Post Content */}
                                                 <div className="post-content">
-                                                    {post.image && (
+                                                    {/* {post.image && (
                                                         <div className="post-image">
                                                             <Image
                                                                 src={post.image.src}
@@ -299,10 +299,10 @@ const BlogPage = () => {
                                                                 }}
                                                             />
                                                         </div>
-                                                    )}
-                                                    <h2 className="post-title">
+                                                    )} */}
+                                                    {/* <h2 className="post-title">
                                                         {post.title}
-                                                    </h2>
+                                                    </h2> */}
                                                     <div 
                                                         className="post-excerpt"
                                                         dangerouslySetInnerHTML={{ __html: post.content }}
