@@ -32,6 +32,7 @@ const StorePage = () => {
     const [pricingData, setPricingData] = useState(null);
     const [copyright, setCopyright] = useState(null);
     const [apiTitles, setApiTitles] = useState(null);
+    const [calendlyUrl, setCalendlyUrl] = useState(null);
     
     const pageTitle = getTranslation(language, "store.pageTitle");
     const breadcrumbTitle = getTranslation(language, "store.breadcrumbTitle");
@@ -60,6 +61,31 @@ const StorePage = () => {
             }
         };
         fetchTitles();
+        return () => { isMounted = false; };
+    }, [language]);
+
+    useEffect(() => {
+        let isMounted = true;
+        const fetchCalendly = async () => {
+            try {
+                const response = await fetch(`https://brilliant-boot-036dae9a94.strapiapp.com/api/candlies?populate=*&locale=${language}`);
+                const data = await response.json();
+                if (isMounted && data && data.data) {
+                    // Find the item with valid code
+                    const validItem = data.data.find(item => item.candly_code && item.candly_code.code && item.candly_code.code.includes('Calendly.initPopupWidget'));
+                    if (validItem) {
+                        const code = validItem.candly_code.code;
+                        const match = code.match(/url:\s*['"]([^'"]+)['"]/);
+                        if (match && match[1]) {
+                            setCalendlyUrl(match[1]);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching calendly:", error);
+            }
+        };
+        fetchCalendly();
         return () => { isMounted = false; };
     }, [language]);
 
@@ -111,7 +137,8 @@ const StorePage = () => {
                             id: sub.id,
                             title: sub.subscriptions_type,
                             price: sub.subscriptions_price,
-                            features: sub.subscriptions_details ? sub.subscriptions_details.map(d => d.detail) : []
+                            features: sub.subscriptions_details ? sub.subscriptions_details.map(d => d.detail) : [],
+                            link: sub.subscriptions_link
                         }));
                         setPricingData({ plans: mappedPlans });
                     }
@@ -170,8 +197,14 @@ const StorePage = () => {
                         </div>
                     </div>
                 ) : (
-                    <HeroArea data={heroDataState || defaultHeroData} />
+                    <HeroArea 
+                        data={heroDataState || defaultHeroData} 
+                        showScheduleButton={true}
+                        calendlyUrl={calendlyUrl}
+                    />
                 )}
+
+                <hr className="rn-section-divider" />
 
                 <div className="rn-store-area rn-section-gapTop">
                     <div className="container">
@@ -202,6 +235,8 @@ const StorePage = () => {
                             />
                             
                         )}
+
+                        <hr className="rn-section-divider" />
 
                         {/* Pricing section below products */}
                         <div className="rn-section-gapTop">

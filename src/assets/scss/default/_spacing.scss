@@ -41,12 +41,12 @@
 }
 
 .rn-section-gapTop {
-    padding-top: 60px;
+    padding-top: 40px;
     @media #{variables.$md-layout} {
-        padding-top: 50px;
+        padding-top: 30px;
     }
     @media #{variables.$sm-layout} {
-        padding-top: 40px;
+        padding-top: 20px;
     }
 }
 .rn-section-gapTop-2 {

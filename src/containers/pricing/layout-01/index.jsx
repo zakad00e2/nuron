@@ -55,7 +55,7 @@ const PricingArea = ({ className, space = 1, data }) => {
     return (
         <div className={clsx("rn-pricing-area", space === 1 && "rn-section-gapTop", className)} style={{ direction: isRtl ? 'rtl' : 'ltr' }}>
             <div className="container">
-                <div className="row mb--50">
+                <div className="row mb--10">
                     <div className="col-lg-12">
                         <div className="section-title text-center" style={{ textAlign: 'center' }}>
                             <h2 className="title" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>
@@ -90,6 +90,7 @@ const PricingArea = ({ className, space = 1, data }) => {
                                     isActive={config.isActive}
                                     buttonText={t.orderNow}
                                     period={t.perMonth}
+                                    link={plan.link}
                                 />
                             </div>
                         );

@@ -107,6 +107,37 @@
 ---------------------------*/
 
 .slider-one {
+    .hero-content {
+        @media #{variables.$sm-layout} {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            h2, .title {
+                text-align: center !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .slide-disc {
+                text-align: center !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                p {
+                    text-align: center !important;
+                }
+            }
+
+            .button-group {
+                justify-content: center;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
     @media #{variables.$sm-layout} {
         text-align: center;
     }

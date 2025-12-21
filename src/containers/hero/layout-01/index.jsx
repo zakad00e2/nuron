@@ -3,14 +3,15 @@ import Image from "next/image";
 import Button from "@ui/button";
 import { HeadingType, TextType, ButtonType, ImageType } from "@utils/types";
 import { useLanguage } from "@contexts/LanguageContext";
+import { getTranslation } from "@utils/translations";
 
-const HeroArea = ({ data }) => {
+const HeroArea = ({ data, showScheduleButton = false, calendlyUrl }) => {
     const { language } = useLanguage();
     return (
     <div className="slider-one rn-section-gapTop" style={{ minHeight: "500px", display: "flex", alignItems: "center" }}>
         <div className="container">
             <div className="row row-reverce-sm align-items-center justify-content-between">
-                <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
+                <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50 hero-content">
                     {data?.headings[0]?.content && (
                         <h2
                             className="title"
@@ -31,6 +32,25 @@ const HeroArea = ({ data }) => {
                             dangerouslySetInnerHTML={{ __html: text.content }}
                         />
                     ))}
+                    {showScheduleButton && (
+                        <div className="button-group mt--10">
+                            <a 
+                                href="#" 
+                                className="btn btn-primary"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (window.Calendly) {
+                                        window.Calendly.initPopupWidget({url: calendlyUrl || 'https://calendly.com/contact-autor/30min'});
+                                    }
+                                }}
+                                data-sal-delay="400"
+                                data-sal="slide-up"
+                                data-sal-duration="800"
+                            >
+                                {getTranslation(language, "common.scheduleTime")}
+                            </a>
+                        </div>
+                    )}
                     {/* {data?.buttons && (
                         <div className="button-group">
                             {data.buttons.map(({ content, id, ...btn }, i) => (
@@ -74,6 +94,8 @@ HeroArea.propTypes = {
         buttons: PropTypes.arrayOf(ButtonType),
         images: PropTypes.arrayOf(ImageType),
     }),
+    showScheduleButton: PropTypes.bool,
+    calendlyUrl: PropTypes.string,
 };
 
 export default HeroArea;

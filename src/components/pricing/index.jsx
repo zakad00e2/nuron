@@ -12,7 +12,8 @@ const PricingCard = ({
     icon, 
     isActive, 
     buttonText = "Shop Now",
-    onButtonClick 
+    onButtonClick,
+    link
 }) => {
     const { language } = useLanguage();
     const isRtl = language === "ar";
@@ -46,7 +47,7 @@ const PricingCard = ({
                     ))}
                 </ul>
                 <Button 
-                    path="#" 
+                    path={link || "#"} 
                     className="btn-pricing btn-primary"
                     onClick={onButtonClick}
                 >
@@ -69,7 +70,8 @@ PricingCard.propTypes = {
     icon: PropTypes.string,
     isActive: PropTypes.bool,
     buttonText: PropTypes.string,
-    onButtonClick: PropTypes.func
+    onButtonClick: PropTypes.func,
+    link: PropTypes.string
 };
 
 export default PricingCard;

@@ -38,13 +38,23 @@ const Header = ({ className }) => {
                 if (response.ok) {
                     const data = await response.json();
                     if (isMounted && data.data) {
-                        let link = data.data.join_us_link;
+                        // Handle both flattened and nested structure
+                        const attributes = data.data.attributes || data.data;
+                        let link = attributes.join_us_link;
                         
                         // Fallback to other locales if link is missing
-                        if (!link && data.data.localizations) {
-                            const fallbackLoc = data.data.localizations.find(loc => loc.join_us_link);
-                            if (fallbackLoc) {
-                                link = fallbackLoc.join_us_link;
+                        if (!link && attributes.localizations) {
+                            const locs = Array.isArray(attributes.localizations) ? attributes.localizations : attributes.localizations.data;
+                            
+                            if (Array.isArray(locs)) {
+                                const fallbackLoc = locs.find(loc => {
+                                    const locAttrs = loc.attributes || loc;
+                                    return locAttrs.join_us_link;
+                                });
+                                if (fallbackLoc) {
+                                    const locAttrs = fallbackLoc.attributes || fallbackLoc;
+                                    link = locAttrs.join_us_link;
+                                }
                             }
                         }
                         
@@ -190,14 +200,14 @@ const Header = ({ className }) => {
                             </div> */}
                             <div className="setting-option header-btn">
                                 <div className="icon-box">
-                                    <Button
-                                        color="primary-alta"
-                                        className="connectBtn"
-                                        size="small"
-                                        path={joinUsLink}
+                                    <a 
+                                        className="btn btn-small btn-primary-alta connectBtn" 
+                                        href={joinUsLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         {getTranslation(language, "common.joinUs") || "Join Us"}
-                                    </Button>
+                                    </a>
                                 </div>
                             </div>
                             <div className="setting-option d-none d-md-block">
