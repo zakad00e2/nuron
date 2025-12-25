@@ -4,7 +4,7 @@ import Product from "@components/product/layout-01";
 import SectionTitle from "@components/section-title/layout-02";
 import { ProductType, SectionTitleType } from "@utils/types";
 
-const ProductArea = ({ space = 1, className, data }) => (
+const ProductArea = ({ space = 1, className, data, authorLabel, onOpenModal, buttonText, imageHeight }) => (
     <div
         className={clsx(
             "rn-new-items",
@@ -46,6 +46,10 @@ const ProductArea = ({ space = 1, className, data }) => (
                                 description={prod.description}
                                 websiteUrl={prod.websiteUrl}
                                 purchaseUrl={prod.purchaseUrl}
+                                authorLabel={authorLabel}
+                                onOpenModal={onOpenModal ? () => onOpenModal(prod) : null}
+                                buttonText={buttonText}
+                                imageHeight={imageHeight}
                             />
                         </div>
                     ))}

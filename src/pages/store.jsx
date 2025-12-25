@@ -21,7 +21,7 @@ export async function getStaticProps() {
     return { props: { className: "template-color-1" } };
 }
 
-const API_STORE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/stores";
+const API_STORE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/store";
 const API_HOMEPAGE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage";
 
 const StorePage = () => {
@@ -44,25 +44,6 @@ const StorePage = () => {
         texts: [{ content: storeSubtitle, id: 1 }],
         images: [{ src: "/images/banner/banner-06.png" }]
     };
-
-    useEffect(() => {
-        let isMounted = true;
-        const fetchTitles = async () => {
-            try {
-                const response = await fetch(
-                    `https://brilliant-boot-036dae9a94.strapiapp.com/api/title-and-subtitle?locale=${language}`
-                );
-                const data = await response.json();
-                if (isMounted && data && data.data) {
-                    setApiTitles(data.data);
-                }
-            } catch (error) {
-                console.error("Error fetching titles:", error);
-            }
-        };
-        fetchTitles();
-        return () => { isMounted = false; };
-    }, [language]);
 
     useEffect(() => {
         let isMounted = true;
@@ -95,19 +76,31 @@ const StorePage = () => {
             setLoading(true);
             try {
                 const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
-                const queryParams = `?locale=${locale}&populate[interface][populate]=*&populate[products][populate]=*&populate[subscriptions][populate]=*`;
+                const queryParams = `?populate[interface][populate]=image&populate[product_section][populate][products][populate]=product_image&populate[Redbubble]=*&populate[subscriptions_section][populate][subscriptions][populate]=subscriptions_details&locale=${locale}`;
                 const response = await fetch(`${API_STORE_URL}${queryParams}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
                 
-                if (isMounted && data && data.data && data.data.length > 0) {
-                    const storeData = data.data[0];
+                if (isMounted && data && data.data) {
+                    const storeData = data.data;
+
+                    // Map Titles
+                    const titles = {};
+                    if (storeData.product_section) {
+                        titles.product_hero_title = storeData.product_section.product_hero_title;
+                        titles.product_hero_subtitle = storeData.product_section.product_hero_subtitle;
+                    }
+                    if (storeData.subscriptions_section) {
+                        titles.subscriptions_hero_title = storeData.subscriptions_section.subscriptions_hero_title;
+                        titles.subscriptions_hero_subtitle = storeData.subscriptions_section.subscriptions_hero_subtitle;
+                    }
+                    setApiTitles(titles);
 
                     // Map Products
-                    if (storeData.products) {
-                        const mappedProducts = storeData.products.map(item => ({
+                    if (storeData.product_section && storeData.product_section.products) {
+                        const mappedProducts = storeData.product_section.products.map(item => ({
                             id: item.id,
                             title: item.product_name,
                             slug: item.id,
@@ -132,15 +125,21 @@ const StorePage = () => {
                     }
 
                     // Map Pricing Data
-                    if (storeData.subscriptions) {
-                        const mappedPlans = storeData.subscriptions.map(sub => ({
+                    if (storeData.subscriptions_section && storeData.subscriptions_section.subscriptions) {
+                        const mappedPlans = storeData.subscriptions_section.subscriptions.map(sub => ({
                             id: sub.id,
                             title: sub.subscriptions_type,
                             price: sub.subscriptions_price,
                             features: sub.subscriptions_details ? sub.subscriptions_details.map(d => d.detail) : [],
                             link: sub.subscriptions_link
                         }));
-                        setPricingData({ plans: mappedPlans });
+                        setPricingData({ 
+                            plans: mappedPlans,
+                            section_title: {
+                                title: storeData.subscriptions_section.subscriptions_hero_title,
+                                subtitle: storeData.subscriptions_section.subscriptions_hero_subtitle
+                            }
+                        });
                     }
                 }
             } catch (error) {

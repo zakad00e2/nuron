@@ -29,7 +29,14 @@ const PricingArea = ({ className, space = 1, data }) => {
     const isRtl = language === "ar";
     const t = getTranslation(language, "pricing");
 
+    // If data provides section title/subtitle, use them. Otherwise try to fetch (legacy support)
+    const sectionTitle = data?.section_title?.title || apiTitles?.subscriptions_hero_title || t.title;
+    const sectionSubtitle = data?.section_title?.subtitle || apiTitles?.subscriptions_hero_subtitle || t.description;
+
     useEffect(() => {
+        // Only fetch if not provided in data
+        if (data?.section_title?.title) return;
+
         let isMounted = true;
         const fetchTitles = async () => {
             try {
@@ -46,7 +53,7 @@ const PricingArea = ({ className, space = 1, data }) => {
         };
         fetchTitles();
         return () => { isMounted = false; };
-    }, [language]);
+    }, [language, data]);
     
     if (!t) return null;
 
@@ -59,10 +66,10 @@ const PricingArea = ({ className, space = 1, data }) => {
                     <div className="col-lg-12">
                         <div className="section-title text-center" style={{ textAlign: 'center' }}>
                             <h2 className="title" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>
-                                {apiTitles?.subscriptions_hero_title || t.title}
+                                {sectionTitle}
                             </h2>
                             <p className="description" style={{ fontFamily: isRtl ? 'Cairo, sans-serif' : 'inherit', textAlign: 'center' }}>
-                                {apiTitles?.subscriptions_hero_subtitle || t.description}
+                                {sectionSubtitle}
                             </p>
                         </div>
                         {/* <div className="pricing-toggle">

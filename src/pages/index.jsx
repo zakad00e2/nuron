@@ -15,6 +15,7 @@ import BrandStrip from "@containers/brand-strip";
 import FaqArea from "@containers/faq";
 import Skeleton from "@components/skeleton";
 import { normalizedData } from "@utils/methods";
+import Flipbook from '@components/Flipbook';
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 
@@ -312,6 +313,7 @@ const Home = () => {
                 <HeroArea data={translatedContent["hero-section"]} />
                 <BrandStrip data={brandStripData} />
                 <FaqArea data={translatedContent["faq-section"]} />
+                {/* <Flipbook /> */}
                 {/* <LiveExploreArea
                     data={{
                         ...content["live-explore-section"],

@@ -38,14 +38,21 @@ const Product = ({
     websiteUrl,
     // Store-specific props
     purchaseUrl,
+    authorLabel,
+    onOpenModal,
+    buttonText,
+    imageHeight,
 }) => {
     const { language } = useLanguage();
     const translatedText = getTranslation(language, "books.viewButton");
-    const viewButtonText = (translatedText && translatedText !== "books.viewButton") 
+    const defaultViewButtonText = (translatedText && translatedText !== "books.viewButton") 
         ? translatedText 
         : (language === "ar" ? "عرض التفاصيل" : "View Details");
+    const viewButtonText = buttonText || defaultViewButtonText;
+
     const byTextRaw = getTranslation(language, "books.by");
-    const byText = (byTextRaw && byTextRaw !== "books.by") ? byTextRaw : (language === "ar" ? "الكاتب" : "By");
+    const defaultByText = (byTextRaw && byTextRaw !== "books.by") ? byTextRaw : (language === "ar" ? "الكاتب" : "By");
+    const byText = authorLabel || defaultByText;
     const buyNowText = getTranslation(language, "store.buyNow") || "Buy Now";
     const [showBidModal, setShowBidModal] = useState(false);
     const handleBidModal = () => {
@@ -68,7 +75,8 @@ const Product = ({
                             src={image.src}
                             alt={image?.alt || "NFT_portfolio"}
                             width={533}
-                            height={533}
+                            height={imageHeight || 533}
+                            style={imageHeight ? { height: `${imageHeight}px`, objectFit: 'cover' } : {}}
                         />
                     )}
                     {auction_date && <CountdownTimer date={auction_date} />}
@@ -118,15 +126,29 @@ const Product = ({
                         </div>
                         {websiteUrl && (
                             <div className="book-button-wrapper">
-                                <Anchor 
-                                    path={websiteUrl} 
-                                    className="btn-book-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <span className="btn-text">{viewButtonText}</span>
-                                    <i className="feather-arrow-right" />
-                                </Anchor>
+                                {onOpenModal ? (
+                                    <button 
+                                        className="btn-book-link"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            onOpenModal();
+                                        }}
+                                        style={{ border: 'none', cursor: 'pointer', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                    >
+                                        <span className="btn-text">{viewButtonText}</span>
+                                        <i className="feather-arrow-right" />
+                                    </button>
+                                ) : (
+                                    <Anchor 
+                                        path={websiteUrl} 
+                                        className="btn-book-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <span className="btn-text">{viewButtonText}</span>
+                                        <i className="feather-arrow-right" />
+                                    </Anchor>
+                                )}
                             </div>
                         )}
                         {purchaseUrl && (
