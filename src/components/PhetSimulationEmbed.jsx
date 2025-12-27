@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PhetSimulationEmbed = ({ url, title }) => {
+const PhetSimulationEmbed = ({ url, title, height = '500px' }) => {
   return (
     <div style={{ 
       position: 'relative', 
       width: '100%', 
-      height: '600px', 
+      height: height, 
       border: '2px solid #2c3e50', 
       borderRadius: '8px',
       overflow: 'hidden',

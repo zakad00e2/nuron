@@ -1079,6 +1079,12 @@ html[data-theme="light"] body {
         }
     }
 
+    .simulation-modal-wrapper {
+        .modal-content {
+            background: var(--color-white);
+        }
+    }
+
     .upload-modal-wrapper {
         .modal-content {
             background: transparent !important;

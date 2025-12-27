@@ -51,10 +51,10 @@ body.modal-open {
     .modal-content {
         background-color: var(--background-color-2);
         border: 0 none;
-        padding: 40px 20px;
+        padding: 15px 20px 15px 20px;
         border-radius: 10px;
         @media #{variables.$sm-layout} {
-            padding: 20px 15px;
+            padding: 15px 15px 20px 15px;
         }
     }
     .btn-close {
@@ -240,3 +240,12 @@ body.modal-open {
         }
     }
 }
+
+.simulation-cover-bg {
+    background-color: var(--background-color-1);
+}
+
+html[data-theme="light"] .simulation-cover-bg {
+    background-color: var(--color-lightest);
+}
+

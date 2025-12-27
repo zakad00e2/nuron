@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "@ui/button";
 import PhetSimulationEmbed from "@components/PhetSimulationEmbed";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
+import dynamic from 'next/dynamic';
+
+const Document = dynamic(() => import('react-pdf').then(mod => mod.Document), { ssr: false });
+const Page = dynamic(() => import('react-pdf').then(mod => mod.Page), { ssr: false });
 
 const API_SIMULATIONS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/simulations";
 
@@ -14,12 +19,51 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [pdfPages, setPdfPages] = useState({}); // Store page counts for PDFs
+    const [scale, setScale] = useState(1.0); // Zoom scale state
 
     // Cache mechanism
     const [cache, setCache] = useState(null);
 
     useEffect(() => {
+        import('react-pdf').then(({ pdfjs }) => {
+            pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+        });
+    }, []);
+
+    const onDocumentLoadSuccess = (pdfUrl, { numPages }) => {
+        setPdfPages(prev => ({ ...prev, [pdfUrl]: numPages }));
+        
+        // Expand simulations array with individual pages
+        setSimulations(prevSims => {
+            const newSims = [];
+            prevSims.forEach(sim => {
+                if ((sim.type === 'pdf' || (sim.url && sim.url.endsWith('.pdf'))) && sim.url === pdfUrl) {
+                    for (let i = 1; i <= numPages; i++) {
+                        newSims.push({
+                            ...sim,
+                            id: `${sim.id}-page-${i}`,
+                            pdfPageNumber: i,
+                            isPdfPage: true,
+                            title: `${sim.title} - ${language === 'ar' ? 'صفحة' : 'Page'} ${i}`
+                        });
+                    }
+                } else {
+                    newSims.push(sim);
+                }
+            });
+            return newSims;
+        });
+    };
+
+    useEffect(() => {
         if (show) {
+            const coverPage = {
+                id: 'cover-page',
+                title: language === 'ar' ? 'مرحباً بكم' : 'Welcome',
+                isCover: true
+            };
+
             if (externalSimulations && externalSimulations.length > 0) {
                 // Map external simulations (from BooksPage) to internal format
                 const mapped = externalSimulations.map(item => ({
@@ -28,8 +72,17 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                     description: item.description,
                     url: item.websiteUrl // Map websiteUrl to url
                 }));
-                setSimulations(mapped);
-                setCurrentIndex(initialIndex);
+
+                const pdfPage = {
+                    id: 'pdf-cv',
+                    title: language === 'ar' ? 'وثيقة PDF' : 'PDF Document',
+                    description: language === 'ar' ? 'عرض وثيقة PDF تفاعلية.' : 'Interactive PDF document view.',
+                    url: '/cv.pdf',
+                    type: 'pdf'
+                };
+
+                setSimulations([coverPage, ...mapped, pdfPage]);
+                setCurrentIndex(initialIndex + 1);
                 setLoading(false);
                 return;
             }
@@ -47,6 +100,12 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
         setLoading(true);
         setError(null);
         
+        const coverPage = {
+            id: 'cover-page',
+            title: language === 'ar' ? 'مرحباً بكم' : 'Welcome',
+            isCover: true
+        };
+
         // Demo data definition
         const demoData = [
             { 
@@ -66,6 +125,13 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                 title: language === 'ar' ? 'أشكال الجزيئات' : 'Molecule Shapes', 
                 description: language === 'ar' ? 'استكشف أشكال الجزيئات وكيف تتغير.' : 'Explore molecule shapes and how they change.',
                 url: 'https://phet.colorado.edu/sims/html/molecule-shapes/latest/molecule-shapes_en.html' 
+            },
+            { 
+                id: 4, 
+                title: language === 'ar' ? 'وثيقة PDF' : 'PDF Document', 
+                description: language === 'ar' ? 'عرض وثيقة PDF تفاعلية.' : 'Interactive PDF document view.',
+                url: '/cv.pdf',
+                type: 'pdf'
             }
         ];
 
@@ -73,8 +139,8 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
             const response = await fetch(`${API_SIMULATIONS_URL}?locale=${language}`);
             if (!response.ok) {
                 console.warn(`API returned ${response.status}, using demo data.`);
-                setSimulations(demoData);
-                setCache(demoData);
+                setSimulations([coverPage, ...demoData]);
+                setCache([coverPage, ...demoData]);
                 return;
             }
             const data = await response.json();
@@ -86,17 +152,17 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                     url: item.url || item.attributes?.url,
                     // Add other fields as needed based on actual API response
                 }));
-                setSimulations(mappedSimulations);
-                setCache(mappedSimulations);
+                setSimulations([coverPage, ...mappedSimulations]);
+                setCache([coverPage, ...mappedSimulations]);
             } else {
-                setSimulations(demoData);
-                setCache(demoData);
+                setSimulations([coverPage, ...demoData]);
+                setCache([coverPage, ...demoData]);
             }
         } catch (err) {
             console.error("Error fetching simulations:", err);
             // Fallback/Demo data if API fails
-            setSimulations(demoData);
-            setCache(demoData);
+            setSimulations([coverPage, ...demoData]);
+            setCache([coverPage, ...demoData]);
         } finally {
             setLoading(false);
         }
@@ -104,14 +170,21 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % simulations.length);
+        setScale(1.0); // Reset zoom on page change
     };
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev - 1 + simulations.length) % simulations.length);
+        setScale(1.0); // Reset zoom on page change
     };
+
+    const handleZoomIn = () => setScale(prev => Math.min(prev + 0.2, 3.0));
+    const handleZoomOut = () => setScale(prev => Math.max(prev - 0.2, 0.5));
+    const handleResetZoom = () => setScale(1.0);
 
     const handleClose = () => {
         handleModal();
+        setScale(1.0);
     };
 
     const currentSim = simulations[currentIndex];
@@ -136,7 +209,7 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                 </button>
             )}
             
-            <Modal.Body style={{ minHeight: '500px', display: 'flex', flexDirection: 'column' }}>
+            <Modal.Body style={{ minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
                 {loading ? (
                     <div className="text-center" style={{ margin: 'auto' }}>
                         <div className="spinner-border text-primary" role="status">
@@ -147,10 +220,76 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                     <div className="simulation-view h-100 d-flex flex-column">
                         <div className="d-flex justify-content-between align-items-center mb-3">
                             <h4 className="mb-0">{currentSim.title}</h4>
+                            {currentSim.isPdfPage && (
+                                <div className="zoom-controls d-flex gap-2">
+                                    <button className="btn btn-sm btn-primary-alta" onClick={handleZoomOut} title="Zoom Out">
+                                        <i className="feather-minus" />
+                                    </button>
+                                    <button className="btn btn-sm btn-primary-alta" onClick={handleResetZoom} title="Reset Zoom">
+                                        {Math.round(scale * 100)}%
+                                    </button>
+                                    <button className="btn btn-sm btn-primary-alta" onClick={handleZoomIn} title="Zoom In">
+                                        <i className="feather-plus" />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                         
-                        <div className="flex-grow-1" style={{ minHeight: '600px' }}>
-                            <PhetSimulationEmbed url={currentSim.url} title={currentSim.title} />
+                        <div className="flex-grow-1" style={{ height: '450px', maxHeight: '450px', overflow: 'hidden', position: 'relative' }}>
+                            {currentSim.isCover ? (
+                                <div className="simulation-cover-bg" style={{ textAlign: 'center', padding: '20px', borderRadius: '15px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div style={{ position: 'relative', width: '100%', height: '250px', marginBottom: '20px' }}>
+                                        <Image 
+                                            src="/images/bg/bg-image-1.jpg" 
+                                            alt="Introductory Cover" 
+                                            fill
+                                            style={{ borderRadius: '10px', objectFit: 'cover' }} 
+                                            priority
+                                        />
+                                    </div>
+                                    <h2 style={{ color: 'var(--color-heading)', marginBottom: '10px' }}>{language === 'ar' ? 'استكشف وتعلم' : 'Explore and Learn'}</h2>
+                                    <p style={{ fontSize: '16px', color: 'var(--color-body)', maxWidth: '600px', margin: '0 auto' }}>
+                                        {language === 'ar' ? 'مجموعة من المحاكاة التفاعلية للعلوم والرياضيات.' : 'A collection of interactive simulations for science and math.'}
+                                    </p>
+                                </div>
+                            ) : currentSim.isPdfPage ? (
+                                <div style={{ 
+                                    display: 'flex', 
+                                    justifyContent: 'center', 
+                                    height: '100%', 
+                                    alignItems: scale > 1 ? 'flex-start' : 'center', 
+                                    overflow: 'auto' 
+                                }}>
+                                    <Document
+                                        file={currentSim.url}
+                                        loading={<div className="text-center mt-5"><div className="spinner-border text-primary" /></div>}
+                                    >
+                                        <Page 
+                                            pageNumber={currentSim.pdfPageNumber} 
+                                            height={450}
+                                            scale={scale}
+                                            renderTextLayer={false}
+                                            renderAnnotationLayer={false}
+                                        />
+                                    </Document>
+                                </div>
+                            ) : (currentSim.type === 'pdf' || (currentSim.url && currentSim.url.endsWith('.pdf'))) ? (
+                                <div style={{ display: 'none' }}>
+                                    <Document
+                                        file={currentSim.url}
+                                        onLoadSuccess={(data) => onDocumentLoadSuccess(currentSim.url, data)}
+                                    >
+                                    </Document>
+                                    <div className="text-center mt-5">
+                                        <div className="spinner-border text-primary" role="status">
+                                            <span className="visually-hidden">Loading PDF...</span>
+                                        </div>
+                                        <p className="mt-2">Loading PDF pages...</p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <PhetSimulationEmbed url={currentSim.url} title={currentSim.title} height="450px" />
+                            )}
                         </div>
 
                         <div className="flipbook-controls d-flex justify-content-center align-items-center gap-3 mt-4">
