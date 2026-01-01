@@ -66,16 +66,21 @@ const Flipbook = () => {
 
       {isCover ? (
         <div className="simulation-cover-bg" style={{ textAlign: 'center', padding: '40px', borderRadius: '15px' }}>
-            <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '20px' }}>
-                <Image 
-                    src="/images/bg/bg-image-1.jpg" 
-                    alt="Introductory Cover" 
-                    fill
-                    style={{ borderRadius: '10px', objectFit: 'cover' }} 
-                    priority
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                    src="/غلاف_كتاب_رسالة_في_العقل.jpg" 
+                    alt="رسالة في العقل - الفارابي" 
+                    style={{ 
+                        borderRadius: '10px', 
+                        objectFit: 'contain', 
+                        maxWidth: '100%', 
+                        maxHeight: '600px',
+                        height: 'auto',
+                        width: 'auto'
+                    }} 
                 />
             </div>
-            <h2 style={{ color: 'var(--color-heading)', marginBottom: '10px' }}>استكشف وتعلم</h2>
             <p style={{ fontSize: '18px', color: 'var(--color-body)', maxWidth: '600px', margin: '0 auto' }}>
                 مجموعة من المحاكاة التفاعلية للعلوم والرياضيات. ابدأ رحلتك التعليمية الآن بالضغط على "التالي".
             </p>

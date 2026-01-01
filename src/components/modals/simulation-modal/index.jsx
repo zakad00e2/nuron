@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "@ui/button";
 import PhetSimulationEmbed from "@components/PhetSimulationEmbed";
@@ -238,19 +237,25 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                         <div className="flex-grow-1" style={{ height: '450px', maxHeight: '450px', overflow: 'hidden', position: 'relative' }}>
                             {currentSim.isCover ? (
                                 <div className="simulation-cover-bg" style={{ textAlign: 'center', padding: '20px', borderRadius: '15px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div style={{ position: 'relative', width: '100%', height: '250px', marginBottom: '20px' }}>
-                                        <Image 
-                                            src="/images/bg/bg-image-1.jpg" 
-                                            alt="Introductory Cover" 
-                                            fill
-                                            style={{ borderRadius: '10px', objectFit: 'cover' }} 
-                                            priority
+                                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px', maxWidth: '100%' }}>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img 
+                                            src="/غلاف_كتاب_رسالة_في_العقل.jpg" 
+                                            alt="رسالة في العقل - الفارابي" 
+                                            style={{ 
+                                                borderRadius: '10px', 
+                                                objectFit: 'contain', 
+                                                maxWidth: '100%', 
+                                                maxHeight: '400px',
+                                                height: 'auto',
+                                                width: 'auto'
+                                            }} 
                                         />
                                     </div>
-                                    <h2 style={{ color: 'var(--color-heading)', marginBottom: '10px' }}>{language === 'ar' ? 'استكشف وتعلم' : 'Explore and Learn'}</h2>
+                                    {/* <h2 style={{ color: 'var(--color-heading)', marginBottom: '10px' }}>{language === 'ar' ? 'استكشف وتعلم' : 'Explore and Learn'}</h2>
                                     <p style={{ fontSize: '16px', color: 'var(--color-body)', maxWidth: '600px', margin: '0 auto' }}>
                                         {language === 'ar' ? 'مجموعة من المحاكاة التفاعلية للعلوم والرياضيات.' : 'A collection of interactive simulations for science and math.'}
-                                    </p>
+                                    </p> */}
                                 </div>
                             ) : currentSim.isPdfPage ? (
                                 <div style={{ 

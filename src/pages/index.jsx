@@ -1,29 +1,18 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useEffect } from "react";
 import sal from "sal.js";
 import SEO from "@components/seo";
 import Wrapper from "@layout/wrapper";
 import Header from "@layout/header/header-01";
 import Footer from "@layout/footer/footer-01";
 import HeroArea from "@containers/hero/layout-01";
-import LiveExploreArea from "@containers/live-explore/layout-01";
-import ServiceArea from "@containers/services/layout-01";
-import NewestItmesArea from "@containers/product/layout-04";
-import TopSellerArea from "@containers/top-seller/layout-01";
-import ExploreProductArea from "@containers/explore-product/layout-01";
-import CollectionArea from "@containers/collection/layout-01";
 import BrandStrip from "@containers/brand-strip";
 import FaqArea from "@containers/faq";
-import Skeleton from "@components/skeleton";
 import { normalizedData } from "@utils/methods";
-import Flipbook from '@components/Flipbook';
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 
 // Demo Data
 import homepageData from "../data/homepages/home-01.json";
-import productData from "../data/products.json";
-import sellerData from "../data/sellers.json";
-import collectionsData from "../data/collections.json";
 
 // API base URLs
 const API_HOMEPAGE_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/homepage";
@@ -31,123 +20,49 @@ const API_QUESTIONS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/q
 const API_IMAGE_SLIDERS_URL = "https://brilliant-boot-036dae9a94.strapiapp.com/api/image-sliders";
 
 export async function getStaticProps() {
-    return { props: { className: "template-color-1" } };
+    const locales = ['ar', 'en', 'de'];
+    const initialData = {};
+
+    try {
+        await Promise.all(locales.map(async (locale) => {
+            const [homepageRes, faqRes, brandRes] = await Promise.all([
+                fetch(`${API_HOMEPAGE_URL}?locale=${locale}&populate=Super_image`),
+                fetch(`${API_QUESTIONS_URL}?locale=${locale}`),
+                fetch(`${API_IMAGE_SLIDERS_URL}?locale=${locale}&populate=addImages`)
+            ]);
+
+            initialData[locale] = {
+                homepage: homepageRes.ok ? (await homepageRes.json()).data : null,
+                faq: faqRes.ok ? (await faqRes.json()).data : [],
+                brandStrip: brandRes.ok ? (await brandRes.json()).data : []
+            };
+        }));
+    } catch (error) {
+        console.error("Error in getStaticProps:", error);
+    }
+
+    return { 
+        props: { 
+            className: "template-color-1",
+            initialData
+        },
+        revalidate: 60
+    };
 }
 
-const Home = () => {
+const Home = ({ initialData }) => {
     const { language } = useLanguage();
-    const [apiHomepageData, setApiHomepageData] = useState(null);
-    const [apiFaqData, setApiFaqData] = useState(null);
-    const [apiBrandStripData, setApiBrandStripData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isFaqLoading, setIsFaqLoading] = useState(true);
-    const [isBrandLoading, setIsBrandLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    // Fetch homepage data from API
+    
     useEffect(() => {
-        const fetchHomepageData = async () => {
-            setIsLoading(true);
-            setError(null);
-            try {
-                // Support Arabic, German, and English locales
-                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
-                const response = await fetch(`${API_HOMEPAGE_URL}?locale=${locale}&populate=Super_image`);
-                
-                if (!response.ok) {
-                    console.warn(`Failed to fetch homepage data: ${response.statusText}`);
-                    setApiHomepageData(null);
-                    return;
-                }
-                
-                const result = await response.json();
-                setApiHomepageData(result.data);
-            } catch (err) {
-                console.error("Error fetching homepage data:", err);
-                setError(err.message);
-                // Fallback to null, will use static data
-                setApiHomepageData(null);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        sal();
+    }, []);
 
-        fetchHomepageData();
-    }, [language]);
-
-    // Fetch FAQ data from API
-    useEffect(() => {
-        const fetchFaqData = async () => {
-            setIsFaqLoading(true);
-            try {
-                // Support Arabic, German, and English locales
-                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
-                // Always include locale parameter for consistency
-                const url = `${API_QUESTIONS_URL}?locale=${locale}`;
-                
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    console.warn(`Failed to fetch FAQ data: ${response.statusText}`);
-                    setApiFaqData(null);
-                    return;
-                }
-                
-                const result = await response.json();
-                setApiFaqData(result.data || []);
-            } catch (err) {
-                console.error("Error fetching FAQ data:", err);
-                // Fallback to null, will use static data
-                setApiFaqData(null);
-            } finally {
-                setIsFaqLoading(false);
-            }
-        };
-
-        fetchFaqData();
-    }, [language]);
-
-    // Fetch Brand Strip data from API
-    useEffect(() => {
-        const fetchBrandStripData = async () => {
-            setIsBrandLoading(true);
-            try {
-                const locale = language === "ar" ? "ar" : (language === "de" ? "de" : "en");
-                const url = `${API_IMAGE_SLIDERS_URL}?locale=${locale}&populate=addImages`;
-                
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    console.warn(`Failed to fetch Brand Strip data: ${response.statusText}`);
-                    setApiBrandStripData(null);
-                    return;
-                }
-                
-                const result = await response.json();
-                setApiBrandStripData(result.data || []);
-            } catch (err) {
-                console.error("Error fetching Brand Strip data:", err);
-                setApiBrandStripData(null);
-            } finally {
-                setIsBrandLoading(false);
-            }
-        };
-
-        fetchBrandStripData();
-    }, [language]);
+    const currentData = initialData?.[language] || initialData?.['en'] || {};
+    const apiHomepageData = currentData.homepage;
+    const apiFaqData = currentData.faq;
+    const apiBrandStripData = currentData.brandStrip;
 
     const content = normalizedData(homepageData?.content || []);
-    const liveAuctionData = productData.filter(
-        (prod) =>
-            prod?.auction_date && new Date() <= new Date(prod?.auction_date)
-    );
-    const newestData = productData
-        .sort(
-            (a, b) =>
-                Number(new Date(b.published_at)) -
-                Number(new Date(a.published_at))
-        )
-        .slice(0, 5);
 
     // Get translated content
     const translatedContent = useMemo(() => {
@@ -242,7 +157,7 @@ const Home = () => {
             },
             copyrightText,
         };
-    }, [language, content, apiHomepageData, apiFaqData, apiBrandStripData]);
+    }, [language, content, apiHomepageData, apiFaqData]);
 
     // Process Brand Strip data
     const brandStripData = useMemo(() => {
@@ -270,83 +185,18 @@ const Home = () => {
         return content["brand-strip-section"];
     }, [apiBrandStripData, content]);
 
-    useEffect(() => {
-        if (!isLoading && !isFaqLoading && !isBrandLoading) {
-            sal();
-        }
-    }, [isLoading, isFaqLoading, isBrandLoading]);
-
-    if (isLoading || isFaqLoading || isBrandLoading) {
-        return (
-            <Wrapper>
-                <SEO pageTitle="Home" />
-                <Header />
-                <main id="main-content">
-                    <div className="slider-one rn-section-gapTop">
-                        <div className="container">
-                            <div className="row row-reverce-sm align-items-center">
-                                <div className="col-lg-5 col-md-6 col-sm-12 mt_sm--50">
-                                    <Skeleton type="title" className="mb--20" style={{ height: '50px', width: '80%' }} />
-                                    <Skeleton type="text" count={3} className="mb--20" />
-                                    <div className="button-group">
-                                        <Skeleton type="text" className="mb--20" style={{ height: '50px', width: '150px', display: 'inline-block', marginRight: '20px' }} />
-                                        <Skeleton type="text" className="mb--20" style={{ height: '50px', width: '150px', display: 'inline-block' }} />
-                                    </div>
-                                </div>
-                                <div className="col-lg-5 col-md-6 col-sm-12 offset-lg-1">
-                                    <Skeleton type="image" style={{ height: '500px', width: '100%' }} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <Footer />
-            </Wrapper>
-        );
-    }
-
     return (
         <Wrapper>
-            <SEO pageTitle="Home" />
+            <SEO 
+                pageTitle={language === 'ar' ? "الرئيسية" : "Home"} 
+                description={translatedContent["hero-section"].texts[0].content}
+                image={translatedContent["hero-section"].images[0]?.src}
+            />
             <Header />
             <main id="main-content">
                 <HeroArea data={translatedContent["hero-section"]} />
                 <BrandStrip data={brandStripData} />
                 <FaqArea data={translatedContent["faq-section"]} />
-                {/* <Flipbook /> */}
-                {/* <LiveExploreArea
-                    data={{
-                        ...content["live-explore-section"],
-                        products: liveAuctionData,
-                    }}
-                /> */}
-                {/* <ServiceArea data={content["service-section"]} /> */}
-                {/* <NewestItmesArea
-                    data={{
-                        ...content["newest-section"],
-                        products: newestData,
-                    }}
-                /> */}
-                {/* <TopSellerArea
-                    data={{
-                        ...content["top-sller-section"],
-                        sellers: sellerData,
-                    }}
-                /> */}
-                {/* <ExploreProductArea
-                    data={{
-                        ...content["explore-product-section"],
-                        products: productData,
-                    }}
-                /> */}
-
-                {/* <CollectionArea
-                    data={{
-                        ...content["collection-section"],
-                        collections: collectionsData.slice(0, 4),
-                    }}
-                /> */}
-              
             </main>
             <Footer copyright={translatedContent.copyrightText} />
         </Wrapper>
