@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const SEO = ({ pageTitle, description, image }) => {
     const title = `${pageTitle}`;
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.autor.one/"; // Replace with actual domain
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "www.autor.one"; // Replace with actual domain
 
     return (
         <Head>

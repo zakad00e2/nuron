@@ -10,6 +10,7 @@ import ProductArea from "@containers/product/layout-04";
 import PricingArea from "@containers/pricing/layout-01";
 import HeroArea from "@containers/hero/layout-01";
 import Skeleton from "@components/skeleton";
+import RedbubblePortfolio from "@components/RedbubblePortfolio";
 import { useLanguage } from "@contexts/LanguageContext";
 import { getTranslation } from "@utils/translations";
 
@@ -265,6 +266,9 @@ const StorePage = () => {
                                 <PricingArea data={pricingData} />
                             )}
                         </div>
+
+                        <hr className="rn-section-divider" />
+                        <RedbubblePortfolio />
 
                     </div>
                 </div>
