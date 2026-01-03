@@ -300,20 +300,20 @@ const SimulationModal = ({ show, handleModal, externalSimulations, initialIndex 
                         <div className="flipbook-controls d-flex justify-content-center align-items-center gap-3 mt-4">
                             <button 
                                 className="btn btn-icon btn-primary-alta" 
-                                onClick={handlePrev}
+                                onClick={language === 'ar' ? handleNext : handlePrev}
                                 disabled={simulations.length <= 1}
                             >
-                                <i className="feather-chevron-left" />
+                                <i className={language === 'ar' ? "feather-chevron-right" : "feather-chevron-left"} />
                             </button>
                             <span className="page-indicator">
                                 {currentIndex + 1} / {simulations.length}
                             </span>
                             <button 
                                 className="btn btn-icon btn-primary-alta" 
-                                onClick={handleNext}
+                                onClick={language === 'ar' ? handlePrev : handleNext}
                                 disabled={simulations.length <= 1}
                             >
-                                <i className="feather-chevron-right" />
+                                <i className={language === 'ar' ? "feather-chevron-left" : "feather-chevron-right"} />
                             </button>
                         </div>
                         {currentSim.description && (

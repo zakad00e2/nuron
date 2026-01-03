@@ -112,7 +112,11 @@ const Product = ({
                             <span className="product-name">{title}</span>
                             {author && (
                                 <div className="book-author">
-                                    <span>{byText}</span> {author}
+                                    {language === "ar" && authorLabel ? (
+                                        <>{author} <span>{byText}</span></>
+                                    ) : (
+                                        <><span>{byText}</span> {author}</>
+                                    )}
                                 </div>
                             )}
                             {description && (
