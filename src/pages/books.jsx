@@ -78,8 +78,16 @@ const BooksPage = () => {
                     }
                   : null,
                 // Map to Product component expected format
-                images: cover ? [{ src: coverUrl }] : [],
-                image: cover ? { src: coverUrl } : null,
+                images: cover ? [{ 
+                  src: coverUrl,
+                  width: coverWidth,
+                  height: coverHeight
+                }] : [],
+                image: cover ? { 
+                  src: coverUrl,
+                  width: coverWidth,
+                  height: coverHeight
+                } : null,
                 latestBid: "Free",
                 price: { amount: 0, currency: "USD" },
                 likeCount: 0,
@@ -177,7 +185,7 @@ const BooksPage = () => {
                   authorLabel={index === 1 ? (language === "ar" ? "المطور" : "Developer") : null}
                   onOpenModal={index === 1 ? (product) => handleOpenSimulationModal(product, section.products) : null}
                   buttonText={index === 1 ? (language === "ar" ? "فتح المحاكاة" : "Open Simulations") : null}
-                  imageHeight={index === 1 ? 300 : null}
+                  useImageAspectRatio={index === 1}
                 />
               </div>
             </div>

@@ -42,6 +42,8 @@ const Product = ({
     onOpenModal,
     buttonText,
     imageHeight,
+    imageFit,
+    useImageAspectRatio,
 }) => {
     const { language } = useLanguage();
     const translatedText = getTranslation(language, "books.viewButton");
@@ -58,6 +60,17 @@ const Product = ({
     const handleBidModal = () => {
         setShowBidModal((prev) => !prev);
     };
+
+    let finalHeight = imageHeight || 533;
+    let finalObjectFit = imageFit;
+    let finalAspectRatio = null;
+
+    if (useImageAspectRatio && image?.width && image?.height) {
+        finalAspectRatio = `${image.width}/${image.height}`;
+        finalHeight = 533 * (image.height / image.width);
+        finalObjectFit = "cover";
+    }
+
     return (
         <>
             <div
@@ -75,8 +88,12 @@ const Product = ({
                             src={image.src}
                             alt={image?.alt || "NFT_portfolio"}
                             width={533}
-                            height={imageHeight || 533}
-                            style={imageHeight ? { height: `${imageHeight}px`, objectFit: 'cover' } : {}}
+                            height={finalHeight}
+                            style={
+                                useImageAspectRatio 
+                                ? { aspectRatio: finalAspectRatio, height: 'auto', objectFit: finalObjectFit || 'cover' }
+                                : (imageHeight ? { height: `${finalHeight}px`, objectFit: finalObjectFit || 'cover' } : {})
+                            }
                         />
                     )}
                     {auction_date && <CountdownTimer date={auction_date} />}

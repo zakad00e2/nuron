@@ -4,7 +4,7 @@ import Product from "@components/product/layout-01";
 import SectionTitle from "@components/section-title/layout-02";
 import { ProductType, SectionTitleType } from "@utils/types";
 
-const ProductArea = ({ space = 1, className, data, authorLabel, onOpenModal, buttonText, imageHeight }) => (
+const ProductArea = ({ space = 1, className, data, authorLabel, onOpenModal, buttonText, imageHeight, imageFit, useImageAspectRatio }) => (
     <div
         className={clsx(
             "rn-new-items",
@@ -50,6 +50,8 @@ const ProductArea = ({ space = 1, className, data, authorLabel, onOpenModal, but
                                 onOpenModal={onOpenModal ? () => onOpenModal(prod) : null}
                                 buttonText={buttonText}
                                 imageHeight={imageHeight}
+                                imageFit={imageFit}
+                                useImageAspectRatio={useImageAspectRatio}
                             />
                         </div>
                     ))}
